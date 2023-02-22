@@ -113,23 +113,22 @@
                                         <table>
                                             <tr>
                                                 <td><label for="">اسم الوحدة</label><br>
-                                                    <input type="text" name="name_unit" placeholder="اسم الوحدة">
+                                                    <input class="form-control" type="text" name="name_unit" placeholder="اسم الوحدة">
                                                 </td>
                                             </tr>
-                                            <tr></tr>
+                                        </table>
+                                        <table>
                                             <tr>
                                                 <td><input type="radio" onchange="showSub()">
                                                     <label for="">هل لديه وحدة فرعية</label><br></td>
                                             </tr>
                                             <tr id="showSub" style="display: none">
                                             <td>
-                                                    <input type="text" placeholder="الوحدة الفرعية" name="sub_unit">
+                                                <div class="form-group">
+
+                                                    الوحدةالفرعية<input class="form-control" type="text" placeholder="الوحدة الفرعية" name="sub_unit">
+                                                </div>
                                                 </td>
-                                                
-
-                                                <td><input type="text" placeholder="200"></td>
-
-                                                <td><input type="text" placeholder="الوحدة الرئيسية"></td>
                                             </tr>
                                         </table>
 
@@ -163,12 +162,12 @@
                             {{-- {{method_field('patch')}} --}}
                             {{csrf_field()}}
                             <div class="form-group">
-                                <input type="hidden" name="id" id="id" value="">
-                                <label for="recipient-name" class="col-form-label">اسم التصميم:</label>
-                                <input class="form-control" name="name_unit" id="name_unit" type="text">
+                                <input class="form-control" type="hidden" name="id" id="id" value="">
+                                <label for="recipient-name" class="col-form-label">اسم الوحدة:</label>
+                                <input class="form-control" class="form-control" name="name_unit" id="name_unit" type="text">
                             </div>
                             <div class="form-group">
-                                <label for="message-text" class="col-form-label">رقم التصميم:</label>
+                                <label for="message-text" class="col-form-label">القسم الفرعي</label>
                                 <textarea class="form-control" id="sub_unit" name="sub_unit"></textarea>
                             </div>
                     </div>
@@ -193,8 +192,8 @@
                      {{csrf_field()}}
                      <div class="modal-body">
                          <p>هل انت متاكد من عملية الحذف ؟</p><br>
-                         <input type="hidden" name="id" id="id" value="">
-                         <input class="form-control" name="name_unit" id="name_unit" type="text" readonly>
+                         <input class="form-control" type="hidden" name="id" id="id" value="">
+                         <input class="form-control" class="form-control" name="name_unit" id="name_unit" type="text" readonly>
                      </div>
                      <div class="modal-footer">
                          <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>

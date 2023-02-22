@@ -114,7 +114,7 @@
                                         <table>
                                             <tr>
                                                 <td><label for="">اسم العلامة التجارية</label><br>
-                                                    <input type="text" name="name_tradeMark" id="tradeMark" placeholder="ادخل اسم علامة التجارية">
+                                                    <input class="form-control" type="text" name="name_tradeMark" id="tradeMark" placeholder="ادخل اسم علامة التجارية">
                                                 </td>
                                             </tr>
                                             </tr>
@@ -149,9 +149,9 @@
                          {{-- {{method_field('patch')}} --}}
                          {{csrf_field()}}
                          <div class="form-group">
-                             <input type="hidden" name="id" id="id" value="">
+                             <input class="form-control" type="hidden" name="id" id="id" value="">
                              <label for="recipient-name" class="col-form-label">اسم العلامة التجارية:</label>
-                             <input class="form-control" name="name_trade_mark" id="name_trade_mark" type="text">
+                             <input class="form-control" class="form-control" name="name_trade_mark" id="name_trade_mark" type="text">
                          </div>
                  </div>
                  <div class="modal-footer">
@@ -175,8 +175,8 @@
                   {{csrf_field()}}
                   <div class="modal-body">
                       <p>هل انت متاكد من عملية الحذف ؟</p><br>
-                      <input type="hidden" name="id" id="id" value="">
-                      <input class="form-control" name="name_trade_mark" id="name_trade_mark" type="text" readonly>
+                      <input class="form-control" type="hidden" name="id" id="id" value="">
+                      <input class="form-control" class="form-control" name="name_trade_mark" id="name_trade_mark" type="text" readonly>
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>

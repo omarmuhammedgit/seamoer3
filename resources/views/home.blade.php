@@ -144,12 +144,42 @@
 				<!-- row opened -->
 				<div class="row row-sm">
 					<div class="col-md-12 col-lg-12 col-xl-5">
-						<div class="card">
+						{{-- <div class="card">
                             <div style="width:95%;">
                                 {!! $chartjs->render() !!}
                             </div>
+						</div> --}}
+
+						<div class="card ">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-lg-3">
+										<div class="d-flex align-items-center pb-2">
+											<p class="mb-0">عدد الموردين</p>
+										</div>
+										<h4 class="font-weight-bold mb-2">{{\App\Models\Supplier::count()}}</h4>
+
+									</div>
+                                    <div class="col-lg-3" style="margin-right: 10%">
+										<div class="d-flex align-items-center pb-2">
+											<p class="mb-0">عدد الموظفين</p>
+										</div>
+										<h4 class="font-weight-bold mb-2">{{\App\Models\Employe::count()}}</h4>
+
+									</div>
+									<div class="col-lg-3" style="margin-right: 13%">
+										<div class="d-flex align-items-center pb-2">
+											<p class="mb-0">عدد العملاء</p>
+										</div>
+										<h4 class="font-weight-bold mb-2">{{\App\Models\Customer::count()}}</h4>
+
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+
+
 					<div class="col-lg-12 col-xl-7">
 						<div class="card">
 
@@ -179,26 +209,6 @@
 
 										</tbody>
 									</table>
-								</div>
-							</div>
-						</div>
-						<div class="card ">
-							<div class="card-body">
-								<div class="row">
-									<div class="col-md-6">
-										<div class="d-flex align-items-center pb-2">
-											<p class="mb-0">عدد الموردين</p>
-										</div>
-										<h4 class="font-weight-bold mb-2">{{\App\Models\Supplier::count()}}</h4>
-
-									</div>
-									<div class="col-md-6 mt-4 mt-md-0">
-										<div class="d-flex align-items-center pb-2">
-											<p class="mb-0">عدد العملاء</p>
-										</div>
-										<h4 class="font-weight-bold mb-2">{{\App\Models\Customer::count()}}</h4>
-
-									</div>
 								</div>
 							</div>
 						</div>

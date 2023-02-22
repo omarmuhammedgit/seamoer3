@@ -44,20 +44,22 @@
                         <div class="main-content-label mg-b-5">
                             البيانات
                         </div>
-                        <div class="row col-4">
-                            <table>
-                                <tr>
-                                    <td><label for="">اسم المنتج</label><br>
-                                        <input type="text" name="name_product" placeholder="اسم المنتج" required>
-                                    </td>
-                                    <td><label for="">رقم المنتج</label><br>
-                                        <input type="number" name="no_product" placeholder="رقم المنتج" required>
-                                    </td>
-                                    <td><label for="">موقع الفرع</label><br>
-                                        <input type="text" name="sub_site" placeholder="موقع الفرع" required>
-                                    </td>
-                                    <td><label for="">العلامة التجارية</label><br>
-                                        <select id="trademark" name="trademark_id">
+                        <div class="row">
+                            <div class="col-lg-3">
+                           <label for="">اسم المنتج</label><br>
+                                        <input class="form-control" type="text" name="name_product" placeholder="اسم المنتج" required>
+                            </div>
+                            <div class="col-lg-3">
+                                    <label for="">رقم المنتج</label><br>
+                                        <input class="form-control" type="number" name="no_product" placeholder="رقم المنتج" required>
+                            </div>
+                            <div class="col-lg-3">
+                                    <label for="">موقع الفرع</label><br>
+                                        <input class="form-control" type="text" name="sub_site" placeholder="موقع الفرع" required>
+                            </div>
+                            <div class="col-lg-3">
+                                    <label style="width: 100px" for="">العلامة التجارية</label><br>
+                                        <select class="form-control select2" id="trademark" name="trademark_id">
                                             @php
                                                 $collection = [];
                                             @endphp
@@ -68,11 +70,11 @@
                                             @endforeach
                                         </select>
 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label for="">القسم</label><br>
-                                        <select id="section_id" name="section_id">
+                            </div>
+                            <div class="col-lg-3">
+
+                            <label for="">القسم</label><br>
+                                        <select class="form-control select2" id="section_id" name="section_id">
                                             @php
                                                 $collection = [];
                                             @endphp
@@ -80,9 +82,10 @@
                                                 <option value="{{ $section->id }}">{{ $section->name_section }}</option>
                                             @endforeach
                                         </select>
-                                    </td>
-                                    <td><label for="">القسم الفرعي</label><br>
-                                        <select name="sub_section">
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="">القسم الفرعي</label><br>
+                                        <select class="form-control select2" name="sub_section">
                                             @php
                                                 $collection = [];
                                             @endphp
@@ -91,9 +94,10 @@
                                                 <option value=""></option>
                                             @endforeach
                                         </select>
-                                    </td>
-                                    <td><label for="">الوجدة الرئيسية</label><br>
-                                        <select id="trademark" name="unit_id">
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="">الوجدة الرئيسية</label><br>
+                                        <select class="form-control select2" id="trademark" name="unit_id">
                                             @php
                                                 $collection = [];
                                             @endphp
@@ -101,9 +105,10 @@
                                                 <option value="{{ $unit->id }}">{{ $unit->name_unit }}</option>
                                             @endforeach
                                         </select>
-                                    </td>
-                                    <td><label for="">الوحدة الفرعية</label><br>
-                                        <select name="sub_unit">
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="">الوحدة الفرعية</label><br>
+                                        <select class="form-control select2" name="sub_unit">
                                             @php
                                                 $collection = [];
                                             @endphp
@@ -112,19 +117,15 @@
                                                 <option value=""></option>
                                             @endforeach
                                         </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><label for="">تنبيه الكمية</label><br>
-                                        <input type="number" name="quantity_alert" placeholder="تنبيه الكمية" required>
-                                    </td>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="">تنبيه الكمية</label><br>
+                                        <input class="form-control" type="number" name="quantity_alert" placeholder="تنبيه الكمية" required>
+                            </div>
                                     {{-- <td><label for="">اضافة صورة</label><br>
-                                    <input type="file" name="image_product">
+                                    <input class="form-control" type="file" name="image_product">
                                 </td> --}}
 
-
-                                </tr>
-                            </table>
 
                         </div>
                         <hr>
@@ -132,8 +133,8 @@
                             <h3>سعر الشراء</h3>
                         </div>
                         <div class="form-group">
-                            <input type="radio" id="checkbox-1" name="price_product" onchange="price_product_purchas()">
-                            <label class="exampleInputEmail1">
+                            <input  type="radio" id="checkbox-1" name="price_product" onchange="price_product_purchas()">
+                            <label class="exampleEmail1">
                                 <h4>تفعيل ضريبة الشراء (ملاخظة : عند تفعيل الخيار يتم احتساب السعر شامل الضربية )</h4>
                             </label>
                         </div>
@@ -144,7 +145,7 @@
 
                                         <div class="form-group">
                                             <label for=""> سعر شامل الضربية</label><br>
-                                            <input type="number" name="price_purchas_include_tax"
+                                            <input class="form-control" type="number" name="price_purchas_include_tax"
                                                 id="price_purchas_include_tax" onchange="price_tex()"
                                                 placeholder="سعر شامل الضريبة">
                                         </div>
@@ -152,21 +153,21 @@
                                     <td>
                                         <div class="form-group">
                                             <label for=""> سعر غير شامل الضربية</label><br>
-                                            <input type="number" name="price_purches_doesnot_include_tax"
+                                            <input class="form-control" type="number" name="price_purches_doesnot_include_tax"
                                                 id="price_purches_doesnot_include_tax" placeholder="سعر غير شامل الضريبة">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="">قيمة الضريبة</label><br>
-                                            <input type="number" name="value_tax" id="value_tax"
+                                            <input class="form-control" type="number" name="value_tax" id="value_tax"
                                                 placeholder="قيمة الضريبة">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group">
                                             <label for="">الاجمالي</label><br>
-                                            <input type="number" name="total" id="total"
+                                            <input class="form-control" type="number" name="total" id="total"
                                                 placeholder="الاجمالي">
                                         </div>
                                     </td>
@@ -178,8 +179,8 @@
                             <h3>سعر البيع</h3>
                         </div>
                         <div class="form-group">
-                            <input type="radio" id="checkbox-1" name="price_product" onchange="price_product_sale()">
-                            <label class="exampleInputEmail1">
+                            <input  type="radio" id="checkbox-1" name="price_product" onchange="price_product_sale()">
+                            <label class="exampleEmail1">
                                 <h4>تفعيل ضريبة الشراء (ملاخظة : عند تفعيل الخيار يتم احتساب السعر شامل الضربية )</h4>
                             </label>
                         </div>
@@ -187,17 +188,17 @@
                             <table>
                                 <tr>
                                     <td><label for="">سعر شامل الضربية</label><br>
-                                        <input onchange="price_tex_sale()" type="number" name="price_sale_include_tax" id="price_sale_include_tax" placeholder="سعر شامل الضريبة">
+                                        <input class="form-control" onchange="price_tex_sale()" type="number" name="price_sale_include_tax" id="price_sale_include_tax" placeholder="سعر شامل الضريبة">
                                     </td>
                                     <td><label for="">سعر غير شامل الضربية</label><br>
-                                        <input type="number" name="price_sale_doesnot_include_tax" id="price_sale_doesnot_include_tax"
+                                        <input class="form-control" type="number" name="price_sale_doesnot_include_tax" id="price_sale_doesnot_include_tax"
                                             placeholder="سعر غير شامل الضريبة">
                                     </td>
                                     <td><label for="">قيمة الضريبة</label><br>
-                                        <input type="number" name="rale" placeholder="قيمة الضريبة" id="rale">
+                                        <input class="form-control" type="number" name="rale" placeholder="قيمة الضريبة" id="rale">
                                     </td>
                                     <td><label for="">الاجمالي</label><br>
-                                        <input type="number" name="totalsale" placeholder="الاجمالي" id="totalsale">
+                                        <input class="form-control" type="number" name="totalsale" placeholder="الاجمالي" id="totalsale">
                                     </td>
                                 </tr>
                             </table>
@@ -209,7 +210,7 @@
                         <table>
                             <tr>
                                 <td><label for="">اجمالي الرصيد الافتتاحي</label><br>
-                                    <input type="number" name="total_opening_balance" placeholder="الرصيد افتتاحي"
+                                    <input class="form-control" type="number" name="total_opening_balance" placeholder="الرصيد افتتاحي"
                                         required>
                                 </td>
                             </tr>

@@ -39,28 +39,30 @@
             <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <input type="hidden" name="id" value="{{$supplier->id}}">
+                        <input class="form-control" type="hidden" name="id" value="{{$supplier->id}}">
 
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>نوع جهة اتصال</span></label><br>
-                                <select name="contact_type" id="">
+                                <select class="form-control" name="contact_type" id="">
                                     <option value="{{$supplier->contact_type}}">{{$supplier->contact_type}}</option>
                                     <option value="الموردين">الموردين</option>
                                     <option value="العملاء">العملاء</option>
                                     <option value="مورد وعميل">مورد وعميل</option>
                                 </select>
-                                {{-- <input type="text" name="name" placeholder="اسم القصاص"  > --}}
+                                {{-- <input class="form-control" type="text" name="name" placeholder="اسم القصاص"  > --}}
                             </div>
                             <div class="col-lg-3">
-                                <input type="radio" name="multiy" value="sigle" id="sigle" onchange="mysigle()"> <label><span>فرد</span></label>
-                                <input type="radio" name="multiy" value="multiy" id="multiy" onchange="mymultiy()"><label><span>منشاة</span></label>
+                                <input  type="radio" name="multiy" value="sigle" id="sigle" onchange="mysigle()"> <label><span>فرد</span></label>
+                            </div>
+                            <div class="col-lg-3">
+                                <input  type="radio" name="multiy" value="multiy" id="multiy" onchange="mymultiy()"><label><span>منشاة</span></label>
 
-                                {{-- <input type="text" name="shopname" placeholder=" اسم المحل"  > --}}
+                                {{-- <input class="form-control" type="text" name="shopname" placeholder=" اسم المحل"  > --}}
                             </div>
                             <div class="col-lg-3">
                                 <label><span>معرف الاتصال</span></label>
-                                <input type="number" name="contactId" placeholder="معرف الاتصال" required  value="{{$supplier->contactId}}">
+                                <input class="form-control" type="number" name="contactId" placeholder="معرف الاتصال" required  value="{{$supplier->contactId}}">
                             </div>
 
                         </div>
@@ -76,23 +78,23 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <label><span>اللقب:</span></label><br>
-                                <input type="text" name="sobriquet" placeholder="السيد"  value="{{$supplier->sobriquet}}">
+                                <input class="form-control" type="text" name="sobriquet" placeholder="السيد"  value="{{$supplier->sobriquet}}">
                             </div>
                             <div class="col-lg-4">
                                 <label><span>الاسم:*</span></label><br>
-                                <input type="text" name="firstname" placeholder="الاسم" value="{{$supplier->firstname}}">
+                                <input class="form-control" type="text" name="firstname" placeholder="الاسم" value="{{$supplier->firstname}}">
                             </div>
                             <div class="col-lg-4">
                                 <label><span>اسم العائلة</span></label><br>
-                                <input type="text" name="lastname" placeholder="اسم العائلة" {{$supplier->lastname}}>
+                                <input class="form-control" type="text" name="lastname" placeholder="اسم العائلة" {{$supplier->lastname}}>
                             </div>
                             <div class="col-lg-4">
                                 <label><span>تاريخ الميلاد</span></label><br>
-                                <input type="date" name="datebirth" placeholder="البريد الالكتروني"  value="{{$supplier->datebirth}}">
+                                <input class="form-control" type="date" name="datebirth" placeholder="البريد الالكتروني"  value="{{$supplier->datebirth}}">
                             </div>
                             <div class="col-lg-4">
                                 <label><span>مخصص ل:</span></label><br>
-                                <input type="text" name="allotted" value="{{$supplier->allotted}}">
+                                <input class="form-control" type="text" name="allotted" value="{{$supplier->allotted}}">
                             </div>
 
 
@@ -109,11 +111,11 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>اسم النشاط</span></label>
-                                <input type="text" name="activisms" placeholder="اسم النشاط"  value="{{$supplier->activisms}}">
+                                <input class="form-control" type="text" name="activisms" placeholder="اسم النشاط"  value="{{$supplier->activisms}}">
                             </div>
                             <div class="col-lg-4">
                                 <label><span>مخصص ل:</span></label><br>
-                                <input type="text" name="allotted" value="{{$supplier->allotted}}">
+                                <input class="form-control" type="text" name="allotted" value="{{$supplier->allotted}}">
                             </div>
                         </div>
 
@@ -128,15 +130,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>رقم الهاتف*</span></label>
-                                <input type="number" name="phone" placeholder="رقم الجوال"  required value="{{$supplier->phone}}">
+                                <input class="form-control" type="number" name="phone" placeholder="رقم الجوال"  required value="{{$supplier->phone}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>رقم الجوال </span></label>
-                                <input type="number" name="facilitynumber" placeholder="رقم الجوال المنشاة" value="{{$supplier->facilitynumber}}">
+                                <input class="form-control" type="number" name="facilitynumber" placeholder="رقم الجوال المنشاة" value="{{$supplier->facilitynumber}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>البريد الالكتروني</span></label>
-                                <input type="email" name="email" placeholder="البريد الالكتروني" value="{{$supplier->email}}"  required>
+                                <input class="form-control" type="email" name="email" placeholder="البريد الالكتروني" value="{{$supplier->email}}"  required>
                             </div>
 
 
@@ -153,15 +155,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>الرقم الضريبي</span></label>
-                                <input type="number" name="tax_number" placeholder="الرقم الضريبي" value="{{$supplier->tax_number}}">
+                                <input class="form-control" type="number" name="tax_number" placeholder="الرقم الضريبي" value="{{$supplier->tax_number}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الرصيد افتتاخي</span></label>
-                                <input type="number" name="initial_balance" placeholder="الرصيد الافتتاحي" value="{{$supplier->initial_balance}}">
+                                <input class="form-control" type="number" name="initial_balance" placeholder="الرصيد الافتتاحي" value="{{$supplier->initial_balance}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>فترةالدفع</span></label>
-                                <input type="number" name="payment_period" placeholder="فترة الدفع" value="{{$supplier->payment_period}}">
+                                <input class="form-control" type="number" name="payment_period" placeholder="فترة الدفع" value="{{$supplier->payment_period}}">
                             </div>
 
 
@@ -178,15 +180,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>المدينة</span></label>
-                                <input type="text" name="city" placeholder="المدينة" required value="{{$supplier->city}}">
+                                <input class="form-control" type="text" name="city" placeholder="المدينة" required value="{{$supplier->city}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>البلد</span></label>
-                                <input type="text" name="country" placeholder="البلد" required value="{{$supplier->country}}">
+                                <input class="form-control" type="text" name="country" placeholder="البلد" required value="{{$supplier->country}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الرمز البريدي</span></label>
-                                <input type="text" name="postal_code" placeholder="الرمزالبريدي" value="{{$supplier->postal_code}}" required>
+                                <input class="form-control" type="text" name="postal_code" placeholder="الرمزالبريدي" value="{{$supplier->postal_code}}" required>
                             </div>
 
 

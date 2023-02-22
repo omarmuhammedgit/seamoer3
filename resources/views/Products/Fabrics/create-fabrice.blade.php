@@ -121,16 +121,16 @@
                                         <table>
                                             <tr>
                                                 <td><label for="">نوع القماش</label><br>
-                                                    <input type="text" name="type_fabrice" placeholder="نوع القماش">
+                                                    <input class="form-control" type="text" name="type_fabrice" placeholder="نوع القماش">
                                                 </td>
                                                 <td><label for="">رقم القماش</label><br>
-                                                    <input type="text" name="number_fabrice" placeholder="رقم القماش">
+                                                    <input class="form-control" type="text" name="number_fabrice" placeholder="رقم القماش">
                                                 </td>
                                                 <td><label for="">اللون</label><br>
-                                                    <input type="text" name="color_fabrice" placeholder="اللون">
+                                                    <input class="form-control" type="text" name="color_fabrice" placeholder="اللون">
                                                 </td>
                                                 {{-- <td><label for="">السعر</label><br>
-                                                    <input type="text">
+                                                    <input class="form-control" type="text">
                                                 </td> --}}
                                             </tr>
                                         </table>
@@ -164,13 +164,13 @@
                             {{-- {{method_field('patch')}} --}}
                             {{csrf_field()}}
                             <div class="form-group">
-                                <input type="hidden" name="id" id="id" value="">
+                                <input class="form-control" type="hidden" name="id" id="id" value="">
                                 <label for="recipient-name" class="col-form-label">نوع القماش:</label>
-                                <input class="form-control" name="type_fabrice" id="type_fabrice" type="text">
+                                <input class="form-control" class="form-control" name="type_fabrice" id="type_fabrice" type="text">
                             </div>
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">رقم القماش:</label>
-                                <input class="form-control" name="number_fabrice" id="number_fabrice" type="text">
+                                <input class="form-control" class="form-control" name="number_fabrice" id="number_fabrice" type="text">
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">اللون القماش:</label>
@@ -198,8 +198,8 @@
                      {{csrf_field()}}
                      <div class="modal-body">
                          <p>هل انت متاكد من عملية الحذف ؟</p><br>
-                         <input type="hidden" name="id" id="id" value="">
-                         <input class="form-control" name="type_fabrice" id="type_fabrice" type="text" readonly>
+                         <input class="form-control" type="hidden" name="id" id="id" value="">
+                         <input class="form-control" class="form-control" name="type_fabrice" id="type_fabrice" type="text" readonly>
                      </div>
                      <div class="modal-footer">
                          <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>

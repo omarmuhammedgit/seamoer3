@@ -127,13 +127,13 @@
                                         <table>
                                             <tr>
                                                 <td><label for="">اسم التصميم</label><br>
-                                                    <input type="text" name="name_design" placeholder="ادخل اسم التصميم" required>
+                                                    <input class="form-control" type="text" name="name_design" placeholder="ادخل اسم التصميم" required>
                                                 </td>
                                                 <td><label for="">رقم التصميم</label><br>
-                                                    <input type="text" name="number_design" placeholder="ادخل رقم التصميم" required>
+                                                    <input class="form-control" type="text" name="number_design" placeholder="ادخل رقم التصميم" required>
                                                 </td>
                                                 {{-- <td><label for="">السعر</label><br>
-                                                    <input type="number" name="price">
+                                                    <input class="form-control" type="number" name="price">
                                                 </td> --}}
                                             </tr>
                                         </table>
@@ -167,9 +167,9 @@
                                    {{-- {{method_field('patch')}} --}}
                                    {{csrf_field()}}
                                    <div class="form-group">
-                                       <input type="hidden" name="id" id="id" value="">
+                                       <input class="form-control" type="hidden" name="id" id="id" value="">
                                        <label for="recipient-name" class="col-form-label">اسم التصميم:</label>
-                                       <input class="form-control" name="name_design" id="name_design" type="text">
+                                       <input class="form-control" class="form-control" name="name_design" id="name_design" type="text">
                                    </div>
                                    <div class="form-group">
                                        <label for="message-text" class="col-form-label">رقم التصميم:</label>
@@ -197,8 +197,8 @@
                             {{csrf_field()}}
                             <div class="modal-body">
                                 <p>هل انت متاكد من عملية الحذف ؟</p><br>
-                                <input type="hidden" name="id" id="id" value="">
-                                <input class="form-control" name="name_design" id="name_design" type="text" readonly>
+                                <input class="form-control" type="hidden" name="id" id="id" value="">
+                                <input class="form-control" class="form-control" name="name_design" id="name_design" type="text" readonly>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>

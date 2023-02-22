@@ -118,8 +118,8 @@
                                                 data-toggle="dropdown" type="button">خيارات<i class="fas fa-caret-down ml-1"></i></button>
                                                 <div class="dropdown-menu tx-13">
                                                   <button class="btn btn-warning btn-block"> <a class="dropdown-item" href="edit-employee/{{$employee->id}}">تعديل</a></button>
-                                                   <button class="btn btn-info btn-block"> <a class="dropdown-item " href="#"> فحص</a></button>
-                                                   <button class="btn btn-danger btn-block"> 
+                                                   {{-- <button class="btn btn-info btn-block"> <a class="dropdown-item " href="#"> فحص</a></button> --}}
+                                                   <button class="btn btn-danger btn-block">
                                                     <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                                        data-id="{{$employee->id}}" data-section_name="" data-toggle="modal"
                                                        href="#modaldemo9" title="حذف"> حذف</a></a></button>

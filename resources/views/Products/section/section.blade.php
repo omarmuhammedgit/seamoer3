@@ -115,13 +115,13 @@
                                         <table>
                                             <tr>
                                                 <td><label for="">اسم القسم</label><br>
-                                                    <input type="text" name="name_section" placeholder="اسم القسم" required>
+                                                    <input class="form-control" type="text" name="name_section" placeholder="اسم القسم" required>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td><input type="radio" onchange="showSub()">
+                                                <td><input  type="radio" onchange="showSub()">
                                                     <label for="">هل لديه قسم فرعي</label><br>
-                                                    <input type="text" name="sub_section" placeholder="القسم الفرعي" id="showsub" style="display: none">
+                                                    <input class="form-control" type="text" name="sub_section" placeholder="القسم الفرعي" id="showsub" style="display: none">
                                                 </td>
                                             </tr>
                                         </table>
@@ -155,9 +155,9 @@
                             {{-- {{method_field('patch')}} --}}
                             {{csrf_field()}}
                             <div class="form-group">
-                                <input type="hidden" name="id" id="id" value="">
+                                <input class="form-control" type="hidden" name="id" id="id" value="">
                                 <label for="recipient-name" class="col-form-label">اسم القسم:</label>
-                                <input class="form-control" name="name_section" id="name_section" type="text">
+                                <input class="form-control" class="form-control" name="name_section" id="name_section" type="text">
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="col-form-label">قسم الفرعي:</label>
@@ -185,8 +185,8 @@
                      {{csrf_field()}}
                      <div class="modal-body">
                          <p>هل انت متاكد من عملية الحذف ؟</p><br>
-                         <input type="hidden" name="id" id="id" value="">
-                         <input class="form-control" name="name_section" id="name_section" type="text" readonly>
+                         <input class="form-control" type="hidden" name="id" id="id" value="">
+                         <input class="form-control" class="form-control" name="name_section" id="name_section" type="text" readonly>
                      </div>
                      <div class="modal-footer">
                          <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>

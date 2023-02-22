@@ -52,15 +52,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>اسم القصاص</span></label>
-                                <input type="text" name="name" placeholder="اسم القصاص" required>
+                                <input class="form-control" type="text" name="name" placeholder="اسم القصاص" required>
                             </div>
                             <div class="col-lg-3">
                                 <label><span>اسم المحل / المشغل</span></label>
-                                <input type="text" name="shopname" placeholder=" اسم المحل" required>
+                                <input class="form-control" type="text" name="shopname" placeholder=" اسم المحل" required>
                             </div>
                             <div class="col-lg-3">
                                 <label><span>رقم السجل التجاري</span></label>
-                                <input type="number" name="recordnumber" placeholder="رقم السجل التجاري" required>
+                                <input class="form-control" type="number" name="recordnumber" placeholder="رقم السجل التجاري" required>
                             </div>
 
                         </div>
@@ -78,15 +78,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>رقم الجوال</span></label>
-                                <input type="number" name="phone" placeholder="رقم الجوال" required>
+                                <input class="form-control" type="number" name="phone" placeholder="رقم الجوال" required>
                             </div>
                             <div class="col-lg-3">
                                 <label><span>رقم الجوال المنشاة</span></label>
-                                <input type="number" name="facilitynumber" placeholder="رقم الجوال المنشاة">
+                                <input class="form-control" type="number" name="facilitynumber" placeholder="رقم الجوال المنشاة">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>البريد الالكتروني</span></label>
-                                <input type="email" name="email" placeholder="البريد الالكتروني" required>
+                                <input class="form-control" type="email" name="email" placeholder="البريد الالكتروني" required>
                             </div>
 
 
@@ -106,15 +106,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>المدينة</span></label>
-                                <input type="text" name="city" placeholder="المدينة">
+                                <input class="form-control" type="text" name="city" placeholder="المدينة">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الحي</span></label>
-                                <input type="text" name="district" placeholder="الحي">
+                                <input class="form-control" type="text" name="district" placeholder="الحي">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الشارع</span></label>
-                                <input type="text" name="street" placeholder="الشارع">
+                                <input class="form-control" type="text" name="street" placeholder="الشارع">
                             </div>
 
 
@@ -133,15 +133,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>رقم البنك</span></label>
-                                <input type="number" name="accountnumber" placeholder="رقم البنك">
+                                <input class="form-control" type="number" name="accountnumber" placeholder="رقم البنك">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>اسم البنك</span></label>
-                                <input type="text" name="bankname" placeholder="اسم البنك">
+                                <input class="form-control" type="text" name="bankname" placeholder="اسم البنك">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الابيان</span></label>
-                                <input type="text" name="statement" placeholder="الابيان">
+                                <input class="form-control" type="text" name="statement" placeholder="الابيان">
                             </div>
 
                             </div>

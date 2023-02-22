@@ -7,7 +7,7 @@
     <style>
         .swiper {
             width: 200px;
-            height: 200px;
+            height: 150px;
             background-color:aliceblue;
             margin: auto;
         }
@@ -16,7 +16,7 @@
             width: 200px;
             height: 200px;
             margin: auto;
-            number-align: center;
+            /* number-align: center; */
         }
 
         img {
@@ -34,35 +34,35 @@
 
         }
 
-        #sin td input {
+        #sin td input class="form-control" {
             width: 100px;
         }
 
         td {
-            number-align: center
+            /* number-align: center */
         }
 
         #idleft {
             display: inline-block;
             float: left;
             width: 20%;
-            background-color: aliceblue;
+            /* background-color: aliceblue; */
         }
 
         #idhight {
             display: inline-block;
-            number-align: center;
+            text-align: center;
             float: right;
             width: 20%;
             padding: 20px;
-            background-color:aliceblue;
+            /* background-color:aliceblue; */
         }
 
         #inp {
             width: 30px;
         }
 
-        #tdin input {
+        #tdin input class="form-control" {
             width: 50px;
 
         }
@@ -72,7 +72,7 @@
             direction: rtl;
             width: 60%;
             padding-top: 20px;
-            background-color:aliceblue;
+            /* background-color:aliceblue; */
         }
 
         #radio {
@@ -124,46 +124,46 @@
                             بيانت العميل
                         </div>
                         <div class="row row-sm">
-                            <input type="hidden" name="customer_id"  value="{{$info_size_customer->customer->id}}">
-                            <input type="hidden" name="size_id"  value="{{$info_size_customer->id}}">
+                            <input class="form-control" type="hidden" name="customer_id"  value="{{$info_size_customer->customer->id}}">
+                            <input class="form-control" type="hidden" name="size_id"  value="{{$info_size_customer->id}}">
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
-                                <div class="input-group">
-                                    اسم العميل : <input type="text" name="name_customer" placeholder="اسم العميل" value="{{$info_size_customer->customer->name}}">
+                                <div class="input class="form-control"-group">
+                                    اسم العميل : <input class="form-control" type="text" name="name_customer" placeholder="اسم العميل" value="{{$info_size_customer->customer->name}}">
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
-                                <div class="input-group">
-                                    رقم الجوال <input type="number" name="phone" placeholder="رقم الجوال" value="{{$info_size_customer->customer->phone}}">
+                                <div class="input class="form-control"-group">
+                                    رقم الجوال <input class="form-control" type="number" name="phone" placeholder="رقم الجوال" value="{{$info_size_customer->customer->phone}}">
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
-                                <div class="input-group">
-                                    كود العميل<input type="number" name="code" placeholder="كود العميل" value="{{$info_size_customer->customer->code}}">
+                                <div class="input class="form-control"-group">
+                                    كود العميل<input class="form-control" type="number" name="code" placeholder="كود العميل" value="{{$info_size_customer->customer->code}}" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
-                                <div class="input-group">
-                                    عدد الثياب <input type="number" name="number_dresses" id="number_dresses"
+                                <div class="input class="form-control"-group">
+                                    عدد الثياب <input class="form-control" type="number" name="number_dresses" id="number_dresses"
                                         placeholder="عدد الثياب"  value="{{$info_size_customer->customer->number_dresses}}">
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
-                                <div class="input-group">
-                                    مدة التفصيل <input type="number" name="detail_duration" placeholder="مدة التفصيل"  value="{{$info_size_customer->customer->detail_duration}}">
+                                <div class="input class="form-control"-group">
+                                    مدة التفصيل <input class="form-control" type="number" name="detail_duration" placeholder="مدة التفصيل"  value="{{$info_size_customer->customer->detail_duration}}">
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
-                                <br>
-                                <div class="input-group">
 
-                                    التاريخ م <input type="date" name="date"  value="{{$info_size_customer->customer->date}}" readonly>
+                                <div class="input class="form-control"-group">
+
+                                    التاريخ م <input class="form-control" type="date" name="date"  value="{{$info_size_customer->customer->date}}" >
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
-                                <br>
-                                <div class="input-group">
 
-                                    الوقت<input type="time" name="time"  value="{{$info_size_customer->customer->time}}">
+                                <div class="input class="form-control"-group">
+
+                                    الوقت<input class="form-control" type="time" name="time"  value="{{$info_size_customer->customer->time}}">
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
@@ -174,8 +174,8 @@
                                     // $number_invoice=str_pad($number_invoice+1, 5, 0, STR_PAD_LEFT);
                                     // dd($number_invoice);
                                 @endphp
-                                <div class="input-group">
-                                    رقم الفاتورة<input type="number" name="invoice_number"  value="{{$info_size_customer->customer->invoice_number}}" placeholder="رقم الفاتورة">
+                                <div class="input class="form-control"-group">
+                                    رقم الفاتورة<input class="form-control" type="number" name="invoice_number"  value="{{$info_size_customer->customer->invoice_number}}" placeholder="رقم الفاتورة" readonly>
                                 </div>
                             </div>
 
@@ -198,61 +198,61 @@
                             <tr id="sin">
                                 <td>
                                     <label for="">الطول</label><br>
-                                    <input type="number" name="height" placeholder="الطول"  value="{{$info_size_customer->height}}">
+                                    <input class="form-control" type="number" name="height" placeholder="الطول"  value="{{$info_size_customer->height}}">
                                 </td>
                                 <td>
                                     <label for="">الكتف</label><br>
-                                    <input type="number" name="shoulder" placeholder="الكتف" value="{{$info_size_customer->shoulder}}">
+                                    <input class="form-control" type="number" name="shoulder" placeholder="الكتف" value="{{$info_size_customer->shoulder}}">
                                 </td>
                                 <td>
                                     <label for="">طول الكتف</label><br>
-                                    <input type="number" name="shoulder_leight" placeholder="طول الكتف" value="{{$info_size_customer->shoulder_leight}}">
+                                    <input class="form-control" type="number" name="shoulder_leight" placeholder="طول الكتف" value="{{$info_size_customer->shoulder_leight}}">
                                 </td>
                                 <td>
                                     <label for="">الصدر</label><br>
-                                    <input type="number" name="brest" placeholder="الصدر" value="{{$info_size_customer->brest}}">
+                                    <input class="form-control" type="number" name="brest" placeholder="الصدر" value="{{$info_size_customer->brest}}">
                                 </td>
                                 <td>
                                     <label for="">وسع الصدر </label><br>
-                                    <input type="number" name="expand_brest" placeholder="وسع الصدر" value="{{$info_size_customer->expand_brest}}">
+                                    <input class="form-control" type="number" name="expand_brest" placeholder="وسع الصدر" value="{{$info_size_customer->expand_brest}}">
                                 </td>
                                 <td>
                                     <label for="">الرقبة</label><br>
-                                    <input type="number" name="neck" placeholder="الرقبة"  value="{{$info_size_customer->neck}}">
+                                    <input class="form-control" type="number" name="neck" placeholder="الرقبة"  value="{{$info_size_customer->neck}}">
                                 </td>
                                 <td>
                                     <label for="">وسع اليد</label><br>
-                                    <input type="number" name="expand_hand" placeholder="وسع اليد" value="{{$info_size_customer->expand_hand}}">
+                                    <input class="form-control" type="number" name="expand_hand" placeholder="وسع اليد" value="{{$info_size_customer->expand_hand}}">
                                 </td>
                                 <td>
                                     <label for="">اسفل اليد</label><br>
-                                    <input type="number" name="down_hand" placeholder="اسفل اليد" value="{{$info_size_customer->down_hand}}">
+                                    <input class="form-control" type="number" name="down_hand" placeholder="اسفل اليد" value="{{$info_size_customer->down_hand}}">
                                 </td>
                                 <td>
                                     <label for="">طول الكبك</label><br>
-                                    <input type="number" name="cbk_leight" placeholder="طول الكبك" value="{{$info_size_customer->cbk_leight}}">
+                                    <input class="form-control" type="number" name="cbk_leight" placeholder="طول الكبك" value="{{$info_size_customer->cbk_leight}}">
                                 </td>
                                 <td>
                                     <label for="">عرض الكبك</label><br>
-                                    <input type="number" name="cbk_width" placeholder="عرض الكبك" value="{{$info_size_customer->cbk_width}}">
+                                    <input class="form-control" type="number" name="cbk_width" placeholder="عرض الكبك" value="{{$info_size_customer->cbk_width}}">
                                 </td>
                             </tr>
                             <tr id="sin">
                                 <td>
                                     <label for="">طول الجيب</label>
-                                    <input type="number" name="pocket_leight" placeholder="طول الجيب" value="{{$info_size_customer->pocket_leight}}">
+                                    <input class="form-control" type="number" name="pocket_leight" placeholder="طول الجيب" value="{{$info_size_customer->pocket_leight}}">
                                 </td>
                                 <td>
                                     <label for="">وسع الجيب</label>
-                                    <input type="number" name="pocket_expand" placeholder="وسع الجيب" value="{{$info_size_customer->pocket_expand}}">
+                                    <input class="form-control" type="number" name="pocket_expand" placeholder="وسع الجيب" value="{{$info_size_customer->pocket_expand}}">
                                 </td>
                                 <td>
                                     <label for="">وسع اسفل</label>
-                                    <input type="number" name="down_expand" placeholder="وسع اسفل" value="{{$info_size_customer->down_expand}}">
+                                    <input class="form-control" type="number" name="down_expand" placeholder="وسع اسفل" value="{{$info_size_customer->down_expand}}">
                                 </td>
                                 <td>
                                     <label for="">كفة اسفل</label>
-                                    <input type="number" name="down_desist" placeholder="كفة اسفل" value="{{$info_size_customer->down_desist}}">
+                                    <input class="form-control" type="number" name="down_desist" placeholder="كفة اسفل" value="{{$info_size_customer->down_desist}}">
                                 </td>
                             </tr>
                         </table><br>
@@ -267,7 +267,7 @@
 
                         <div id="idleft">
                             <div class="radio">
-                                <button ><a href="{{ route('Sale-point.create') }}"> اضافة
+                                <button class="btn btn-info"><a href="{{ route('Sale-point.create') }}" style="color: white"> اضافة
                                         طلب</a></button><br>
                                 {{-- <button><a href="#"> اضافة مرافق</a></button> --}}
 
@@ -286,7 +286,7 @@
                                         <tr>
                                             <td>
                                                 <label for="">نوع التصميم</label><br>
-                                                <select name="name_design" id="">
+                                                <select class="form-control" name="name_design" id="">
                                                     <option value="{{$info_size_customer->design->id}}">{{$info_size_customer->design->name_design}}</option>
                                                     @foreach ($designs as $design)
                                                         <option value="{{ $design->id }}">{{ $design->name_design }}
@@ -296,10 +296,10 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    {{-- <input type="number" id="invalue"> --}}
+                                    {{-- <input class="form-control" type="number" id="invalue"> --}}
 
                                     <label for="">القسم</label><br>
-                                    <select name="name_section" id="name_section">
+                                    <select class="form-control" name="name_section" id="name_section">
                                         <option value="{{$info_size_customer->design->id}}">{{$info_size_customer->design->name_design}}</option>
                                         @foreach ($sections as $section)
                                             <option value="{{ $section->id }}">{{ $section->name_section }}</option>
@@ -309,7 +309,7 @@
                                         <tr>
                                             <td>
                                                 <label for="">القماش</label><br>
-                                                <select name="type_fabrice" id="">
+                                                <select class="form-control" name="type_fabrice" id="">
                                                     <option value="{{$info_size_customer->design->id}}">{{$info_size_customer->design->name_design}}</option>
                                                     @foreach ($fabrices as $fabrice)
                                                         <option value="{{ $fabrice->id }}">{{ $fabrice->type_fabrice }}
@@ -319,7 +319,7 @@
                                         <tr>
                                             <td>
                                                 <label for="">اللون القماش</label><br>
-                                                <select name="color_fabrice" id="">
+                                                <select class="form-control" name="color_fabrice" id="">
                                                     <option value="{{$info_size_customer->design->id}}">{{$info_size_customer->design->name_design}}</option>
                                                     @foreach ($fabrices as $fabrice)
                                                         <option value="{{ $fabrice->id }}">{{ $fabrice->color_fabrice }}
@@ -329,7 +329,7 @@
                                         <tr>
                                             <td>
                                                 <label for="">العلامة التجارية</label><br>
-                                                <select name="name_trade_mark" id="">
+                                                <select class="form-control" name="name_trade_mark" id="">
                                                     <option value="{{$info_size_customer->tradeMark->id}}">{{$info_size_customer->tradeMark->name_trade_mark}}</option>
                                                     @foreach ($trademarks as $trademark)
                                                         <option value="{{ $trademark->id }}">
@@ -344,7 +344,7 @@
                                         <tr>
                                             <td>
                                                 <label for="">اسم القصاص</label><br>
-                                                <select name="retribution" id="">
+                                                <select class="form-control" name="retribution" id="">
                                                     <option value="{{$info_size_customer->retribution->id}}">{{$info_size_customer->retribution->name}}</option>
                                                     @foreach ($retributions as $retribution)
                                                         <option value="{{ $retribution->id }}">{{ $retribution->name }}
@@ -356,7 +356,7 @@
                                         <tr>
                                             <td>
                                                 <label for="">اسم الخياط</label><br>
-                                                <select name="seamoer" id="">
+                                                <select class="form-control" name="seamoer" id="">
                                                     <option value="{{$info_size_customer->seamoer->id}}">{{$info_size_customer->seamoer->name}}</option>
                                                     @foreach ($seamoers as $seamoer)
                                                         <option value="{{ $seamoer->id }}">{{ $seamoer->name }}</option>
@@ -366,29 +366,29 @@
                                         </tr>
                                     </table>
                                     <label for="">السعر شامل الضريبة</label>
-                                    <input type="number" name="price_include_tax" id="price_tax"
+                                    <input class="form-control" type="number" name="price_include_tax" id="price_tax"
                                         onchange="myfunction()" value="{{$info_size_customer->price_include_tax}}">
                                     <label for="">السعر غير شامل الضريبة</label>
-                                    <input type="number" name="price_doesnot_include_tax" id="tax" readonly  value="{{$info_size_customer->price_doesnot_include_tax}}">
+                                    <input class="form-control" type="number" name="price_doesnot_include_tax" id="tax" readonly  value="{{$info_size_customer->price_doesnot_include_tax}}">
                                     <label for="">قيمة الضريبة</label>
-                                    <input type="number" name="value_tax" id="value_tax" readonly  value="{{$info_size_customer->value_tax}}">
+                                    <input class="form-control" type="number" name="value_tax" id="value_tax" readonly  value="{{$info_size_customer->value_tax}}">
                                     <label for="">الخصم</label>
-                                    <input type="number" name="discount" id="discount" onchange="myFunDiscount()" value="{{$info_size_customer->discount}}">
+                                    <input class="form-control" type="number" name="discount" id="discount" onchange="myFunDiscount()" value="{{$info_size_customer->discount}}">
                                     <label for="">السعر بعد الخصم شامل الضريبة</label>
-                                    <input type="number" name="afterdiscount" id="afterdiscount" value="{{$info_size_customer->afterdiscount}}" readonly>
+                                    <input class="form-control" type="number" name="afterdiscount" id="afterdiscount" value="{{$info_size_customer->afterdiscount}}" readonly>
                                     <label for="">المبلغ المستلم</label>
-                                    <input type="number" name="receivedamount" id="receivedamount"
+                                    <input class="form-control" type="number" name="receivedamount" id="receivedamount"
                                         onchange="myFunReceivedamount()" value="{{$info_size_customer->receivedamount}}">
                                     <label for="">المبلغ المتبقي</label>
-                                    <input type="number" name="remainingamount" id="remainingamount" readonly value="{{$info_size_customer->remainingamount}}">
+                                    <input class="form-control" type="number" name="remainingamount" id="remainingamount" readonly value="{{$info_size_customer->remainingamount}}">
                                     <label for="">نوع الدفع</label>
-                                    <select name="payment" id="" >
+                                    <select class="form-control" name="payment" id="" >
                                         <option value="{{$info_size_customer->payment}}">{{$info_size_customer->payment}}</option>
                                         <option value="نقدا">نقدا</option>
                                         <option value="">شبكة</option>
                                     </select><br>
                                     <label for="">الملاحظات</label>
-                                    <textarea name="notes" id="" cols="20" rows="2" placeholder="ملاحظات" > {{$info_size_customer->notes}}</textarea>
+                                    <textarea  class="form-control" name="notes" id="" cols="20" rows="2" placeholder="ملاحظات" > {{$info_size_customer->notes}}</textarea>
                                     </table>
                                 </center>
                             </div>
@@ -400,7 +400,7 @@
 
                                         <div class="showimg">
                                             <h4>الرقبة</h4>
-                                            <select name="image_neck" id="imgselect2" onchange="imageSelect2()">
+                                            <select class="form-control" name="image_neck" id="imgselect2" onchange="imageSelect2()">
                                                 <option value="{{$info_size_customer->image_neck}}"></option>
                                                 <option value="{{ URL::asset('assets/img/seamoer-image/3/1.jpg') }}">1</option>
                                                 <option value="{{ URL::asset('assets/img/seamoer-image/3/2.jpg') }}">2</option>
@@ -418,7 +418,7 @@
                                             <div class="swiper">
                                                 <img src="" alt="" width="220px" height="200px" id="image_neck">
                                             </div>
-                                            <input type="number" placeholder="مقاس" name="size_neck" value="{{$info_size_customer->size_neck}}">
+                                            <input class="form-control" type="number" placeholder="مقاس" name="size_neck" value="{{$info_size_customer->size_neck}}">
 
                                         </div>
                                         <div class="showimg">
@@ -426,7 +426,7 @@
                                                 // dd($info_size_customer->imagecbk);
                                             @endphp
                                             <h4>الكبك</h4>
-                                            <select name="imagecbk" id="imgselect1" onchange="imageSelect1()">
+                                            <select class="form-control" name="imagecbk" id="imgselect1" onchange="imageSelect1()">
                                                 <option value="{{$info_size_customer->image_cbk}}"></option>
                                                 <option value="{{ URL::asset('assets/img/seamoer-image/5/1.jpg') }}">1</option>
                                                 <option value="{{ URL::asset('assets/img/seamoer-image/5/2.jpg') }}">2</option>
@@ -440,12 +440,12 @@
                                             <div class="swiper">
                                                 <img src="" alt="" width="120px" height="200px" id="Imgcbk">
                                             </div>
-                                            <input type="number" placeholder="مقاس" name="size_cbk" value="{{$info_size_customer->size_cbk}}">
+                                            <input class="form-control" type="number" placeholder="مقاس" name="size_cbk" value="{{$info_size_customer->size_cbk}}">
 
                                         </div>
                                         <div class="showimg">
                                             <h4>جيب الصدر</h4>
-                                            <select name="image_brest_pocket" id="imgselect3" onchange="imageSelect3()">
+                                            <select class="form-control" name="image_brest_pocket" id="imgselect3" onchange="imageSelect3()">
                                                 <option value="{{$info_size_customer->image_brest_pocket}}"></option>
                                                 <option value="{{ URL::asset('assets/img/seamoer-image/2/1.jpg') }}">1</option>
                                                 <option value="{{ URL::asset('assets/img/seamoer-image/2/2.jpg') }}">2</option>
@@ -464,12 +464,12 @@
                                             <div class="swiper">
                                                 <img src="" alt="" width="120px" height="200px" id="image_brest_pocket">
                                             </div>
-                                            <input type="number" placeholder="مقاس" name="size_brest_pocket" value="{{$info_size_customer->size_brest_pocket}}">
+                                            <input class="form-control" type="number" placeholder="مقاس" name="size_brest_pocket" value="{{$info_size_customer->size_brest_pocket}}">
 
                                         </div>
                                         <div class="showimg">
                                             <h4>الجيب</h4>
-                                            <select name="image_pocket" id="imgselect4" onchange="imageSelect4()">
+                                            <select class="form-control" name="image_pocket" id="imgselect4" onchange="imageSelect4()">
                                                 <option value="{{$info_size_customer->image_pocket}}"></option>
                                                 <option value="{{ URL::asset('assets/img/seamoer-image/4/1.jpg') }}">1</option>
                                                 <option value="{{ URL::asset('assets/img/seamoer-image/4/2.jpg') }}">2</option>
@@ -481,12 +481,12 @@
                                             <div class="swiper">
                                                 <img src="" alt="" width="120px" height="200px" id="image_pocket">
                                             </div>
-                                            <input type="number" placeholder="مقاس" name="size_pocket" value="{{$info_size_customer->size_pocket}}">
+                                            <input class="form-control" type="number" placeholder="مقاس" name="size_pocket" value="{{$info_size_customer->size_pocket}}">
 
                                         </div>
                                         <div class="showimg">
                                             <h4>الجيزور</h4>
-                                            <select name="image_algizour" id="imgselect5" onchange="imageSelect5()">
+                                            <select class="form-control" name="image_algizour" id="imgselect5" onchange="imageSelect5()">
                                                 <option value="{{$info_size_customer->image_algizour}}"></option>
                                                 <option value="{{ URL::asset('assets/img/seamoer-image/1/1.jpg') }}">1</option>
                                                 <option value="{{ URL::asset('assets/img/seamoer-image/1/2.jpg') }}">2</option>
@@ -507,7 +507,7 @@
                                             <div class="swiper">
                                                 <img src="" alt="" width="120px" height="200px" id="image_algizour">
                                             </div>
-                                            <input type="number" placeholder="مقاس" name="size_algizour" value="{{$info_size_customer->size_algizour}}">
+                                            <input class="form-control" type="number" placeholder="مقاس" name="size_algizour" value="{{$info_size_customer->size_algizour}}">
 
                                         </div>
                                     </section>
@@ -527,7 +527,7 @@
                                         <option>ج</option>
 
                                     </datalist>
-                                    <input  autocomplete="on"  name="seamtress" list="list" placeholder="نوع الخياطة" value="{{$info_size_customer->seamtress}}">
+                                    <input class="form-control"  autocomplete="on"  name="seamtress" list="list" placeholder="نوع الخياطة" value="{{$info_size_customer->seamtress}}">
                                     {{-- </form> --}}
                                 </div>
 

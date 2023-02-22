@@ -52,18 +52,18 @@
                             معلومات شحصية
                         </div>
                         <div class="row">
-                            <input type="hidden" name="id" value="{{$seamoer->id}}">
+                            <input class="form-control" type="hidden" name="id" value="{{$seamoer->id}}">
                             <div class="col-lg-3">
                                 <label><span>اسم الخياط</span></label>
-                                <input type="text" name="name" placeholder="اسم الخياط" required value="{{$seamoer->name}}">
+                                <input class="form-control" class="form-control" type="text" name="name" placeholder="اسم الخياط" required value="{{$seamoer->name}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>اسم المحل / المشغل</span></label>
-                                <input type="text" name="shopname" placeholder=" اسم المحل" value="{{$seamoer->shopname}}" required>
+                                <input class="form-control" class="form-control" type="text" name="shopname" placeholder=" اسم المحل" value="{{$seamoer->shopname}}" required>
                             </div>
                             <div class="col-lg-3">
                                 <label><span>رقم السجل التجاري</span></label>
-                                <input type="text" name="recordnumber" placeholder="رقم السجل التجاري" value="{{$seamoer->recordnumber}}" required>
+                                <input class="form-control" class="form-control" type="text" name="recordnumber" placeholder="رقم السجل التجاري" value="{{$seamoer->recordnumber}}" required>
                             </div>
 
                         </div>
@@ -81,15 +81,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>رقم الجوال</span></label>
-                                <input type="text" name="phone" placeholder="رقم الجوال" value="{{$seamoer->phone}}" required>
+                                <input class="form-control" class="form-control" type="text" name="phone" placeholder="رقم الجوال" value="{{$seamoer->phone}}" required>
                             </div>
                             <div class="col-lg-3">
                                 <label><span>رقم الجوال المنشاة</span></label>
-                                <input type="text" name="facilitynumber" placeholder="رقم الجوال المنشاة" value="{{$seamoer->facilitynumber}}">
+                                <input class="form-control" type="text" name="facilitynumber" placeholder="رقم الجوال المنشاة" value="{{$seamoer->facilitynumber}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>البريد الالكتروني</span></label>
-                                <input type="email" name="email" placeholder="البريد الالكتروني" value="{{$seamoer->email}}" required>
+                                <input class="form-control" type="email" name="email" placeholder="البريد الالكتروني" value="{{$seamoer->email}}" required>
                             </div>
 
 
@@ -109,15 +109,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>المدينة</span></label>
-                                <input type="text" name="city" placeholder="المدينة" value="{{$seamoer->city}}">
+                                <input class="form-control" type="text" name="city" placeholder="المدينة" value="{{$seamoer->city}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الحي</span></label>
-                                <input type="text" name="district" placeholder="الحي" value="{{$seamoer->district}}">
+                                <input class="form-control" type="text" name="district" placeholder="الحي" value="{{$seamoer->district}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الشارع</span></label>
-                                <input type="text" name="street" placeholder="الشارع" value="{{$seamoer->street}}">
+                                <input class="form-control" type="text" name="street" placeholder="الشارع" value="{{$seamoer->street}}">
                             </div>
 
 
@@ -136,15 +136,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>رقم البنك</span></label>
-                                <input type="text" name="accountnumber" placeholder="رقم البنك" value="{{$seamoer->accountnumber}}">
+                                <input class="form-control" type="text" name="accountnumber" placeholder="رقم البنك" value="{{$seamoer->accountnumber}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>اسم البنك</span></label>
-                                <input type="text" name="bankname" placeholder="اسم البنك" value="{{$seamoer->bankname}}">
+                                <input class="form-control" type="text" name="bankname" placeholder="اسم البنك" value="{{$seamoer->bankname}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الابيان</span></label>
-                                <input type="text" name="statement" placeholder="الابيان" value="{{$seamoer->statement}}">
+                                <input class="form-control" type="text" name="statement" placeholder="الابيان" value="{{$seamoer->statement}}">
                             </div>
 
                             </div>

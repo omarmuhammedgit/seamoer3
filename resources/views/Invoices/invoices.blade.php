@@ -7,7 +7,7 @@
 
         }
 
-        #sin td input {
+        #sin td input class="form-control" {
             width: 100px;
         }
 
@@ -146,38 +146,38 @@
                         <tr id="sin">
                             <td>
                                 <label for="">كود العميل</label><br>
-                                <input type="text" name="code" value="{{ $info_size_customer->customer->code }}">
+                                <input class="form-control" type="text" name="code" value="{{ $info_size_customer->customer->code }}">
                             </td>
                             <td>
                                 <label for="">اسم العميل</label><br>
-                                <input type="text" name="shoulder" value="{{ $info_size_customer->customer->name }}">
+                                <input class="form-control" type="text" name="shoulder" value="{{ $info_size_customer->customer->name }}">
                             </td>
                             <td>
                                 <label for="">رقم الجوال </label><br>
-                                <input type="text" name="shoulder_leight"
+                                <input class="form-control" type="text" name="shoulder_leight"
                                     value="{{ $info_size_customer->customer->phone }}">
                             </td>
                             <td>
                                 <label for="">عدد الثياب</label><br>
-                                <input type="text" name="brest"
+                                <input class="form-control" type="text" name="brest"
                                     value="{{ $info_size_customer->customer->number_dresses }}">
                             </td>
                             <td>
                                 <label for="">تاريخ م</label><br>
-                                <input type="text" name="expand_brest" value="{{ $info_size_customer->customer->date }}">
+                                <input class="form-control" type="text" name="expand_brest" value="{{ $info_size_customer->customer->date }}">
                             </td>
                             <td>
                                 <label for="">الوقت</label><br>
-                                <input type="text" name="neck" value="{{ $info_size_customer->customer->time }}">
+                                <input class="form-control" type="text" name="neck" value="{{ $info_size_customer->customer->time }}">
                             </td>
                             <td>
                                 <label for="">تاريخ الاستلام</label><br>
-                                <input type="text" name="receved_data"
+                                <input class="form-control" type="text" name="receved_data"
                                     value="{{ $info_size_customer->customer->receved_data }}">
                             </td>
                             <td>
                                 <label for="">رقم الفاتورة</label><br>
-                                <input type="text" name="down_hand"
+                                <input class="form-control" type="text" name="down_hand"
                                     value="{{ $info_size_customer->customer->invoice_number }}">
                             </td>
 
@@ -204,67 +204,67 @@
                             <tr id="sin">
                                 <td>
                                     <label for="">الطول</label><br>
-                                    <input type="text" name="height" value="{{ $info_size_customer->height }}">
+                                    <input class="form-control" type="text" name="height" value="{{ $info_size_customer->height }}">
                                 </td>
                                 <td>
                                     <label for="">الكتف</label><br>
-                                    <input type="text" name="shoulder" value="{{ $info_size_customer->shoulder }}">
+                                    <input class="form-control" type="text" name="shoulder" value="{{ $info_size_customer->shoulder }}">
                                 </td>
                                 <td>
                                     <label for="">طول الكتف</label><br>
-                                    <input type="text" name="shoulder_leight"
+                                    <input class="form-control" type="text" name="shoulder_leight"
                                         value="{{ $info_size_customer->shoulder_leight }}">
                                 </td>
                                 <td>
                                     <label for="">الصدر</label><br>
-                                    <input type="text" name="brest" value="{{ $info_size_customer->brest }}">
+                                    <input class="form-control" type="text" name="brest" value="{{ $info_size_customer->brest }}">
                                 </td>
                                 <td>
                                     <label for="">وسع الصدر </label><br>
-                                    <input type="text" name="expand_brest"
+                                    <input class="form-control" type="text" name="expand_brest"
                                         value="{{ $info_size_customer->expand_brest }}">
                                 </td>
                                 <td>
                                     <label for="">الرقبة</label><br>
-                                    <input type="text" name="neck" value="{{ $info_size_customer->neck }}">
+                                    <input class="form-control" type="text" name="neck" value="{{ $info_size_customer->neck }}">
                                 </td>
                                 <td>
                                     <label for="">وسع اليد</label><br>
-                                    <input type="text" name="expand_hand"
+                                    <input class="form-control" type="text" name="expand_hand"
                                         value="{{ $info_size_customer->expand_hand }}">
                                 </td>
                                 <td>
                                     <label for="">اسفل اليد</label><br>
-                                    <input type="text" name="down_hand" value="{{ $info_size_customer->down_hand }}">
+                                    <input class="form-control" type="text" name="down_hand" value="{{ $info_size_customer->down_hand }}">
                                 </td>
                                 <td>
                                     <label for="">طول الكبك</label><br>
-                                    <input type="text" name="cbk_leight" value="{{ $info_size_customer->cbk_leight }}">
+                                    <input class="form-control" type="text" name="cbk_leight" value="{{ $info_size_customer->cbk_leight }}">
                                 </td>
                                 <td>
                                     <label for="">عرض الكبك</label><br>
-                                    <input type="text" name="cbk_width" value="{{ $info_size_customer->cbk_width }}">
+                                    <input class="form-control" type="text" name="cbk_width" value="{{ $info_size_customer->cbk_width }}">
                                 </td>
                             </tr>
                             <tr id="sin">
                                 <td>
                                     <label for="">طول الجيب</label>
-                                    <input type="text" name="pocket_leight"
+                                    <input class="form-control" type="text" name="pocket_leight"
                                         value="{{ $info_size_customer->pocket_leight }}">
                                 </td>
                                 <td>
                                     <label for="">وسع الجيب</label>
-                                    <input type="text" name="pocket_expand"
+                                    <input class="form-control" type="text" name="pocket_expand"
                                         value="{{ $info_size_customer->pocket_expand }}">
                                 </td>
                                 <td>
                                     <label for="">وسع اسفل</label>
-                                    <input type="text" name="down_expand"
+                                    <input class="form-control" type="text" name="down_expand"
                                         value="{{ $info_size_customer->down_expand }}">
                                 </td>
                                 <td>
                                     <label for="">كفة اسفل</label>
-                                    <input type="text" name="down_desist"
+                                    <input class="form-control" type="text" name="down_desist"
                                         value="{{ $info_size_customer->down_desist }}">
                                 </td>
                             </tr>
@@ -277,33 +277,33 @@
                                     <tr>
                                         <td>
                                             <label for="">نوع التصميم</label>
-                                            <input type="text" value="{{ $info_size_customer->design->name_design }}">
+                                            <input class="form-control" type="text" value="{{ $info_size_customer->design->name_design }}">
                                         </td>
                                         <td>
                                             <label for="">القماش</label>
-                                            <input type="text"
+                                            <input class="form-control" type="text"
                                                 value="{{ $info_size_customer->fabric->type_fabrice }}">
                                         </td>
                                         <td>
                                             <label for="">اللون القماش</label>
-                                            <input type="text"
+                                            <input class="form-control" type="text"
                                                 value="{{ $info_size_customer->fabric->color_fabrice }}">
                                         </td>
                                         <td>
                                             <label for="">اسم الخياط</label>
-                                            <input type="text" value="{{ $info_size_customer->seamoer->name }}">
+                                            <input class="form-control" type="text" value="{{ $info_size_customer->seamoer->name }}">
                                         </td>
                                         <td>
                                             <label for="">الخصم</label>
-                                            <input type="text" value="{{ $info_size_customer->discount }}">
+                                            <input class="form-control" type="text" value="{{ $info_size_customer->discount }}">
                                         </td>
                                         <td>
                                             <label for="">السعر شامل الضريبة</label>
-                                            <input type="text" value="{{ $info_size_customer->price_include_tax }}">
+                                            <input class="form-control" type="text" value="{{ $info_size_customer->price_include_tax }}">
                                         </td>
                                         <td>
                                             <label for="">السعر غير شامل الضريبة</label>
-                                            <input type="text"
+                                            <input class="form-control" type="text"
                                                 value="{{ $info_size_customer->price_doesnot_include_tax }}">
                                         </td>
                                         <td>
@@ -343,43 +343,43 @@
                             <tr>
                                 <td>
                                     <label for="">اجمالي عدد الثياب</label><br>
-                                    <input type="text" name="brest"
+                                    <input class="form-control" type="text" name="brest"
                                         value="{{ $info_size_customer->customer->number_dresses }}">
                                 </td>
                                 <td>
                                     <label for="">المبلغ اجمالي غير شامل الضريبة</label><br>
-                                    <input type="text" name="price_doesnot_include_tax" id="tax" readonly
+                                    <input class="form-control" type="text" name="price_doesnot_include_tax" id="tax" readonly
                                         value="{{ $price_doesnot_include_tax }}">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="">الاجمالي الخصم</label><br>
-                                    <input type="text" name="discount" id="discount" value="{{ $discount }}">
+                                    <input class="form-control" type="text" name="discount" id="discount" value="{{ $discount }}">
                                 </td>
                                 <td>
                                     <label for="">الاجمالي مبلغ الضريبة</label><br>
-                                    <input type="text" name="value_tax" id="value_tax" value="{{ $value_tax }}"
+                                    <input class="form-control" type="text" name="value_tax" id="value_tax" value="{{ $value_tax }}"
                                         readonly>
                                 </td>
                                 <td>
                                     <label for="">الاجمالي شامل الضريبة</label><br>
-                                    <input type="text"name="price_include_tax" value="{{ $price_include_tax }}">
+                                    <input class="form-control" type="text"name="price_include_tax" value="{{ $price_include_tax }}">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <label for="">نوع الدفع</label><br>
-                                    <input type="text">
+                                    <input class="form-control" type="text">
                                 </td>
                                 <td>
                                     <label for="">المبلغ المستلم</label><br>
-                                    <input type="text" name="receivedamount" id="receivedamount"
+                                    <input class="form-control" type="text" name="receivedamount" id="receivedamount"
                                         value="{{ $receivedamount }}">
                                 </td>
                                 <td>
                                     <label for="">المبلغ المتبقي</label><br>
-                                    <input type="text" name="remainingamount" id="remainingamount" readonly
+                                    <input class="form-control" type="text" name="remainingamount" id="remainingamount" readonly
                                         value="{{ $remainingamount }}">
                                 </td>
                             </tr>

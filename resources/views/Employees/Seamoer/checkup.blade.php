@@ -48,15 +48,15 @@
                 <div class="card-body">
                     <div class="row row-sm mg-b-20">
                         <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-                            <p class="mg-b-10">اسم القصاص</p><input type="text" class="form-control select2" id="search_name"
+                            <p class="mg-b-10">اسم القصاص</p><input class="form-control" type="text" class="form-control select2" id="search_name"
                                 name="search_name" value="{{$seamoer->name}}">
                         </div><!-- col-4 -->
                         <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-                            <p class="mg-b-10">اسم المحل</p><input type="text" class="form-control select2" id="search_permission"
+                            <p class="mg-b-10">اسم المحل</p><input class="form-control" type="text" class="form-control select2" id="search_permission"
                                 name="search_permission" value="{{$seamoer->shopname}}">
                         </div><!-- col-4 -->
                         <div class="col-lg-4 mg-t-20 mg-lg-t-0">
-                            <p class="mg-b-10">رقم  الهاتف</p><input type="text" class="form-control select2" id="search_job_title"
+                            <p class="mg-b-10">رقم  الهاتف</p><input class="form-control" type="text" class="form-control select2" id="search_job_title"
                                 name="search_job_title" value="{{$seamoer->phone}}">
 
 

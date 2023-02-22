@@ -79,7 +79,7 @@ Route::post('tradeMark-update',[TradeMarkController::class,'updatetradeMark'])->
 Route::post('tradeMark-delete',[TradeMarkController::class,'deletetradeMark'])->name('tradeMark-delete');
 // Route Products
 Route::resource('Products-ctreate',ProductController::class);
-Route::get('edit-Products/{id}',[ProductController::class,'editProducts']);
+Route::get('/edit-Products/{id}',[ProductController::class,'editProducts'])->name('edit-Products');
 Route::post('Products-update',[ProductController::class,'updateProducts'])->name('Products-update');
 Route::post('Products-delete',[ProductController::class,'deleteProducts'])->name('Products-delete');
 //
