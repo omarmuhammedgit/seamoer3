@@ -91,18 +91,12 @@
                             <div class="col-lg-3">
                                 <label for="">القسم الفرعي</label><br>
                                         <select class="form-control select2" name="sub_section">
-                                            @php
-                                                $collection = [];
-                                            @endphp
-                                            <option value="">بدون</option>
-                                            @foreach ($collection as $item)
-                                                <option value=""></option>
-                                            @endforeach
+                                            
                                         </select>
                             </div>
                             <div class="col-lg-3">
                                 <label for="">الوجدة الرئيسية</label><br>
-                                        <select class="form-control select2" id="trademark" name="unit_id">
+                                        <select class="form-control select2" id="unit_id" name="unit_id">
                                             @php
                                                 $collection = [];
                                             @endphp
@@ -114,13 +108,7 @@
                             <div class="col-lg-3">
                                 <label for="">الوحدة الفرعية</label><br>
                                         <select class="form-control select2" name="sub_unit">
-                                            @php
-                                                $collection = [];
-                                            @endphp
-                                            <option value="">بدون</option>
-                                            @foreach ($collection as $item)
-                                                <option value=""></option>
-                                            @endforeach
+
                                         </select>
                             </div>
                             <div class="col-lg-3">
@@ -208,18 +196,6 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="main-content-label mg-b-5">
-                            <br><br>
-                            <h3>محزون الافتتاحي</h3>
-                        </div>
-                        <table>
-                            <tr>
-                                <td><label for="">اجمالي الرصيد الافتتاحي</label><br>
-                                    <input class="form-control" type="number" name="total_opening_balance" placeholder="الرصيد افتتاحي"
-                                        required>
-                                </td>
-                            </tr>
-                        </table>
 
 
                     </div>
@@ -283,4 +259,50 @@
             // alert(price_purches_doesnot_include_tax);
         }
     </script>
+        <script>
+            $(document).ready(function() {
+                $('select[name="section_id"]').on('change', function() {
+                    var SectionId = $(this).val();
+                    if (SectionId) {
+                        $.ajax({
+                            url: "{{ URL::to('sectionSub') }}/" + SectionId,
+                            type: "GET",
+                            dataType: "json",
+                            success: function(data) {
+                                $('select[name="sub_section"]').empty();
+                                $.each(data, function(key, value) {
+                                    $('select[name="sub_section"]').append('<option value="' +
+                                        value + '">' + value + '</option>');
+                                });
+                            },
+                        });
+                    } else {
+                        console.log('AJAX load did not work');
+                    }
+                });
+            });
+        </script>
+                <script>
+                    $(document).ready(function() {
+                        $('select[name="unit_id"]').on('change', function() {
+                            var unitId = $(this).val();
+                            if (unitId) {
+                                $.ajax({
+                                    url: "{{ URL::to('unitSub') }}/" + unitId,
+                                    type: "GET",
+                                    dataType: "json",
+                                    success: function(data) {
+                                        $('select[name="sub_unit"]').empty();
+                                        $.each(data, function(key, value) {
+                                            $('select[name="sub_unit"]').append('<option value="' +
+                                                value + '">' + value + '</option>');
+                                        });
+                                    },
+                                });
+                            } else {
+                                console.log('AJAX load did not work');
+                            }
+                        });
+                    });
+                </script>
 @endsection

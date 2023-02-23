@@ -7,6 +7,7 @@ use App\Models\Section;
 use App\Models\TradeMark;
 use App\Models\Unit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -199,5 +200,16 @@ class ProductController extends Controller
         session()->flash('delete','تم حذف المنتجات بنجاح');
         return redirect('/Products-ctreate');
     }
+     public function getSectionSub($id)
+     {
+        $sectionSub=DB::table('sections')->where('id',$id)->pluck('sub_section');
+        return json_encode($sectionSub);
+     }
+
+     public function getUnitSub($id)
+     {
+        $unitSub=DB::table('units')->where('id',$id)->pluck('sub_unit');
+        return json_encode($unitSub);
+     }
 
 }

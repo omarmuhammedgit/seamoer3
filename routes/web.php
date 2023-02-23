@@ -82,6 +82,8 @@ Route::resource('Products-create',ProductController::class);
 Route::get('/edit-Products/{id}',[ProductController::class,'editProducts'])->name('edit-Products');
 Route::post('Products-update',[ProductController::class,'updateProducts'])->name('Products-update');
 Route::post('Products-delete',[ProductController::class,'deleteProducts'])->name('Products-delete');
+Route::get('sectionSub/{id}',[ProductController::class,'getSectionSub']);
+Route::get('unitSub/{id}',[ProductController::class,'getUnitSub']);
 //
 Route::resource('Sale-point',SellingPointController::class);
 Route::resource('Sale-menu',SaleController::class);
