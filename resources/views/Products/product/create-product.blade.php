@@ -34,7 +34,7 @@
         </div>
     @endif
 
-    <form action="{{ route('Products-ctreate.store') }}" method="POST" style="margin-bottom: 10%">
+    <form action="{{ route('Products-create.store') }}" method="POST" style="margin-bottom: 10%">
         @csrf
         <div class="row">
 
@@ -50,8 +50,13 @@
                                         <input class="form-control" type="text" name="name_product" placeholder="اسم المنتج" required>
                             </div>
                             <div class="col-lg-3">
+                                @php
+                                $no_product=!empty(\App\Models\Product::latest()->first()->no_product)?$no_product=\App\Models\Product::latest()->first()->no_product:0000;
+
+                                $no_product=str_pad($no_product+1, 5, 0, STR_PAD_LEFT);
+                            @endphp
                                     <label for="">رقم المنتج</label><br>
-                                        <input class="form-control" type="number" name="no_product" placeholder="رقم المنتج" required>
+                                        <input class="form-control" type="number" name="no_product" placeholder="رقم المنتج" required value="{{$no_product}}">
                             </div>
                             <div class="col-lg-3">
                                     <label for="">موقع الفرع</label><br>
@@ -119,9 +124,9 @@
                                         </select>
                             </div>
                             <div class="col-lg-3">
-                                <label for="">تنبيه الكمية</label><br>
-                                        <input class="form-control" type="number" name="quantity_alert" placeholder="تنبيه الكمية" required>
-                            </div>
+                                <label for="">اجمالي الرصيد الافتتاحي</label><br>
+                                <input class="form-control" type="number" name="total_opening_balance" placeholder="الرصيد افتتاحي"
+                                    required>                          </div>
                                     {{-- <td><label for="">اضافة صورة</label><br>
                                     <input class="form-control" type="file" name="image_product">
                                 </td> --}}
@@ -130,12 +135,12 @@
                         </div>
                         <hr>
                         <div class="main-content-label mg-b-5">
-                            <h3>سعر الشراء</h3>
+                            <h4>سعر الشراء</h4>
                         </div>
                         <div class="form-group">
                             <input  type="radio" id="checkbox-1" name="price_product" onchange="price_product_purchas()">
                             <label class="exampleEmail1">
-                                <h4>تفعيل ضريبة الشراء (ملاخظة : عند تفعيل الخيار يتم احتساب السعر شامل الضربية )</h4>
+                                <h5>تفعيل ضريبة الشراء (ملاحظة : عند تفعيل الخيار يتم احتساب السعر شامل الضربية )</h5>
                             </label>
                         </div>
                         <div id="price_product_purchas" style="display: none">
@@ -176,12 +181,12 @@
                         </div>
 
                         <div class="main-content-label mg-b-5">
-                            <h3>سعر البيع</h3>
+                            <h4>سعر البيع</h4>
                         </div>
                         <div class="form-group">
                             <input  type="radio" id="checkbox-1" name="price_product" onchange="price_product_sale()">
                             <label class="exampleEmail1">
-                                <h4>تفعيل ضريبة الشراء (ملاخظة : عند تفعيل الخيار يتم احتساب السعر شامل الضربية )</h4>
+                                <h5>تفعيل ضريبة الشراء (ملاحظة : عند تفعيل الخيار يتم احتساب السعر شامل الضربية )</h5>
                             </label>
                         </div>
                         <div id="price_product_sale" style="display: none">
@@ -221,7 +226,7 @@
 
                 </div>
                 <div class="submit">
-                    <button type="submit" class="btn btn-primary mt-3 mb-0" style="margin-right: 95%">حفظ</button>
+                    <button type="submit" class="btn btn-primary mt-3 mb-0" style="margin-right: 45%">حفظ</button>
 
                 </div>
             </div>

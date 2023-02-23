@@ -3,7 +3,7 @@
 <style>
     .submit{
         direction: ltr;
-        text-align: left;
+        text-align:center;
         margin-bottom: 50px;
     }
 </style>
@@ -13,7 +13,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">القصاص</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ اضافة قصاص</span>
+                <h3 class="content-title mb-0 my-auto">القصاص</h3><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ اضافة قصاص</span>
             </div>
         </div>
 
@@ -43,7 +43,7 @@
 
         <form action="{{route('Retribution.store')}}" method="POST">
             @csrf
-            <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
+            <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12" style="width: 1150px">
                 <div class="card">
                     <div class="card-body">
                         <div class="main-content-label mg-b-5">

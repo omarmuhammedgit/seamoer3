@@ -79,7 +79,7 @@ class SupplierController extends Controller
         ]);
 
         session()->flash('Add','تمت اضافة الموردين بنجاح');
-        return redirect()->back();
+        return redirect('Supplier');
     }
 
     /**

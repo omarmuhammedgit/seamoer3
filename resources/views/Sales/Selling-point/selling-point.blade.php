@@ -121,7 +121,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="main-content-label mg-b-5">
-                            بيانت العميل
+                            بيانات العميل
                         </div>
                         <div class="row row-sm">
 
@@ -137,11 +137,9 @@
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                 @php
-                                    $code=!empty(\App\Models\Customer::latest()->first()->code)?null:0000;
-                                    $code=!empty($code)?$code=\App\Models\Customer::latest()->first()->code:null;
-                                    // $number_invoice=!empty($number_invoice)?$number_invoice:0000;
+                                    $code=!empty(\App\Models\Customer::latest()->first()->code)?$code=\App\Models\Customer::latest()->first()->code:00453;
+
                                     $code=str_pad($code+1, 5, 0, STR_PAD_LEFT);
-                                    // dd($number_invoice);
                                 @endphp
                                 <div class="input class="form-control"-group">
                                     كود العميل<input class="form-control" type="number" name="code" placeholder="كود العميل" value="{{$code}}" readonly>
@@ -174,8 +172,8 @@
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                 @php
-                                    $number_invoice=!empty(\App\Models\Customer::latest()->first()->invoice_number)?null:0000;
-                                    $number_invoice=!empty($number_invoice)?$number_invoice=\App\Models\Customer::latest()->first()->invoice_number:null;
+                                    $number_invoice=!empty(\App\Models\Customer::latest()->first()->invoice_number)?$number_invoice=\App\Models\Customer::latest()->first()->invoice_number:0000;
+                                    // $number_invoice=empty($number_invoice)?$number_invoice=\App\Models\Customer::latest()->first()->invoice_number:null;
                                     // $number_invoice=!empty($number_invoice)?$number_invoice:0000;
                                     $number_invoice=str_pad($number_invoice+1, 5, 0, STR_PAD_LEFT);
                                     // dd($number_invoice);
@@ -374,7 +372,7 @@
                                     <label for="">الخصم</label>
                                     <input class="form-control" type="number" name="discount" id="discount" onchange="myFunDiscount()">
                                     <label for="">السعر بعد الخصم شامل الضريبة</label>
-                                    <input class="form-control" type="number" name="afterdiscount" id="afterdiscount">
+                                    <input class="form-control" type="number" name="afterdiscount" id="afterdiscount" readonly>
                                     <label for="">المبلغ المستلم</label>
                                     <input class="form-control" type="number" name="receivedamount" id="receivedamount"
                                         onchange="myFunReceivedamount()">

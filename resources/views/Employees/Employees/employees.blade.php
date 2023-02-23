@@ -31,6 +31,15 @@
 </div>
 @endif
 
+@if(session()->has('Add'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{ session()->get('Add') }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
 
 @if(session()->has('delete'))
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -91,6 +100,10 @@
                 </div>
             </div>
         </div> --}}
+
+        {{-- <div class="card-body" style="text-align: left;"> --}}
+
+            <a class="btn ripple btn-info"  href="{{route('Employees.create')}}" style="margin-right: 2%">اضافة</a>
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">

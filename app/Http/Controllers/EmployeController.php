@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employe;
+use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 
 class EmployeController extends Controller
 {
@@ -73,7 +74,7 @@ class EmployeController extends Controller
             'no_employee'=>$request->no_employee,
             'date_hiring'=>$request->date_hiring,
             'job_title'=>$request->job_title,
-            'number_phone1'=>$request->number_phone1,
+            'number_phone1'=> $request->number_phone1,
             'number_phone2'=>$request->number_phone2,
             'email'=>$request->email,
             'city'=>$request->city,
@@ -83,12 +84,17 @@ class EmployeController extends Controller
             'name_bank'=>$request->name_bank,
             'statement'=>$request->statement,
             'name_user'=>$request->name_user,
-            'password1'=>$request->password1,
-            'password2'=>$request->password2,
+            'password1'=>Hash::make($request->password1),
+            'password2'=>Hash::make($request->password2),
             'permission'=>$request->permission
         ]);
+        User::create([
+            'name'=>$request->name_user,
+            'email'=>$request->email,
+            'password'=>Hash::make($request->password1),
+        ]);
         session()->flash('Add','تمت اضافة الموظف بنجاح');
-        return redirect()->back();
+        return redirect('Employees');
     }
 
     /**

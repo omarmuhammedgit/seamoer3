@@ -59,10 +59,11 @@
     <!-- row opened -->
 
     <div class="row row-sm">
+        <a class="btn ripple btn-info"  href="{{route('Sale-point.index')}}" style="margin-right: 2%">نقطة البيع</a>
+
         <div class="col-xl-12">
             <div class="card">
                 <div style="margin-right: 90%">
-             <a class="btn ripple btn-info"  href="{{route('Sale-point.index')}}">نقطة البيع</a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

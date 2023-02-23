@@ -25,14 +25,14 @@ class CreatePurchasesTable extends Migration
             $table->string('status_payment');
             $table->string('create_by');
             $table->foreignId('supplier_id')->constrained('suppliers')->cascadeOnDelete();
-            $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
+            // $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->decimal('value_discount',22,2);
             $table->decimal('tax_purchase',22,2);
             $table->string('comments_add')->nullable();
             $table->decimal('amount',22,2);
-            $table->date('datePayment');
-            $table->string('payment_method');
-            $table->string('account');
+            $table->date('datePayment')->nullable();
+            $table->string('payment_method')->nullable();
+            $table->string('account')->nullable();
             $table->string('payment_comments')->nullable();
             $table->timestamps();
         });

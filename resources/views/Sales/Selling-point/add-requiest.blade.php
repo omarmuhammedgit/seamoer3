@@ -515,7 +515,7 @@
 
 
                 <button class="btn ripple btn-primary" type="submit"
-                    style="margin-right: 95%; margin-bottom:10%">حفظ</button>
+                    style="margin-right: 45%; margin-bottom:10%">حفظ</button>
                 {{-- </div> --}}
         </form>
                 {{-- //////////////////////////////////////////// --}}

@@ -134,10 +134,13 @@
                                 <h4 class="card-title mg-b-0">جميع مرجع المشتريات</h4>
                             </div> --}}
                                     <div class="card-body" style="text-align: left;">
-                                        <a class="btn ripple btn-info" href="{{ route('Products-ctreate.create') }}">اضافة
+                                        <a class="btn ripple btn-info" href="{{ route('Products-create.create') }}">اضافة
                                             منتج</a>
                                     </div>
                                 </div>
+
+                                <input class="form-control" type="hidden"
+                                name="product_id" value="5">
                                 {{-- </div> --}}
                                 <div class="col-xl-12">
                                     <div class="card">
@@ -171,7 +174,7 @@
                                                         @foreach ($products as $product)
                                                             <tr>
                                                                 <td>
-                                                                    <input class="form-control" type="checkbox"
+                                                                    <input class="form-control" type="hidden"
                                                                         name="product_id" value="{{ $product->id }}">
                                                                 </td>
                                                                 <td>{{ $product->name_product }}</td>
@@ -263,7 +266,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
+                {{-- <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="main-content-label mg-b-5">
@@ -289,7 +292,7 @@
                                         <option value="mada">mada</option>
                                         <option value="visa">visa</option>
                                     </select>
-                                    {{-- <input class="form-control" type="text" name="recordnumber" placeholder="رقم السجل التجاري" required> --}}
+                                    <input class="form-control" type="text" name="recordnumber" placeholder="رقم السجل التجاري" required>
                                 </div>
                                 <div class="col-lg-3">
                                     <label><span>الحساب:</span></label><br>
@@ -298,21 +301,21 @@
                                 <div class="col-lg-3"><br>
                                     <label><span>ملاحظات الدفع</span></label><br>
                                     <textarea class="form-control" name="payment_comments" id="" cols="100" rows="3"></textarea>
-                                    {{-- <input class="form-control" type="text" name="recordnumber"  required style="width: 60%"> --}}
                                 </div>
 
                             </div>
 
                         </div>
 
-                        <div class="submit">
-                            <button type="submit" class="btn btn-primary mt-3 mb-0"
-                                style="margin-right: 95%">حفظ</button>
-
-                        </div>
                     </div>
 
-                </div>
+                </div> --}}
+
+                        <div class="submit" style="margin-bottom: 5%">
+                            <button type="submit" class="btn btn-primary mt-3 mb-0"
+                                style="margin-right: 45%">حفظ</button>
+
+                        </div>
         </form>
 
 

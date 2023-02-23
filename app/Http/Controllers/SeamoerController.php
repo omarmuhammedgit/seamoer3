@@ -78,7 +78,7 @@ class SeamoerController extends Controller
             'statement'=>$request->statement
         ]);
         session()->flash('Add','تمت اضافة الخياط بنجاح');
-        return redirect()->back();
+        return redirect('Seamoer-create');
 
     }
 

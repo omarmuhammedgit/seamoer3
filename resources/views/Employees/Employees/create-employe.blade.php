@@ -3,9 +3,9 @@
     <style>
         .submit {
             direction: ltr;
-            text-align: left;
+            text-align:center;
             margin-bottom: 50px;
-            margin-top: -20px;
+            /* margin-top: -20px; */
         }
     </style>
 @endsection
@@ -138,7 +138,7 @@
                 </div>
             </div>
             <!--div-->
-            <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
+            <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12" style="width: 1150px">
                 <div class="card">
                     <div class="card-body">
                         <div class="main-content-label mg-b-5">
@@ -178,7 +178,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">تاكيد كلمة السر</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1"
+                                    <input type="password" class="form-control" id="exampleInputPassword2"
                                         placeholder="ادخل كلمة السر" name="password2">
                                 </div>
                                 {{-- <div class="form-group">
@@ -203,11 +203,12 @@
 
                     </div>
 
-                    <div class="submit">
-                        <button type="submit" class="btn btn-primary mt-3 mb-0">حفظ</button>
-
-                    </div>
                 </div>
+            </div>
+
+            <div class="submit">
+                <button id="checkpassword" type="submit" class="btn btn-primary mt-3 mb-0">حفظ</button>
+
             </div>
         </form>
 
@@ -219,4 +220,43 @@
     <!-- main-content closed -->
 @endsection
 @section('js')
+<script>
+    $(document).on('click','#checkpassword',function(e){
+        var password1=$('#exampleInputPassword1').val();
+        var password2=$('#exampleInputPassword2').val();
+
+
+        if(password1==""){
+            alert('من فضلك ادخل كلمة السر');
+            $('exampleInputPassword1').focus();
+            return false;
+
+        }
+        if(password1.length < 8){
+            alert('يجب ان تكون كلمة السر اقل اشي 8 حروف او ارقام');
+            $('exampleInputPassword1').focus();
+            return false;
+
+        }
+         if(password2==""){
+            alert('من فضلك ادخل تاكيد كلمة السر');
+            $('exampleInputPassword1').focus();
+            return false;
+
+        }
+        if(password2.length < 8){
+            alert('يجب ان يكون تاكيد كلمة السر اقل اشي 8 حروف او ارقام');
+            $('exampleInputPassword1').focus();
+            return false;
+
+        }
+        if(password1!=password2){
+            alert('تاكيد كلملة السر غير متطابق مع كلمة السر');
+            $('exampleInputPassword1').focus();
+            return false;
+
+        }
+
+    });
+</script>
 @endsection

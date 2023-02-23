@@ -9,12 +9,12 @@
 <link href="{{URL::asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
 <style>
     #table{
-        margin-right: 5%;
+        /* margin-right: 5%; */
 
     }
     td{
-        padding-left: 70px;
-        font-size: 20px;
+        /* padding-left: 70px; */
+        /* font-size: 15px; */
 
     }
 
@@ -47,6 +47,15 @@
 @if(session()->has('delete'))
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>{{ session()->get('delete') }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@endif
+
+@if(session()->has('Add'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{ session()->get('Add') }}</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -125,6 +134,7 @@
 
 
                         </div> --}}
+                        <a class="btn ripple btn-info"  href="{{route('Supplier.create')}}" style="margin-right: 2%">اضافة</a>
 
 					<div class="col-xl-12">
 						<div class="card">

@@ -77,7 +77,7 @@ class PurchaseController extends Controller
         ]);
 
         session()->flash('Add','تمت اضافة الشراء بنجاح');
-        return redirect()->back();
+        return redirect('purchases-menu');
 
         // return $request;
     }

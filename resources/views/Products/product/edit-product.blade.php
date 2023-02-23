@@ -201,7 +201,7 @@
 
             </div>
             <div class="submit">
-                <button type="submit" class="btn btn-primary mt-3 mb-0" style="margin-right: 95%">تعديل</button>
+                <button type="submit" class="btn btn-primary mt-3 mb-0" style="margin-right: 45%">تعديل</button>
 
             </div>
         </div>

@@ -77,7 +77,8 @@ class RetributionController extends Controller
             'statement'=>$request->statement
         ]);
         session()->flash('Add','تمت اضافة القصاص بنجاح');
-        return redirect()->back();    }
+        return redirect('Retribution');
+        }
 
     /**
      * Display the specified resource.

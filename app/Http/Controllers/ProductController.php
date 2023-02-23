@@ -49,14 +49,19 @@ class ProductController extends Controller
             'sub_site' => 'required|max:255',
             'no_product'=>'required|unique:products|max:20',
             'total_opening_balance'=>'required',
-            'quantity_alert'=>'required',
+            'trademark_id'=>'required',
+            'section_id'=>'required',
+            'unit_id'=>'required'
+
         ],[
            'name_product.required'=>'يرجى ادخال اسم المنتج',
            'sub_site.required'=>'يرجى ادخال اسم الموقع الفرعي',
            'no_product.unique'=>'رقم المنتج موجود مسبقأ',
            'total_opening_balance.required'=>'يرجى ادخال رقم المنشاة',
            'no_product.required'=>'يرجى ادخال رقم المنتج',
-           'quantity_alert.required'=>'يرجى ادخال تنبيه الكمية'
+           'trademark_id.required'=>'يرجى اضافة العلامة التجارية',
+           'unit_id.required'=>'يرجى اضافة اسم الوحدة',
+           'section_id.required'=>'يرجى اضافة القسم'
 
 
         ]);
@@ -81,7 +86,7 @@ class ProductController extends Controller
             'total_opening_balance'=>$request->total_opening_balance
         ]);
         session()->flash('Add','تمت اضافة المنتج بنجاح');
-        return redirect()->back();
+        return redirect('Products-create');
         // return $request;
 
     }
