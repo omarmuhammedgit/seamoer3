@@ -112,8 +112,15 @@
 												<td>
 
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                                       data-id="{{ $setting->id }}" data-name_design="{{ $setting->name_design }}"
-                                                       data-number_design="{{ $setting->number_design }}" data-toggle="modal" href="#exampleModal2"
+                                                       data-id="{{ $setting->id }}" data-name="{{ $setting->name }}"
+                                                       data-commercial_record="{{ $setting->commercial_record }}"
+                                                       data-phone="{{ $setting->phone }}"
+                                                       data-email="{{ $setting->email }}"
+                                                       data-city="{{ $setting->city }}"
+                                                       data-country="{{ $setting->country }}"
+                                                       data-created_by="{{ $setting->created_by }}"
+                                                       data-postal_code="{{ $setting->postal_code }}"
+                                                        data-toggle="modal" href="#exampleModal2"
                                                        title="تعديل"><i class="las la-pen"></i></a>
 
                                                     <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
@@ -172,10 +179,6 @@
                                                     <input class="form-control" type="text" name="postal_code" placeholder="الرمز البريدي" >
                                         </div>
 
-                                        <div class="form-group">
-
-                                            <label for="">اضافة صورة</label><br>
-                                            <input class="form-control" type="file" name="image" placeholder="ادخل رقم التصميم" required>
                                 </div>
 
 
@@ -197,25 +200,53 @@
                    <div class="modal-dialog" role="document">
                        <div class="modal-content">
                            <div class="modal-header">
-                               <h5 class="modal-title" id="exampleModalLabel">تعديل التصميم</h5>
+                               <h5 class="modal-title" id="exampleModalLabel">تعديل الاعدادات</h5>
                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                    <span aria-hidden="true">&times;</span>
                                </button>
                            </div>
                            <div class="modal-body">
 
-                               <form action="{{route('design-update')}}" method="post" autocomplete="off">
+                               <form action="{{route('setting.update')}}" method="post" autocomplete="off">
                                    {{-- {{method_field('patch')}} --}}
                                    {{csrf_field()}}
                                    <div class="form-group">
-                                       <input class="form-control" type="hidden" name="id" id="id" value="">
-                                       <label for="recipient-name" class="col-form-label">اسم التصميم:</label>
-                                       <input class="form-control" class="form-control" name="name_design" id="name_design" type="text">
-                                   </div>
-                                   <div class="form-group">
-                                       <label for="message-text" class="col-form-label">رقم التصميم:</label>
-                                       <textarea class="form-control" id="number_design" name="number_design"></textarea>
-                                   </div>
+                                    <input type="hidden" name="id" id="id">
+                                    <label for="">اسم شركة*</label><br>
+                                    <input class="form-control" type="text" name="name" id="name" placeholder="ادخل اسم الشركة" required>
+                        </div>
+                        <div class="form-group">
+
+                                    <label for="">رقم السجل التجاري*</label><br>
+                                    <input class="form-control" type="text" name="commercial_record" id="commercial_record" placeholder=" رقم السجل التجاري" required>
+                        </div>
+                        <div class="form-group">
+                                    <label for="">رقم الهاتف*</label><br>
+                                    <input class="form-control" type="text" name="phone" id="phone" placeholder="رقم الهاتف" required>
+                        </div>
+                        <div class="form-group">
+                                    <label for="">البريد الالكتروني*</label><br>
+                                    <input class="form-control" type="email" name="email" id="email" placeholder=" البريد الالكتروني" required>
+                        </div>
+                        <div class="form-group">
+
+                                    <label for="">اسم المدينة</label><br>
+                                    <input class="form-control" type="text" name="city" id="city" placeholder="اسم المدينة" >
+                        </div>
+                        <div class="form-group">
+                                    <label for="">اسم البلد</label><br>
+                                    <input class="form-control" type="text" name="country" id="country" placeholder="اسم البلد" >
+                        </div>
+                        <div class="form-group">
+
+                                    <label for="">الرمز البريدي</label><br>
+                                    <input class="form-control" type="text" name="postal_code" id="postal_code" placeholder="الرمز البريدي" >
+                        </div>
+                        <div class="form-group">
+
+                            <label for="">اضيفت بواسطة</label><br>
+                            <input class="form-control" type="text" name="created_by" id="created_by" placeholder="الرمز البريدي" >
+                </div>
                            </div>
                            <div class="modal-footer">
                                <button type="submit" class="btn btn-primary">تاكيد</button>
@@ -230,16 +261,16 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content modal-content-demo">
                         <div class="modal-header">
-                            <h6 class="modal-title">حذف التصميم</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                            <h6 class="modal-title">حذف الاعدادات</h6><button aria-label="Close" class="close" data-dismiss="modal"
                                                                            type="button"><span aria-hidden="true">&times;</span></button>
                         </div>
-                        <form action="{{route('design-delete')}}" method="post">
+                        <form action="{{route('setting.delete')}}" method="post">
                             {{-- {{method_field('delete')}} --}}
                             {{csrf_field()}}
                             <div class="modal-body">
                                 <p>هل انت متاكد من عملية الحذف ؟</p><br>
                                 <input class="form-control" type="hidden" name="id" id="id" value="">
-                                <input class="form-control" class="form-control" name="name_design" id="name_design" type="text" readonly>
+                                {{-- <input class="form-control" class="form-control" name="name_design" id="name_design" type="text" readonly> --}}
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
@@ -275,7 +306,7 @@
 <script src="{{URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
-<script src="{{URL::asset('assets/plugins/product/design/js/design.js')}}"></script>
+<script src="{{URL::asset('assets/plugins/setting/js/setting.js')}}"></script>
 
 
 

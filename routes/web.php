@@ -39,6 +39,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('Setting',[SettingController::class,'index'])->name('setting');
 Route::post('Setting-create',[SettingController::class,'create'])->name('setting.create');
+Route::post('Setting-update',[SettingController::class,'updateSetting'])->name('setting.update');
+Route::post('Setting-delete',[SettingController::class,'deleteSetting'])->name('setting.delete');
 
 //Route Employees
 Route::resource('Employees',EmployeController::class);

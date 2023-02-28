@@ -17,13 +17,14 @@ class SettingController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required|max:150',
-            'commercial_record'=>'required|max:20|unique:settings',
+            'commercial_record'=>'required|min:15|unique:settings',
             'phone'=>'required'
 
         ],[
            'name.required'=>'يرجى ادخال اسم التصميم',
            'commercial_record.unique'=>'رقم السجل التجاري موجود مسبقأ',
            'commercial_record.required'=>'يرجى ادخال رقم السجل التجاري',
+           'commercial_record.min'=>'يجب ان يتكون رقم السجل من 15 رقم',
            'phone.required'=>'يرجي ادخال رقم الهاتف'
         ]);
 
@@ -43,6 +44,47 @@ class SettingController extends Controller
 
         return view('Settings.index', compact('settings'));
 
+        return redirect()->back() ;
+
+    }
+    public function updateSetting(Request $request)
+    {
+        $id=$request->id;
+
+        $validatedData = $request->validate([
+            'name' => 'required|max:150',
+            'commercial_record'=>'required|min:15|unique:settings,commercial_record,'.$id,
+            'phone'=>'required'
+
+        ],[
+           'name.required'=>'يرجى ادخال اسم التصميم',
+           'commercial_record.unique'=>'رقم السجل التجاري موجود مسبقأ',
+           'commercial_record.required'=>'يرجى ادخال رقم السجل التجاري',
+           'commercial_record.min'=>'يجب ان يتكون رقم السجل من 15 رقم',
+           'phone.required'=>'يرجي ادخال رقم الهاتف'
+        ]);
+
+        Setting::find($id)->update([
+            'name'=>$request->name,
+            'commercial_record'=>$request->commercial_record,
+            'phone'=>$request->phone,
+            'email'=>$request->email,
+            'city'=>$request->city,
+            'country'=>$request->country,
+            'postal_code'=>$request->postal_code,
+            'created_by'=>$request->created_by
+
+        ]);
+        session()->flash('edit','تمت تعديل الاعدادات بنجاح');
+
+
+        return redirect()->back() ;
+    }
+    public function deleteSetting(Request $request)
+    {
+        $id=$request->id;
+        Setting::find($id)->delete();
+        session()->flash('delete','تم حذف الاعدادات بنجاح');
         return redirect()->back() ;
 
     }

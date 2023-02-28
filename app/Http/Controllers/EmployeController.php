@@ -187,7 +187,10 @@ class EmployeController extends Controller
            'job_title.required'=>'يرجى ادخال المسمى الوظيفي',
            'city.required'=>'يرجى ادخال  اسم المدينة',
            'street.required'=>'يرجى ادخال  اسم الشارع',
-           'district.required'=>'يرجى ادخال  اسم الحي'
+           'district.required'=>'يرجى ادخال  اسم الحي',
+           'password.required'=>'يجب ادخال كلمة المرور',
+           'password.min'=>'يجب ان تتكون كلمة المرور من 8 احرف',
+           'password.confirmed'=>'تاكيد كلمة المرور غير متطابق'
 
 
         ]);
@@ -221,7 +224,13 @@ class EmployeController extends Controller
             $validatedData = $request->validate([
 
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$id],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],]);
+            'password' => ['required', 'string', 'min:8', 'confirmed'],],
+            [
+                'password.required'=>'يجب ادخال كلمة المرور',
+            'password.min'=>'يجب ان تتكون كلمة المرور من 8 احرف',
+            'password.confirmed'=>'تاكيد كلمة المرور غير متطابق'
+            ]
+        );
             User::find($id)->update([
                 'name'=>$request->name,
                 'email'=>$request->email,
