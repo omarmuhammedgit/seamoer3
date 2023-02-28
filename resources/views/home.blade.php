@@ -28,20 +28,12 @@
 
 
                                 </label>
-							{{-- <div class="main-star">
-								<i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star active"></i> <i class="typcn typcn-star"></i> <span>(14,873)</span>
-							</div> --}}
+						
 						</div>
 						<div>
-							{{-- <label class="tx-13">
-                                <a class="btn ripple btn-info"  href="#">الحجوزات</a>
-                            </label> --}}
-							{{-- <h5>563,275</h5> --}}
+
 						</div>
-						{{-- <div>
-							<label class="tx-13">Offline Sales</label>
-							<h5>783,675</h5>
-						</div> --}}
+
 					</div>
 				</div>
 				<!-- /breadcrumb -->
@@ -59,7 +51,7 @@
 									<div class="d-flex">
 										<div class="">
 											<h5 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Size::sum('price_doesnot_include_tax')}} ريال</h5>
-											<p class="mb-0 tx-12 text-white op-7" style="font-size: 20px">المبيعات خلال هذا الشهر
+											<p class="mb-0 tx-12 text-white op-7" style="font-size: 15px">المبيعات خلال هذا الشهر
                                             </p>
 										</div>
 										{{-- <span class="float-right my-auto mr-auto">
@@ -82,7 +74,7 @@
 									<div class="d-flex">
 										<div class="">
 											<h5 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Size::sum('value_tax')}} ريال</h5>
-											<p class="mb-0 tx-12 text-white op-7" style="font-size: 20px">ضريبة المبيعات خلال هذا الشهر</p>
+											<p class="mb-0 tx-12 text-white op-7" style="font-size: 15px">ضريبة المبيعات خلال هذا الشهر</p>
 										</div>
 										{{-- <span class="float-right my-auto mr-auto">
 											<i class="fas fa-arrow-circle-down text-white"></i>
@@ -104,7 +96,7 @@
 									<div class="d-flex">
 										<div class="">
 											<h5 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Product::sum('price_sale_include_tax')}} ريال</h5>
-											<p class="mb-0 tx-12 text-white op-7" style="font-size: 20px">المنتجات خلال هذا الشهر</p>
+											<p class="mb-0 tx-12 text-white op-7" style="font-size: 15px">المنتجات خلال هذا الشهر</p>
 										</div>
 										{{-- <span class="float-right my-auto mr-auto">
 											<i class="fas fa-arrow-circle-up text-white"></i>
@@ -126,7 +118,7 @@
 									<div class="d-flex">
 										<div class="">
 											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Product::sum('rale')}} ريال</h4>
-											<p class="mb-0 tx-12 text-white op-7" style="font-size: 20px">ضريبة المنتجات خلال هذا الشهر</p>
+											<p class="mb-0 tx-12 text-white op-7" style="font-size: 15px">ضريبة المنتجات خلال هذا الشهر</p>
 										</div>
 										{{-- <span class="float-right my-auto mr-auto">
 											<i class="fas fa-arrow-circle-down text-white"></i>

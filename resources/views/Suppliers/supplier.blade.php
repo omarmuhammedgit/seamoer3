@@ -64,76 +64,7 @@
 
 				<!-- row opened -->
 				<div class="row row-sm">
-                        {{-- <table id="table">
-                            <tr>
-                                <td>
-                                    <input type="checkbox">
-                                    <label><p>مستحق دفع المشتريات</p></label>
-                                </td>
-                                <td>
-                                    <input type="checkbox">
-                                    <label><p>مرجع مشتريات</p></label>
-                                </td>
-                                <td>
-                                    <input type="checkbox">
-                                    <label><p>ارصدة مسابقة</p></label>
-                                </td>
-                                <td>
-                                  <input type="checkbox">
-                                  <label><p>رصيد افتتاحي</p></label>
-                                </td>
-                            </tr>
-                        </table> --}}
-                        {{-- <div class="row" style="margin:10px">
-                            <div class="col-lg-3">
-                                <label><span>مخصص ل</span></label>
-                                <select  >
-                                    <option label="Choose one">
-                                    </option>
-                                    <option value="Firefox">
-                                        Firefox
-                                    </option>
-                                    <option value="Chrome">
-                                        Chrome
-                                    </option>
-                                    <option value="Safari">
-                                        Safari
-                                    </option>
-                                    <option value="Opera">
-                                        Opera
-                                    </option>
-                                    <option value="Internet Explorer">
-                                        Internet Explorer
-                                    </option>
-                                </select>
-                             </div>
-                            <div class="col-lg-3">
-                            </div>
-                            <div class="col-lg-3">
-                                <label><span>الحالة</span></label>
-                                <select  >
-                                    <option label="بدون">
-                                    </option>
-                                    <option value="Firefox">
-                                        Firefox
-                                    </option>
-                                    <option value="Chrome">
-                                        Chrome
-                                    </option>
-                                    <option value="Safari">
-                                        Safari
-                                    </option>
-                                    <option value="Opera">
-                                        Opera
-                                    </option>
-                                    <option value="Internet Explorer">
-                                        Internet Explorer
-                                    </option>
-                                </select>
-                            </div>
-
-
-                        </div> --}}
+                      
                         <a class="btn ripple btn-info"  href="{{route('Supplier.create')}}" style="margin-right: 2%">اضافة</a>
 
 					<div class="col-xl-12">

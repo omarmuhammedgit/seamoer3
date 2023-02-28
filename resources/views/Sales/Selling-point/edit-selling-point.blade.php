@@ -558,7 +558,7 @@
 
                                         <br><br>
                                     <label for="">الملاحظات</label><br>
-                                    <textarea name="notes" id="" cols="35" rows="10" placeholder="ملاحظات"></textarea>
+                                    <textarea name="notes" id="" cols="35" rows="10" placeholder="ملاحظات">{{ $info_size_customer->notes }}</textarea>
                                     {{-- </form> --}}
                                 </div>
 

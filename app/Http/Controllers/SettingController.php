@@ -18,14 +18,16 @@ class SettingController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:150',
             'commercial_record'=>'required|min:15|unique:settings',
-            'phone'=>'required'
+            'phone'=>'required',
+            'email'=>'required'
 
         ],[
            'name.required'=>'يرجى ادخال اسم التصميم',
            'commercial_record.unique'=>'رقم السجل التجاري موجود مسبقأ',
            'commercial_record.required'=>'يرجى ادخال رقم السجل التجاري',
            'commercial_record.min'=>'يجب ان يتكون رقم السجل من 15 رقم',
-           'phone.required'=>'يرجي ادخال رقم الهاتف'
+           'phone.required'=>'يرجي ادخال رقم الهاتف',
+           'email.required'=>'يرجى ادخال البريد الالكتروتي'
         ]);
 
         Setting::create([
@@ -39,7 +41,7 @@ class SettingController extends Controller
             'created_by'=>auth()->user()->name
         ]);
 
-        session()->flash('add','تمت اضافة الاعدادات  بنجاح');
+        session()->flash('Add','تمت اضافة الاعدادات  بنجاح');
         $settings=Setting::all();
 
         return view('Settings.index', compact('settings'));

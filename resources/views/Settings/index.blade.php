@@ -162,7 +162,7 @@
                                         </div>
                                         <div class="form-group">
                                                     <label for="">البريد الالكتروني*</label><br>
-                                                    <input class="form-control" type="email" name="phone" placeholder=" البريد الالكتروني" required>
+                                                    <input class="form-control" type="email" name="email" placeholder=" البريد الالكتروني" required>
                                         </div>
                                         <div class="form-group">
 
@@ -207,7 +207,7 @@
                            </div>
                            <div class="modal-body">
 
-                               <form action="{{route('setting.update')}}" method="post" autocomplete="off">
+                               <form action="{{route('Setting.update')}}" method="post" autocomplete="off">
                                    {{-- {{method_field('patch')}} --}}
                                    {{csrf_field()}}
                                    <div class="form-group">
