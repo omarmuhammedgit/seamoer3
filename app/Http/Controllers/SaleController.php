@@ -9,10 +9,13 @@ use App\Models\Retribution;
 use App\Models\Sale;
 use App\Models\Seamoer;
 use App\Models\Section;
+use App\Models\Setting;
 use App\Models\Size;
 use App\Models\TradeMark;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Prgayman\Zatca\Facades\Zatca;
+use Prgayman\Zatca\Utilis\QrCodeOptions;
 
 
 class SaleController extends Controller
@@ -47,37 +50,50 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        $customer_id=Customer::latest()->first()->id;
+        // $customer_id=Customer::latest()->first()->id;
+        $id=$request->customer;
+        // dd($id);
+
         $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'invoice_number'=>'required|unique:customers|max:20',
-            'phone'=>'required|max:10',
-            // 'email' => 'email:rfc,dns',
+            'customer' => 'required|max:255',
+            'invoice_number'=>'required|max:20',
             'number_dresses'=>'required',
             'detail_duration'=>'required',
             'code'=>'required',
             'price_include_tax'=>'required',
-            'discount'=>'required',
-            'receivedamount'=>'required'
+            'receivedamount'=>'required',
+            'seamtress'=>'required',
+            'retribution'=>'required',
+            'seamoer'=>'required',
         ],[
-           'name.required'=>'يرجى ادخال اسم العميل',
+           'customer.required'=>'يرجى ادخال اسم العميل',
            'invoice_number.required'=>'يرجى ادخال رقم الفاتورة',
-           'invoice_number.unique'=>'رقم الفاتورة موجود مسبقأ',
            'phone.required'=>'يرجى ادخال رقم الهاتف',
-        //    'email.email'=>'يجب ان يكون الايميل صالحا',
            'phone.max'=>'يجب ان يكون رقم الهاتف 10 ارقام',
            'number_dresses.required'=>'يرجى ادخال  عدد  الثياب',
            'detail_duration.required'=>'يرجى ادخال  مدة التفصيل',
            'code.required'=>'يرجى ادخال  كود العميل',
+        'retribution.required'=>'يرجى ادخال اسم القصاص',
+           'seamoer.required'=>'يرجى ادخال اسم الخياط',
            'price_include_tax.required'=>'يرجى ادخال  المبيلغ شامل الضريبة',
            'discount.required'=>'يرجى ادخال  قمية الخصم',
-           'receivedamount.required'=>'يرجى ادخال  المبلغ المستلم'
+           'receivedamount.required'=>'يرجى ادخال  المبلغ المستلم',
+           'seamtress.required'=>'يرجى اختيار نوع الخياطة',
+
 
 
 
         ]);
 
+        $detail_duration=$request->detail_duration;
+        $time=time()+($detail_duration *24 *60 *60);
+        $receved_data=date("Y/m/d",$time);
+
         Size::create([
+            'invoice_number'=>$request->invoice_number,
+            'number_dresses'=>$request->number_dresses,
+            'detail_duration'=>$request->detail_duration,
+            'date'=>$request->date,
             'height'=>$request->height,
             'shoulder'=>$request->shoulder,
             'shoulder_leight'=>$request->shoulder_leight,
@@ -98,14 +114,13 @@ class SaleController extends Controller
             'image_pocket'=>$request->image_pocket,
             'image_algizour'=>$request->image_algizour,
             'seamtress'=>$request->seamtress,
-            'customer_id'=>$customer_id,
+            'customer_id'=>$request->customer,
             'seamoer_id'=>$request->seamoer,
             'retribution_id'=>$request->retribution,
-            'design_id'=>$request->name_design,
-            'fabric_id'=>$request->type_fabrice,
-            'section_id'=>$request->name_section,
-            // 'invoice_id'=>$request->invoice,
-            'trade_mark_id'=>$request->name_trade_mark,
+            'design'=>$request->name_design,
+            'fabric'=>$request->type_fabrice,
+            'section'=>$request->name_section,
+            'trade_mark'=>$request->name_trade_mark,
             'size_neck'=>$request->size_neck,
             'size_cbk'=>$request->size_cbk,
             'size_brest_pocket'=>$request->size_brest_pocket,
@@ -119,7 +134,9 @@ class SaleController extends Controller
             'afterdiscount'=>$request->afterdiscount,
             'receivedamount'=>$request->receivedamount,
             'remainingamount'=>$request->remainingamount,
-            'payment'=>$request->payment
+            'payment'=>$request->payment,
+            'receved_data'=>$receved_data,
+
         ]);
         session()->flash('Add','تمت اضافة البيانات بنجاح');
         return redirect()->back();
@@ -170,31 +187,38 @@ class SaleController extends Controller
         //
     }
     public function printInvoice($id){
+        class_alias(\Prgayman\Zatca\Facades\Zatca::class, 'Zatca');
+
         $info_size_customer=Size::where('id',$id)->first();
         $info_size_customer_id=Size::where('id',$id)->first()->customer_id;
         $info_size_customers=Size::where('customer_id',$info_size_customer_id)->get();
         $discount=Size::where('customer_id',$info_size_customer_id)->sum('discount');
-        $price_include_tax=Size::where('customer_id',$info_size_customer_id)->sum('price_include_tax');
+        $price_include_tax=Size::where('customer_id',$info_size_customer_id)->sum('afterdiscount');
         $price_doesnot_include_tax=Size::where('customer_id',$info_size_customer_id)->sum('price_doesnot_include_tax');
         $value_tax=Size::where('customer_id',$info_size_customer_id)->sum('value_tax');
         $receivedamount=Size::where('customer_id',$info_size_customer_id)->sum('receivedamount');
         $remainingamount=Size::where('customer_id',$info_size_customer_id)->sum('remainingamount');
         $price=Size::where('customer_id',$info_size_customer_id)->sum('discount');
+
+        $createBy=auth()->user()->name;
+        $setting=Setting::where('created_by',$createBy)->first();
+
         // $info_size_customers= DB::table("sizes")->where('customer_id',$info_size_customer_id)->get();
 
 
 
-        return view('Invoices.invoices',compact(
+        return view('Invoices.invoices',compact('setting',
             'info_size_customer','info_size_customers','discount',
             'price_include_tax','price_doesnot_include_tax',
             'value_tax','receivedamount','remainingamount'
         ));
-        // return $price;
+        // // return $price;
 
     }
     public function editSale($id)
     {
         $info_size_customer=Size::where('id',$id)->first();
+        $customers=Customer::all();
         $designs=design::all();
         $sections=Section::all();
         $fabrices=Fabrics::all();
@@ -202,53 +226,60 @@ class SaleController extends Controller
         $retributions=Retribution::all();
         $seamoers=Seamoer::all();
         return view('Sales.Selling-point.edit-selling-point',
-        compact('info_size_customer','designs','sections','fabrices','trademarks','retributions','seamoers'));
+        compact('customers','info_size_customer','designs','sections','fabrices','trademarks','retributions','seamoers'));
     }
     public function updateSale(Request $request)
     {
-        $customer_id=$request->customer_id;
+        $size=$request->size;
+        //
+
         $validatedData = $request->validate([
-            'name_customer' => 'required|max:255',
-            'invoice_number'=>'required|max:20|unique:customers,invoice_number,'.$customer_id,
-            'phone'=>'required|max:10',
-            // 'email' => 'email:rfc,dns',
+            'customer' => 'required|max:255',
+            'invoice_number'=>'required|max:20',
             'number_dresses'=>'required',
             'detail_duration'=>'required',
             'code'=>'required',
             'price_include_tax'=>'required',
             'discount'=>'required',
-            'receivedamount'=>'required'
+            'receivedamount'=>'required',
+            'retribution'=>'required',
+            'seamoer'=>'required',
+            'seamtress'=>'required',
         ],[
-           'name_customer.required'=>'يرجى ادخال اسم العميل',
+           'customer.required'=>'يرجى ادخال اسم العميل',
            'invoice_number.required'=>'يرجى ادخال رقم الفاتورة',
-           'invoice_number.unique'=>'رقم الفاتورة موجود مسبقأ',
-           'phone.required'=>'يرجى ادخال رقم الهاتف',
-        //    'email.email'=>'يجب ان يكون الايميل صالحا',
            'phone.max'=>'يجب ان يكون رقم الهاتف 10 ارقام',
            'number_dresses.required'=>'يرجى ادخال  عدد  الثياب',
            'detail_duration.required'=>'يرجى ادخال  مدة التفصيل',
            'code.required'=>'يرجى ادخال  كود العميل',
            'price_include_tax.required'=>'يرجى ادخال  المبيلغ شامل الضريبة',
            'discount.required'=>'يرجى ادخال  قمية الخصم',
-           'receivedamount.required'=>'يرجى ادخال  المبلغ المستلم'
+           'receivedamount.required'=>'يرجى ادخال  المبلغ المستلم',
+           'name_design.required'=>'يرجى ادخال اسم التصميم',
+           'name_section.required'=>'يرجى ادخال اسم القسم',
+           'type_fabrice.required'=>'يرجى ادخال نوع القماش',
+           'name_trade_mark.required'=>'يرجى ادخال اسم العلامة التجارية',
+           'retribution.required'=>'يرجى ادخال اسم القصاص',
+           'seamoer.required'=>'يرجى ادخال اسم الخياط',
+           'seamtress.required'=>'يرجى اختيار نوع الخياطة',
+           'discount.required'=>'يرجى ادخال قيمة الخصم حتى و لو  صفر'
 
 
 
         ]);
-         Customer::find($customer_id)->update([
-            'name'=>$request->name_customer,
-            'phone'=>$request->phone,
-            'code'=>$request->code,
-            'number_dresses'=>$request->number_dresses,
-            'detail_duration'=>$request->detail_duration,
-            'date'=>$request->date,
-            'time'=>$request->time,
-            'invoice_number'=>$request->invoice_number,
-            'receved_data'=>$request->receved_data
-        ]);
+
+
+        $detail_duration=$request->detail_duration;
+        $time=time()+($detail_duration *24 *60 *60);
+        $receved_data=date("Y/m/d",$time);
+
 
         $size_id=$request->size_id;
         Size::find($size_id)->update([
+            'invoice_number'=>$request->invoice_number,
+            'number_dresses'=>$request->number_dresses,
+            'detail_duration'=>$request->detail_duration,
+            'date'=>$request->date,
             'height'=>$request->height,
             'shoulder'=>$request->shoulder,
             'shoulder_leight'=>$request->shoulder_leight,
@@ -269,14 +300,13 @@ class SaleController extends Controller
             'image_pocket'=>$request->image_pocket,
             'image_algizour'=>$request->image_algizour,
             'seamtress'=>$request->seamtress,
-            'customer_id'=>$customer_id,
+            'customer_id'=>$request->customer,
             'seamoer_id'=>$request->seamoer,
             'retribution_id'=>$request->retribution,
-            'design_id'=>$request->name_design,
-            'fabric_id'=>$request->type_fabrice,
-            'section_id'=>$request->name_section,
-            // 'invoice_id'=>$request->invoice,
-            'trade_mark_id'=>$request->name_trade_mark,
+            'design'=>$request->name_design,
+            'fabric'=>$request->type_fabrice,
+            'section'=>$request->name_section,
+            'trade_mark'=>$request->name_trade_mark,
             'size_neck'=>$request->size_neck,
             'size_cbk'=>$request->size_cbk,
             'size_brest_pocket'=>$request->size_brest_pocket,
@@ -290,7 +320,8 @@ class SaleController extends Controller
             'afterdiscount'=>$request->afterdiscount,
             'receivedamount'=>$request->receivedamount,
             'remainingamount'=>$request->remainingamount,
-            'payment'=>$request->payment
+            'payment'=>$request->payment,
+            'receved_data'=>$receved_data
 
         ]);
         session()->flash('edit','تم تعديل البيانات بنجاح');
@@ -301,9 +332,16 @@ class SaleController extends Controller
     {
         $customer_id=$request->customer_id;
         Customer::find($customer_id)->delete();
-        // $id = $request->id;
-        // Size::find($id)->delete();
         session()->flash('delete','تم حذف البيانات بنجاح');
         return redirect('/Sale-menu');
     }
+     public function updateCal(Request $request){
+        $id =$request->id;
+        Size::where('id',$id)->update([
+            'receivedamount'=>$request->remainingamount,
+            'remainingamount'=>$request->receivedamount
+        ]);
+        session()->flash('edit','تم تحديث البيانات بنجاح');
+        return redirect('/Sale-menu');
+     }
 }

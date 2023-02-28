@@ -38,10 +38,11 @@ class TradeMarkController extends Controller
     {
 
         $validatedData = $request->validate([
-            'name_tradeMark' => 'required|max:255'
+            'name_tradeMark' => 'required|max:20'
 
         ],[
            'name_tradeMark.required'=>'يرجى ادخال اسم العلامة التجارية',
+           'name_tradeMark.max'=>'اسم العلامة التجارية اكبر 20 حرف'
         ]);
         TradeMark::create([
             'name_trade_mark'=>$request->name_tradeMark
@@ -97,11 +98,13 @@ class TradeMarkController extends Controller
     }
     public function updatetradeMark(Request $request){
         $id=$request->id;
+
         $validatedData = $request->validate([
-            'name_trade_mark' => 'required|max:255'
+            'name_tradeMark' => 'required|max:20'
 
         ],[
-           'name_trade_mark.required'=>'يرجى ادخال اسم العلامة التجارية',
+           'name_tradeMark.required'=>'يرجى ادخال اسم العلامة التجارية',
+           'name_tradeMark.max'=>'اسم العلامة التجارية اكبر 20 حرف'
         ]);
         TradeMark::find($id)->update([
             'name_trade_mark'=>$request->name_trade_mark

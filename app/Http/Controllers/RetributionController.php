@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Retribution;
 use App\Models\Size;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RetributionController extends Controller
 {
@@ -186,8 +187,13 @@ class RetributionController extends Controller
     public function deletecheckup($id)
     {
         $retribution=Retribution::where('id',$id)->first();
+        // $retribution_name=Retribution::where('id',$id)->first()->name;
         $info_retributions=Size::where('retribution_id',$id)->get();
+        // $info_retributions=DB::select('SELECT * FROM sizes WHERE '.$retribution_name ='retribution');
+        // dd($info_retributions);
         return view('Employees.Retribution.checkup',compact('retribution','info_retributions'));
+        // return $info_retributions;
+
     }
 
 }

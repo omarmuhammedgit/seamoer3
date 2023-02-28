@@ -1,82 +1,9 @@
 @extends('layouts.master')
 @section('css')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-    <style>
-        .swiper {
-            width: 200px;
-            height: 150px;
-            background-color: azure;
-            margin: auto;
-        }
 
-        .swiper-wrapper {
-            width: 200px;
-            height: 200px;
-            margin: auto;
-            number-align: center;
-        }
+<link href="{{ URL::asset('assets/plugins/sales/sellingPoint/css/sellingPoint.css') }}" rel="stylesheet">
 
-        img {
-            width: 120px;
-            height: 120px;
-            margin-top: 17%;
-
-
-        }
-    </style>
-    <style>
-        .showimg {
-            display: inline-block;
-            width: 200px;
-
-        }
-
-        #sin td input class="form-control" {
-            width: 100px;
-        }
-
-        td {
-            number-align: center
-        }
-
-        #idleft {
-            display: inline-block;
-            float: left;
-            width: 20%;
-            /* background-color: aliceblue; */
-        }
-
-        #idhight {
-            display: inline-block;
-            number-align: center;
-            float: right;
-            width: 20%;
-            padding: 20px;
-            /* background-color: bisque; */
-        }
-
-        #inp {
-            width: 30px;
-        }
-
-        #tdin input class="form-control" {
-            width: 50px;
-
-        }
-
-        #idcen {
-            display: inline-block;
-            direction: rtl;
-            width: 60%;
-            padding-top: 20px;
-            /* background-color: azure; */
-        }
-
-        #radio {
-            /* display: block; */
-            padding: 10px;
-        }
-    </style>
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -121,49 +48,39 @@
                             بيانت العميل
                         </div>
                         <div class="row row-sm">
+                            <input type="hidden" name="id">
 
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
+                                <input type="hidden" name="customer" value="{{$customer_size->customer->id}}">
                                 <div class="input class="form-control"-group">
-                                    اسم العميل : <input class="form-control" type="text" value="{{$customer->name}}" name="name_customer" readonly>
+                                    اسم العميل : <input class="form-control" type="text" value="{{$customer_size->customer->name}}" name="customername" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                 <div class="input class="form-control"-group">
-                                    رقم الجوال <input class="form-control" type="number" name="phone" value="{{$customer->phone}}" readonly>
+                                    كود العميل<input class="form-control" type="number" name="code" value="{{$customer_size->code}}" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                 <div class="input class="form-control"-group">
-                                    كود العميل<input class="form-control" type="number" name="code" value="{{$customer->code}}" readonly>
+                                    عدد الثياب <input class="form-control" type="number" name="number_dresses" value="{{$customer_size->number_dresses}}" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                 <div class="input class="form-control"-group">
-                                    عدد الثياب <input class="form-control" type="number" name="number_dresses" value="{{$customer->number_dresses}}" readonly>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 mg-t-20 mg-lg-t-0">
-                                <div class="input class="form-control"-group">
-                                    مدة التفصيل <input class="form-control" type="number" name="detail_duration" value="{{$customer->detail_duration}}" readonly>
+                                    مدة التفصيل <input class="form-control" type="number" name="detail_duration" value="{{$customer_size->detail_duration}}" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
 
                                 <div class="input class="form-control"-group">
 
-                                    التاريخ م <input class="form-control" type="date" name="date" value="{{$customer->date}}" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 mg-t-20 mg-lg-t-0">
-
-                                <div class="input class="form-control"-group">
-
-                                    الوقت<input class="form-control" type="time" name="time" value="{{$customer->time}}" required>
+                                 التاريخ الطلب<input class="form-control" type="date" name="date" value="{{$customer_size->date}}" required>
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                 <div class="input class="form-control"-group">
-                                    رقم الفاتورة<input class="form-control" type="number" name="number_invoice" value="2" readonly>
+                                    رقم الفاتورة<input class="form-control" type="number" name="invoice_number" value="{{ $customer_size->invoice_number }}" readonly>
                                 </div>
                                 {{-- <div class="input class="form-control"-group">
                                     عدد الطلبات<input class="form-control" type="number" name="number_requiest" value="{{$customer->number_requiest}}">
@@ -189,62 +106,59 @@
                         <table>
                             <tr id="sin">
                                 <td>
-                                    <label for="">الطول</label><br>
-                                    <input class="form-control" type="number" name="height" placeholder="الطول">
+                                    <label for="">الطول امام</label><br>
+                                    <input class="form-control" type="number" name="height">
+
+                                </td>
+                                <td>
+                                    <label for="">الطول الخلف</label><br>
+                                    <input class="form-control" type="number" name="shoulder">
                                 </td>
                                 <td>
                                     <label for="">الكتف</label><br>
-                                    <input class="form-control" type="number" name="shoulder" placeholder="الكتف">
+                                    <input class="form-control" type="number" name="shoulder_leight">
                                 </td>
                                 <td>
-                                    <label for="">طول الكتف</label><br>
-                                    <input class="form-control" type="number" name="shoulder_leight" placeholder="طول الكتف">
+                                    <label for="">الطول يد سادة</label><br>
+                                    <input class="form-control" type="number" name="brest" >
                                 </td>
                                 <td>
-                                    <label for="">الصدر</label><br>
-                                    <input class="form-control" type="number" name="brest" placeholder="الصدر">
+                                    <label for="">طول يد كبك</label><br>
+                                    <input class="form-control" type="number" name="expand_brest">
                                 </td>
                                 <td>
-                                    <label for="">وسع الصدر </label><br>
-                                    <input class="form-control" type="number" name="expand_brest" placeholder="وسع الصدر">
+                                    <label for="">وسع صدر</label><br>
+                                    <input class="form-control" type="number" name="neck" >
                                 </td>
                                 <td>
-                                    <label for="">الرقبة</label><br>
-                                    <input class="form-control" type="number" name="neck" placeholder="الرقبة">
+                                    <label for="">وسع الورك</label><br>
+                                    <input class="form-control" type="number" name="expand_hand">
                                 </td>
                                 <td>
                                     <label for="">وسع اليد</label><br>
-                                    <input class="form-control" type="number" name="expand_hand" placeholder="وسع اليد">
+                                    <input class="form-control" type="number" name="down_hand" >
+                                </td>
+                                <td>
+                                    <label for="">وسط اليد </label><br>
+                                    <input class="form-control" type="number" name="cbk_leight">
                                 </td>
                                 <td>
                                     <label for="">اسفل اليد</label><br>
-                                    <input class="form-control" type="number" name="down_hand" placeholder="اسفل اليد">
-                                </td>
-                                <td>
-                                    <label for="">طول الكبك</label><br>
-                                    <input class="form-control" type="number" name="cbk_leight" placeholder="طول الكبك">
-                                </td>
-                                <td>
-                                    <label for="">عرض الكبك</label><br>
-                                    <input class="form-control" type="number" name="cbk_width" placeholder="عرض الكبك">
+                                    <input class="form-control" type="number" name="cbk_width" >
                                 </td>
                             </tr>
                             <tr id="sin">
                                 <td>
-                                    <label for="">طول الجيب</label>
-                                    <input class="form-control" type="number" name="pocket_leight" placeholder="طول الجيب">
-                                </td>
-                                <td>
-                                    <label for="">وسع الجيب</label>
-                                    <input class="form-control" type="number" name="pocket_expand" placeholder="وسع الجيب">
+                                    <label for="">كفة الكبك</label>
+                                    <input class="form-control" type="number" name="pocket_leight">
                                 </td>
                                 <td>
                                     <label for="">وسع اسفل</label>
-                                    <input class="form-control" type="number" name="down_expand" placeholder="وسع اسفل">
+                                    <input class="form-control" type="number" name="pocket_expand">
                                 </td>
                                 <td>
                                     <label for="">كفة اسفل</label>
-                                    <input class="form-control" type="number" name="down_desist" placeholder="كفة اسفل">
+                                    <input class="form-control" type="number" name="down_desist">
                                 </td>
                             </tr>
                         </table><br>
@@ -280,6 +194,7 @@
                                             <td>
                                                 <label for="">نوع التصميم</label><br>
                                                 <select class="form-control" name="name_design" id="">
+                                                    <option value="" label="بدون"></option>
                                                     @foreach ($designs as $design)
                                                         <option value="{{ $design->id }}">{{ $design->name_design }}
                                                         </option>
@@ -292,6 +207,7 @@
 
                                     <label for="">القسم</label><br>
                                     <select class="form-control" name="name_section" id="name_section">
+                                        <option value="" label="بدون"></option>
                                         @foreach ($sections as $section)
                                             <option value="{{ $section->id }}">{{ $section->name_section }}</option>
                                         @endforeach
@@ -301,6 +217,7 @@
                                             <td>
                                                 <label for="">القماش</label><br>
                                                 <select class="form-control" name="type_fabrice" id="">
+                                                    <option value="" label="بدون"></option>
                                                     @foreach ($fabrices as $fabrice)
                                                         <option value="{{ $fabrice->id }}">{{ $fabrice->type_fabrice }}
                                                         </option>
@@ -310,6 +227,7 @@
                                             <td>
                                                 <label for="">اللون القماش</label><br>
                                                 <select class="form-control" name="color_fabrice" id="">
+                                                    <option value="" label="بدون"></option>
                                                     @foreach ($fabrices as $fabrice)
                                                         <option value="{{ $fabrice->id }}">{{ $fabrice->color_fabrice }}
                                                         </option>
@@ -319,6 +237,7 @@
                                             <td>
                                                 <label for="">العلامة التجارية</label><br>
                                                 <select class="form-control" name="name_trade_mark" id="">
+                                                    <option value="" label="بدون"></option>
                                                     @foreach ($trademarks as $trademark)
                                                         <option value="{{ $trademark->id }}">
                                                             {{ $trademark->name_trade_mark }}</option>
@@ -333,6 +252,7 @@
                                             <td>
                                                 <label for="">اسم القصاص</label><br>
                                                 <select class="form-control" name="retribution" id="">
+                                                    <option value="" label="بدون"></option>
                                                     @foreach ($retributions as $retribution)
                                                         <option value="{{ $retribution->id }}">{{ $retribution->name }}
                                                         </option>
@@ -344,6 +264,7 @@
                                             <td>
                                                 <label for="">اسم الخياط</label><br>
                                                 <select class="form-control" name="seamoer" id="">
+                                                    <option value="" label="بدون"></option>
                                                     @foreach ($seamoers as $seamoer)
                                                         <option value="{{ $seamoer->id }}">{{ $seamoer->name }}</option>
                                                     @endforeach
@@ -372,8 +293,6 @@
                                         <option value="" label="نقدا"></option>
                                         <option value="">شبكة</option>
                                     </select><br>
-                                    <label for="">الملاحظات</label>
-                                    <textarea name="notes" id="" cols="20" rows="2" placeholder="ملاحظات" ></textarea>
 
                                     </table>
                                 </center>
@@ -504,6 +423,11 @@
 
                                     </datalist>
                                     <input class="form-control" autocomplete="on" list="list" name="seamtress" placeholder="نوع الخياطة">
+
+                                    <br><br>
+                                    <label for="">الملاحظات</label><br>
+                                    {{-- <input type="text"> --}}
+                                    <textarea name="notes" id="" cols="35" rows="10" placeholder="ملاحظات"></textarea>
                                     {{-- </form> --}}
                                 </div>
 
@@ -522,8 +446,57 @@
 
 
             </div>
-            <!-- row closed -->
-            {{-- <div style="number-align: left;"> --}}
+
+    <div class="modal" id="modaldemo3">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content modal-content-demo">
+                <div class="modal-header">
+                    <h6 class="modal-title">اضافة عميل</h6><button aria-label="Close" class="close"
+                        data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('Customer.store') }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+
+                            <label for="">اسم العميل*</label><br>
+                            <input class="form-control" type="text" name="name" placeholder="اسم العميل">
+                        </div>
+                        <div class="form-group">
+                            @php
+                                $code = !empty(\App\Models\Customer::latest()->first()->code) ? ($code = \App\Models\Customer::latest()->first()->code) : 00453;
+
+                                $code = str_pad($code + 1, 5, 0, STR_PAD_LEFT);
+                            @endphp
+
+                            <label for="">كود العميل*</label><br>
+                            <input class="form-control" type="text" name="code" placeholder="كود العميل"
+                                value="{{ $code }}">
+                        </div>
+                        <div class="form-group">
+
+                            <label for="">رقم الهاتف*</label><br>
+                            <input class="form-control" type="text" name="phone" placeholder="رقم الهاتف">
+                        </div>
+                        <div class="form-group">
+
+                            <label for="">البريد الالكتروني*</label><br>
+                            <input class="form-control" type="text" name="email" placeholder="البريد الاكتروني">
+                        </div>
+
+
+
+                        <div class="modal-footer">
+                            <button class="btn ripple btn-primary" type="submit">حفظ</button>
+                            <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">الالغاء</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     </div>
     <!-- Container closed -->
@@ -531,116 +504,30 @@
     <!-- main-content closed -->
 @endsection
 @section('js')
+    <!---Internal  Selling Point js-->
+    <script src="{{ URL::asset('assets/plugins/sales/sellingPoint/js/sellingPoint.js') }}"></script>
+
 <script>
-    var imgselect1=document.getElementById('imgselect1').value;
-      document.getElementById('Imgcbk').src=imgselect1;
-      function imageSelect1(){
-      var imgselect1=document.getElementById('imgselect1').value;
-      document.getElementById('Imgcbk').src=imgselect1;
-
-      }
-    var imgselect2=document.getElementById('imgselect2').value;
-      document.getElementById('image_neck').src=imgselect2;
-      function imageSelect2(){
-      var imgselect2=document.getElementById('imgselect2').value;
-      document.getElementById('image_neck').src=imgselect2;
-
-      }
-    var imgselect3=document.getElementById('imgselect3').value;
-      document.getElementById('image_brest_pocket').src=imgselect3;
-      function imageSelect3(){
-      var imgselect3=document.getElementById('imgselect3').value;
-      document.getElementById('image_brest_pocket').src=imgselect3;
-
-      }
-    var imgselect4=document.getElementById('imgselect4').value;
-      document.getElementById('image_pocket').src=imgselect4;
-      function imageSelect4(){
-      var imgselect4=document.getElementById('imgselect4').value;
-      document.getElementById('image_pocket').src=imgselect4;
-
-      }
-    var imgselect5=document.getElementById('imgselect5').value;
-      document.getElementById('image_algizour').src=imgselect5;
-      function imageSelect5(){
-      var imgselect5=document.getElementById('imgselect5').value;
-      document.getElementById('image_algizour').src=imgselect5;
-
-      }
-
-
-
-  </script>
-<script>
-
-    function myfunction(){
-            var price_tax = parseFloat(document.getElementById("price_tax").value);
-            var result = price_tax / 1.15;
-            var value_tax=price_tax-result;
-            var value_tax=parseFloat(value_tax).toFixed(2);
-            var result = parseFloat(result).toFixed(2);
-            document.getElementById('value_tax').value=value_tax;
-            document.getElementById('tax').value = result;
-
-    }
-        function myfunction() {
-            var price_tax = parseFloat(document.getElementById("price_tax").value);
-            var result = price_tax * 15 /100;
-            var value_tax=price_tax-result;
-            var value_tax=parseFloat(value_tax).toFixed(2);
-            var result = parseFloat(result).toFixed(2);
-            document.getElementById('value_tax').value=result;
-            document.getElementById('tax').value = value_tax;
-
-        }
-
-        function myFunDiscount() {
-            var price_tax = parseFloat(document.getElementById("tax").value);
-            var discount = parseFloat(document.getElementById("discount").value);
-            var result = price_tax - discount;
-            // alert(result);
-            var value_tax = result * 15 /100;
-            var afterdiscount=result+value_tax;
-
-            var value_tax=parseFloat(value_tax).toFixed(2);
-            var result = parseFloat(result).toFixed(2);
-            document.getElementById('value_tax').value=value_tax;
-            document.getElementById('tax').value = result;
-            document.getElementById('afterdiscount').value = afterdiscount;
-
-        }
-
-        function myFunReceivedamount() {
-            var afterdiscount = parseFloat(document.getElementById("afterdiscount").value);
-            var receivedamount = parseFloat(document.getElementById("receivedamount").value);
-            var result = afterdiscount - receivedamount;
-            var result = parseFloat(result).toFixed(2);
-            document.getElementById('remainingamount').value = result;
-
-        }
-    function myalert() {
-        alert('عفوا هذا الفصل تحت التطوير');
-
-    }
-</script>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
-    <script>
-        const swiper = new Swiper('.swiper', {
-            loop: true,
-
-            pagination: {
-                el: '.swiper-pagination',
-            },
-
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-
-
+    $(document).ready(function() {
+        $('select[name="customer"]').on('change', function() {
+            var customerId = $(this).val();
+            if (customerId) {
+                $.ajax({
+                    url: "{{ URL::to('Customercode') }}/" + customerId,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $('select[name="code"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="code"]').append('<option value="' +
+                                value + '">' + value + '</option>');
+                        });
+                    },
+                });
+            } else {
+                console.log('AJAX load did not work');
+            }
         });
-    </script>
+    });
+</script>
 @endsection

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c66141509628f11448796a49c762cfc",
+    "content-hash": "98cfc58d80d03c6fd32326695ed6073e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2434,6 +2434,72 @@
                 }
             ],
             "time": "2022-07-30T15:51:26+00:00"
+        },
+        {
+            "name": "prgayman/laravel-zatca",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/prgayman/laravel-zatca.git",
+                "reference": "a7a298f3551e217a5bee2792eea76903aa17352d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/prgayman/laravel-zatca/zipball/a7a298f3551e217a5bee2792eea76903aa17352d",
+                "reference": "a7a298f3551e217a5bee2792eea76903aa17352d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2|^8.0",
+                "simplesoftwareio/simple-qrcode": "^4.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Prgayman\\Zatca\\ZatcaServiceProvider"
+                    ],
+                    "aliases": {
+                        "Zatca": "Prgayman\\Zatca\\Facades\\Zatca"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Prgayman\\Zatca\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ayman Alaiwah",
+                    "email": "aymanalaiwah.dev@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel package a helper to Generate the QR code and signed it for ZATCA E-invoicing",
+            "homepage": "https://github.com/prgayman/laravel-zatca",
+            "keywords": [
+                "ZATCA",
+                "e-invoicing",
+                "laravel",
+                "prgayman",
+                "qrcode"
+            ],
+            "support": {
+                "issues": "https://github.com/prgayman/laravel-zatca/issues",
+                "source": "https://github.com/prgayman/laravel-zatca"
+            },
+            "time": "2021-12-12T10:13:01+00:00"
         },
         {
             "name": "psr/container",

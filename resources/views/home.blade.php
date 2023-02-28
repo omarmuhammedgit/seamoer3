@@ -58,7 +58,7 @@
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Size::sum('price_doesnot_include_tax')}} ريال</h4>
+											<h5 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Size::sum('price_doesnot_include_tax')}} ريال</h5>
 											<p class="mb-0 tx-12 text-white op-7" style="font-size: 20px">المبيعات خلال هذا الشهر
                                             </p>
 										</div>
@@ -81,7 +81,7 @@
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Size::sum('value_tax')}} ريال</h4>
+											<h5 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Size::sum('value_tax')}} ريال</h5>
 											<p class="mb-0 tx-12 text-white op-7" style="font-size: 20px">ضريبة المبيعات خلال هذا الشهر</p>
 										</div>
 										{{-- <span class="float-right my-auto mr-auto">
@@ -103,7 +103,7 @@
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Product::sum('price_sale_include_tax')}} ريال</h4>
+											<h5 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Product::sum('price_sale_include_tax')}} ريال</h5>
 											<p class="mb-0 tx-12 text-white op-7" style="font-size: 20px">المنتجات خلال هذا الشهر</p>
 										</div>
 										{{-- <span class="float-right my-auto mr-auto">
@@ -200,8 +200,8 @@
 
 											<tr>
 												<td>{{$size->customer->name}}</td>
-												<td>{{$size->customer->number_dresses}}</td>
-												<td>{{$size->customer->receved_data}}</td>
+												<td>{{$size->number_dresses}}</td>
+												<td>{{$size->receved_data}}</td>
 												<td>{{$size->receivedamount}}</td>
 												<td>{{$size->price_include_tax}}</td>
 											</tr>

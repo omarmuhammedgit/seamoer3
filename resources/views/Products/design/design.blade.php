@@ -115,30 +115,18 @@
                                 <div class="modal-body">
                                     <form action="{{route('Products-design.store')}}" method="POST">
                                         @csrf
-                                    <div class="row col-4">
-                                        {{-- @php
-                                            $number=$designs->number_design;
-                                            if (empty($number)) {
-                                                $number=1;
-                                            }else {
-                                                $number=$number+1;
-                                            }
-                                        @endphp --}}
-                                        <table>
-                                            <tr>
-                                                <td><label for="">اسم التصميم</label><br>
+                                        <div class="form-group">
+                                                    <label for="">اسم التصميم</label><br>
                                                     <input class="form-control" type="text" name="name_design" placeholder="ادخل اسم التصميم" required>
-                                                </td>
-                                                <td><label for="">رقم التصميم</label><br>
-                                                    <input class="form-control" type="text" name="number_design" placeholder="ادخل رقم التصميم" required>
-                                                </td>
-                                                {{-- <td><label for="">السعر</label><br>
-                                                    <input class="form-control" type="number" name="price">
-                                                </td> --}}
-                                            </tr>
-                                        </table>
+                                        </div>
+                                        <div class="form-group">
 
-                                    </div>
+                                                    <label for="">رقم التصميم</label><br>
+                                                    <input class="form-control" type="text" name="number_design" placeholder="ادخل رقم التصميم" required>
+                                        </div>
+
+
+
                                      <div class="modal-footer">
                                     <button class="btn ripple btn-primary" type="submit">حفظ</button>
                                     <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">الالغاء</button>
@@ -234,28 +222,8 @@
 <script src="{{URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
+<script src="{{URL::asset('assets/plugins/product/design/js/design.js')}}"></script>
 
-<script>
-    $('#exampleModal2').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var name_design = button.data('name_design')
-        var number_design = button.data('number_design')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #name_design').val(name_design);
-        modal.find('.modal-body #number_design').val(number_design);
-    })
-</script>
 
-<script>
-    $('#modaldemo9').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var name_design = button.data('name_design')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #name_design').val(name_design);
-    })
-</script>
+
 @endsection

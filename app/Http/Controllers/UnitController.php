@@ -38,13 +38,14 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
-            'name_unit' => 'required|max:255'
+            'name_unit' => 'required|max:20',
+            'sub_unit' => 'max:20'
 
         ],[
            'name_unit.required'=>'يرجى ادخال اسم الوحدة',
-
+           'name_unit.max'=>'اسم الوحدة اكبر من 20 حرف',
+           'sub_unit.max'=>'اسم الوحدة الفرعية اكبر من 20 حرف'
 
         ]);
         Unit::create([
@@ -103,10 +104,14 @@ class UnitController extends Controller
     {
         $id=$request->id;
         $validatedData = $request->validate([
-            'name_unit' => 'required|max:255'
+            'name_unit' => 'required|max:20',
+            'sub_unit' => 'max:20'
 
         ],[
            'name_unit.required'=>'يرجى ادخال اسم الوحدة',
+           'name_unit.max'=>'اسم الوحدة اكبر من 20 حرف',
+           'sub_unit.max'=>'اسم الوحدة الفرعية اكبر من 20 حرف'
+
         ]);
         Unit::find($id)->update([
             'name_unit'=>$request->name_unit,

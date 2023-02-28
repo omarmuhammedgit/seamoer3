@@ -106,7 +106,7 @@
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content modal-content-demo">
                                 <div class="modal-header">
-                                    <h6 class="modal-title">اضافة تصميم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                                    <h6 class="modal-title">اضافة القسم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <div class="modal-body">
                                     <form action="{{route('Products-section.store')}}" method="POST">
@@ -177,7 +177,7 @@
          <div class="modal-dialog modal-dialog-centered" role="document">
              <div class="modal-content modal-content-demo">
                  <div class="modal-header">
-                     <h6 class="modal-title">حذف التصميم</h6><button aria-label="Close" class="close" data-dismiss="modal"
+                     <h6 class="modal-title">حذف القسم</h6><button aria-label="Close" class="close" data-dismiss="modal"
                                                                     type="button"><span aria-hidden="true">&times;</span></button>
                  </div>
                  <form action="{{route('section-delete')}}" method="post">
@@ -222,32 +222,6 @@
 <script src="{{URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
-<script>
-function showSub(){
-    document.getElementById("showsub").style.display='block';
-}
-</script>
-<script>
-    $('#exampleModal2').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var name_section = button.data('name_section')
-        var sub_section = button.data('sub_section')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #name_section').val(name_section);
-        modal.find('.modal-body #sub_section').val(sub_section);
-    })
-</script>
 
-<script>
-    $('#modaldemo9').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var name_section = button.data('name_section')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #name_section').val(name_section);
-    })
-</script>
+<script src="{{URL::asset('assets/plugins/product/section/js/section.js')}}"></script>
 @endsection

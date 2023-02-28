@@ -109,28 +109,24 @@
                                 <div class="modal-body">
                                     <form action="{{route('Products-unit.store')}}" method="POST">
                                         @csrf
-                                    <div class="row col-4">
-                                        <table>
-                                            <tr>
-                                                <td><label for="">اسم الوحدة</label><br>
+                                        <div class="form-group">
+
+                                        <label for="">اسم الوحدة</label><br>
                                                     <input class="form-control" type="text" name="name_unit" placeholder="اسم الوحدة">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <table>
-                                            <tr>
-                                                <td><input type="radio" onchange="showSub()">
-                                                    <label for="">هل لديه وحدة فرعية</label><br></td>
-                                            </tr>
-                                            <tr id="showSub" style="display: none">
-                                            <td>
+                                        </div>
+                                        <div class="form-group">
+
+                                                <input type="radio" onchange="showSub()">
+                                                    <label for="">هل لديه وحدة فرعية</label>
+                                        </div>
+
+                                            <div id="showSub" style="display: none">
+
                                                 <div class="form-group">
 
                                                     الوحدةالفرعية<input class="form-control" type="text" placeholder="الوحدة الفرعية" name="sub_unit">
                                                 </div>
-                                                </td>
-                                            </tr>
-                                        </table>
+
 
                                     </div>
                                      <div class="modal-footer">
@@ -229,32 +225,6 @@
 <script src="{{URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
-<script>
-    function showSub(){
-        document.getElementById("showSub").style.display='block';
-    }
-    </script>
-<script>
-    $('#exampleModal2').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var name_unit = button.data('name_unit')
-        var sub_unit = button.data('sub_unit')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #name_unit').val(name_unit);
-        modal.find('.modal-body #sub_unit').val(sub_unit);
-    })
-</script>
 
-<script>
-    $('#modaldemo9').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var name_unit = button.data('name_unit')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #name_unit').val(name_unit);
-    })
-</script>
+<script src="{{URL::asset('assets/plugins/product/units/js/units.js')}}"></script>
 @endsection

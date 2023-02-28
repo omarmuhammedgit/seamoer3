@@ -37,10 +37,13 @@ class SectionController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name_section' => 'required|max:255'
+            'name_section' => 'required|max:20',
+            'sub_section'=>'max:20'
 
         ],[
            'name_section.required'=>'يرجى ادخال اسم القسم',
+           'sub_section.max'=>'اسم القسم الفرعي اكبر من 20 حرف',
+           'name_section.max'=>'اسم القسم اكبر من 20 حرف'
 
         ]);
         Section::create([
@@ -98,10 +101,13 @@ class SectionController extends Controller
     public function updatesection(Request $request){
         $id=$request->id;
         $validatedData = $request->validate([
-            'name_section' => 'required|max:255'
+            'name_section' => 'required|max:50',
+            'sub_section'=>'max:50'
 
         ],[
            'name_section.required'=>'يرجى ادخال اسم القسم',
+           'sub_section.max'=>'اسم القسم الفرعي اكبر من 50 حرف',
+           'name_section.max'=>'اسم القسم اكبر من 50 حرف'
 
         ]);
         Section::find($id)->update([

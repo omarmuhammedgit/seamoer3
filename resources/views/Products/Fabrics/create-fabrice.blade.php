@@ -117,25 +117,26 @@
                                 <div class="modal-body">
                                     <form action="{{route('Products-fabrice.store')}}" method="POST">
                                         @csrf
-                                    <div class="row col-4">
-                                        <table>
-                                            <tr>
-                                                <td><label for="">نوع القماش</label><br>
+                                    {{-- <div class="row col-4"> --}}
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">نوع القماش</label>
                                                     <input class="form-control" type="text" name="type_fabrice" placeholder="نوع القماش">
-                                                </td>
-                                                <td><label for="">رقم القماش</label><br>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label"> رقم القماش</label>
                                                     <input class="form-control" type="text" name="number_fabrice" placeholder="رقم القماش">
-                                                </td>
-                                                <td><label for="">اللون</label><br>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label"> اللون</label>
                                                     <input class="form-control" type="text" name="color_fabrice" placeholder="اللون">
-                                                </td>
+                                        </div>
                                                 {{-- <td><label for="">السعر</label><br>
                                                     <input class="form-control" type="text">
                                                 </td> --}}
-                                            </tr>
-                                        </table>
 
-                                    </div>
+
+                                    {{-- </div> --}}
                                      <div class="modal-footer">
                                     <button class="btn ripple btn-primary" type="submit">حفظ</button>
                                     <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">الالغاء</button>
@@ -235,29 +236,7 @@
 <script src="{{URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
-<script>
-    $('#exampleModal2').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var type_fabrice = button.data('type_fabrice')
-        var number_fabrice = button.data('number_fabrice')
-        var color_fabrice = button.data('color_fabrice')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #type_fabrice').val(type_fabrice);
-        modal.find('.modal-body #number_fabrice').val(number_fabrice);
-        modal.find('.modal-body #color_fabrice').val(color_fabrice);
-    })
-</script>
 
-<script>
-    $('#modaldemo9').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var type_fabrice = button.data('type_fabrice')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #type_fabrice').val(type_fabrice);
-    })
-</script>
+<script src="{{URL::asset('assets/plugins/product/fabrics/js/fabrics.js')}}"></script>
+
 @endsection

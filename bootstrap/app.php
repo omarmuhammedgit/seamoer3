@@ -41,6 +41,9 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->register(Prgayman\Zatca\ZatcaServiceProvider::class);
+
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

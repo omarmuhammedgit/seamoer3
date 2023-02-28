@@ -91,7 +91,7 @@
                             <div class="col-lg-3">
                                 <label for="">القسم الفرعي</label><br>
                                         <select class="form-control select2" name="sub_section">
-                                            
+
                                         </select>
                             </div>
                             <div class="col-lg-3">
@@ -207,7 +207,7 @@
                 </div>
             </div>
     </form>
-
+<input type="text" id="urlsection" value="{{ URL::to('sectionSub') }}">
     </div>
     <!-- row closed -->
     </div>
@@ -216,93 +216,63 @@
     <!-- main-content closed -->
 @endsection
 @section('js')
-    <script>
-        function price_product_sale() {
-            document.getElementById("price_product_purchas").style.display = 'none';
-            document.getElementById("price_product_sale").style.display = 'block';
 
-        }
+ <script>
 
-        function price_product_purchas() {
-
-            document.getElementById("price_product_sale").style.display = 'none';
-            document.getElementById("price_product_purchas").style.display = 'block';
-
-        }
-
-        function price_tex() {
-            var price_purchas_include_tax = parseFloat(document.getElementById('price_purchas_include_tax').value);
-            var value_tax = price_purchas_include_tax * 15 / 100;
-            var price_purches_doesnot_include_tax = price_purchas_include_tax - value_tax;
-            var total=price_purches_doesnot_include_tax + value_tax;
-            var value_tax = parseFloat(value_tax).toFixed(2);
-            var total = parseFloat(total).toFixed(2);
-            var price_purches_doesnot_include_tax = parseFloat(price_purches_doesnot_include_tax).toFixed(2);
-            document.getElementById('price_purches_doesnot_include_tax').value = price_purches_doesnot_include_tax;
-            document.getElementById('value_tax').value = value_tax;
-            document.getElementById('total').value = total;
-
-            // alert(price_purches_doesnot_include_tax);
-        }
-        function price_tex_sale() {
-            var price_sale_include_tax = parseFloat(document.getElementById('price_sale_include_tax').value);
-            var rale = price_sale_include_tax * 15 / 100;
-            var price_sale_doesnot_include_tax = price_sale_include_tax - rale;
-            var totalsale=price_sale_doesnot_include_tax + rale;
-            var rale = parseFloat(rale).toFixed(2);
-            var totalsale = parseFloat(totalsale).toFixed(2);
-            var price_sale_doesnot_include_tax = parseFloat(price_sale_doesnot_include_tax).toFixed(2);
-            document.getElementById('price_sale_doesnot_include_tax').value = price_sale_doesnot_include_tax;
-            document.getElementById('rale').value = rale;
-            document.getElementById('totalsale').value = totalsale;
-
-            // alert(price_purches_doesnot_include_tax);
-        }
-    </script>
-        <script>
-            $(document).ready(function() {
-                $('select[name="section_id"]').on('change', function() {
-                    var SectionId = $(this).val();
-                    if (SectionId) {
-                        $.ajax({
-                            url: "{{ URL::to('sectionSub') }}/" + SectionId,
-                            type: "GET",
-                            dataType: "json",
-                            success: function(data) {
-                                $('select[name="sub_section"]').empty();
-                                $.each(data, function(key, value) {
-                                    $('select[name="sub_section"]').append('<option value="' +
-                                        value + '">' + value + '</option>');
-                                });
-                            },
-                        });
-                    } else {
-                        console.log('AJAX load did not work');
-                    }
-                });
-            });
-        </script>
-                <script>
-                    $(document).ready(function() {
-                        $('select[name="unit_id"]').on('change', function() {
-                            var unitId = $(this).val();
-                            if (unitId) {
-                                $.ajax({
-                                    url: "{{ URL::to('unitSub') }}/" + unitId,
-                                    type: "GET",
-                                    dataType: "json",
-                                    success: function(data) {
-                                        $('select[name="sub_unit"]').empty();
-                                        $.each(data, function(key, value) {
-                                            $('select[name="sub_unit"]').append('<option value="' +
-                                                value + '">' + value + '</option>');
-                                        });
-                                    },
-                                });
-                            } else {
-                                console.log('AJAX load did not work');
-                            }
-                        });
+$(document).ready(function () {
+    $('select[name="section_id"]').on("change", function () {
+        var SectionId = $(this).val();
+        if (SectionId) {
+            $.ajax({
+                url: "{{ URL::to('sectionSub') }}/" + SectionId,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $('select[name="sub_section"]').empty();
+                    $.each(data, function (key, value) {
+                        $('select[name="sub_section"]').append(
+                            '<option value="' +
+                                value +
+                                '">' +
+                                value +
+                                "</option>"
+                        );
                     });
-                </script>
+                },
+            });
+        } else {
+            console.log("AJAX load did not work");
+        }
+    });
+});
+
+$(document).ready(function () {
+    $('select[name="unit_id"]').on("change", function () {
+        var unitId = $(this).val();
+        if (unitId) {
+            $.ajax({
+                url: "{{ URL::to('unitSub') }}/" + unitId,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $('select[name="sub_unit"]').empty();
+                    $.each(data, function (key, value) {
+                        $('select[name="sub_unit"]').append(
+                            '<option value="' +
+                                value +
+                                '">' +
+                                value +
+                                "</option>"
+                        );
+                    });
+                },
+            });
+        } else {
+            console.log("AJAX load did not work");
+        }
+    });
+});
+
+ </script>
+
 @endsection

@@ -37,15 +37,18 @@ class FabricsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'type_fabrice' => 'required|max:255',
-            'number_fabrice'=>'required|unique:fabrics|max:20',
-            'color_fabrice'=>'required'
+            'type_fabrice' => 'required|max:20',
+            'number_fabrice'=>'required|max:20|unique:fabrics',
+            'color_fabrice'=>'required|max:20'
 
         ],[
            'type_fabrice.required'=>'يرجى ادخال اسم القماش',
            'number_fabrice.unique'=>'رقم القماش موجود مسبقأ',
            'number_fabrice.required'=>'يرجى ادخال رقم القماش',
-           'color_fabrice.required'=>'يرجى ادخال اللون القماش'
+           'color_fabrice.required'=>'يرجى ادخال اللون القماش',
+           'type_fabrice.max'=>'اسم القماش اكبر من 20 حرف',
+           'color_fabrice.max'=>'اسم اللون القماش اكبر من 20 حرف',
+
 
 
         ]);
@@ -109,15 +112,18 @@ class FabricsController extends Controller
         $id=$request->id;
 
         $validatedData = $request->validate([
-            'type_fabrice' => 'required|max:255',
+            'type_fabrice' => 'required|max:20',
             'number_fabrice'=>'required|max:20|unique:fabrics,number_fabrice,'.$id,
-            'color_fabrice'=>'required'
+            'color_fabrice'=>'required|max:20'
 
         ],[
            'type_fabrice.required'=>'يرجى ادخال اسم القماش',
            'number_fabrice.unique'=>'رقم القماش موجود مسبقأ',
            'number_fabrice.required'=>'يرجى ادخال رقم القماش',
-           'color_fabrice.required'=>'يرجى ادخال اللون القماش'
+           'color_fabrice.required'=>'يرجى ادخال اللون القماش',
+           'type_fabrice.max'=>'اسم القماش اكبر من 20 حرف',
+           'color_fabrice.max'=>'اسم اللون القماش اكبر من 20 حرف',
+
 
 
         ]);

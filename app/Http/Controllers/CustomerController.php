@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -35,7 +36,27 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:20',
+            'phone' => 'required|max:20',
+            'code'=>'required|unique:customers',
+
+
+        ],[
+           'name.required'=>'يرجى ادخال اسم العميل',
+           'phone.required'=>'ادخال رقم الجوال',
+           'code.unique'=>'كود العميل موجود مسبقآ'
+
+        ]);
+        Customer::create([
+            'name'=>$request->name,
+            'phone'=>$request->phone,
+            'code'=>$request->code,
+            'email'=>$request->email
+        ]);
+        session()->flash('Add','تمت اضافةالعميل بنجاح');
+
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +101,14 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+
     }
+
+    public function getCustomercode($id){
+
+        $customercode=DB::table('customers')->where('id',$id)->pluck('code');
+        return json_encode($customercode);
+
+    }
+
 }

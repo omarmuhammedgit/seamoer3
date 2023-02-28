@@ -49,6 +49,7 @@ class EmployeController extends Controller
             // 'email' => 'email:rfc,dns',
             'city'=>'required',
             'district'=>'required',
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
             'street'=>'required'
         ],[
            'first_name.required'=>'يرجى ادخال اسم الموظف',
@@ -84,14 +85,14 @@ class EmployeController extends Controller
             'name_bank'=>$request->name_bank,
             'statement'=>$request->statement,
             'name_user'=>$request->name_user,
-            'password1'=>Hash::make($request->password1),
-            'password2'=>Hash::make($request->password2),
+            'password1'=>Hash::make($request->password),
+            // 'password2'=>Hash::make($request->password2),
             'permission'=>$request->permission
         ]);
         User::create([
             'name'=>$request->name_user,
             'email'=>$request->email,
-            'password'=>Hash::make($request->password1),
+            'password'=>Hash::make($request->password),
         ]);
         session()->flash('Add','تمت اضافة الموظف بنجاح');
         return redirect('Employees');
@@ -172,6 +173,7 @@ class EmployeController extends Controller
             // 'email' => 'email:rfc,dns',
             'city'=>'required',
             'district'=>'required',
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
             'street'=>'required'
         ],[
            'first_name.required'=>'يرجى ادخال اسم الموظف',
@@ -205,13 +207,44 @@ class EmployeController extends Controller
             'name_bank'=>$request->name_bank,
             'statement'=>$request->statement,
             'name_user'=>$request->name_user,
-            'password1'=>$request->password1,
-            'password2'=>$request->password2,
+            'password1'=>bcrypt($request->password1),
+            // 'password2'=>bcrypt($request->password2),
             'permission'=>$request->permission
         ]);
         session()->flash('edit','تمت تعديل الموظف بنجاح');
         $employees=Employe::all();
         return view('Employees.Employees.employees',compact('employees'));
     }
+     public function editprofile(Request $request){
+        $id=$request->id;
+        if(!empty($request->password)){
+            $validatedData = $request->validate([
+
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$id],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],]);
+            User::find($id)->update([
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'password'=>bcrypt($request->password)
+            ]);
+            return redirect('/');
+
+        }else{
+
+            $validatedData = $request->validate([
+            'email' => [ 'string', 'email', 'max:255', 'unique:users,email,'.$id],
+            ]);
+            User::find($id)->update([
+                'name'=>$request->name,
+                'email'=>$request->email,]);
+
+                return redirect('/');
+
+
+        }
+
+        return $request;
+
+     }
 
 }

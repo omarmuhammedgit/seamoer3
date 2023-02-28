@@ -113,7 +113,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content modal-content-demo">
                     <div class="modal-header">
-                        <h6 class="modal-title">حذف المشتريات</h6>
+                        <h6 class="modal-title">حذف المنتج</h6>
                         <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -168,10 +168,8 @@
     $('#modaldemo9').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var id = button.data('id')
-        var section_name = button.data('section_name')
         var modal = $(this)
         modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #section_name').val(section_name);
     })
 </script>
     @endsection

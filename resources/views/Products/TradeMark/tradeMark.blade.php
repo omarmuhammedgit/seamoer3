@@ -52,7 +52,7 @@
 						<div class="card">
 							<div class="card-header pb-0" >
 								<div class="d-flex justify-content-between" style="text-align: center;">
-									<h4 class="card-title mg-b-0">قائمة الوحدات</h4>
+									<h4 class="card-title mg-b-0">قائمة العلامة التجارية</h4>
 									<i class="mdi mdi-dots-horizontal text-gray"></i>
 								</div>
 							</div>
@@ -110,15 +110,11 @@
                                 <div class="modal-body">
                                     <form action="{{route('Products-tradeMark.store')}}" method="POST">
                                         @csrf
-                                    <div class="row col-4">
-                                        <table>
-                                            <tr>
-                                                <td><label for="">اسم العلامة التجارية</label><br>
+                                        <div class="form-group">
+
+                                        <label for="">اسم العلامة التجارية</label><br>
                                                     <input class="form-control" type="text" name="name_tradeMark" id="tradeMark" placeholder="ادخل اسم علامة التجارية">
-                                                </td>
-                                            </tr>
-                                            </tr>
-                                        </table>
+                                        </div>
 
                                     </div>
                                      <div class="modal-footer">
@@ -212,25 +208,6 @@
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
 
-<script>
-    $('#exampleModal2').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var name_trade_mark = button.data('name_trade_mark')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #name_trade_mark').val(name_trade_mark);
-    })
-</script>
+<script src="{{URL::asset('assets/plugins/product/tradeMark/js/tradeMark.js')}}"></script>
 
-<script>
-    $('#modaldemo9').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var id = button.data('id')
-        var name_trade_mark = button.data('name_trade_mark')
-        var modal = $(this)
-        modal.find('.modal-body #id').val(id);
-        modal.find('.modal-body #name_trade_mark').val(name_trade_mark);
-    })
-</script>
 @endsection

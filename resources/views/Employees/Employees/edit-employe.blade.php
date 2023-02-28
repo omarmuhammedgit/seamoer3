@@ -2,8 +2,7 @@
 @section('css')
     <style>
         .submit {
-            direction: ltr;
-            text-align: left;
+            text-align:center;
             margin-bottom: 50px;
             margin-top: -20px;
         }
@@ -179,26 +178,27 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">كلمة السر</label>
                                     <input type="password" class="form-control" id="exampleInputPassword1"
-                                        placeholder="ادخل كلمة السر" name="password1" value="{{$employe->password1}}">
+                                        placeholder="ادخل كلمة السر" name="password" >
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">تاكيد كلمة السر</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1"
-                                        placeholder="ادخل كلمة السر" name="password2" value="{{$employe->password2}}">
+                                    {{-- {{ dd($employe->password2) }} --}}
+                                    <label for="exampleInputPassword2">تاكيد كلمة السر</label>
+                                    <input type="password" class="form-control" id="exampleInputPassword2"
+                                        placeholder="ادخل كلمة السر" name="password_confirmation" >
                                 </div>
                                 {{-- <div class="form-group">
                                     <label for="exampleInputPassword1">اسم الصلاحية</label>
                                     <input type="text" class="form-control" id="exampleInputPassword1"
                                         placeholder="ادخل اسم الصلاحية" name="permission" value="{{$employe->permission}}">
                                 </div> --}}
-                                <div class="form-group">
-                                    {{-- <div class="custom-checkbox custom-control"> --}}
+                                {{-- <div class="form-group">
+                                    <div class="custom-checkbox custom-control">
                                     <input type="checkbox" id="checkbox-1">
                                     <label class="exampleInputEmail1">اسم الفرع</label>
                                     <input type="text" class="form-control" id="exampleInputPassword1"
                                         placeholder="ادخل اسم الفرع" value="">
 
-                                </div>
+                                </div> --}}
 
 
                             </div>
@@ -208,11 +208,12 @@
 
                     </div>
 
-                    <div class="submit">
-                        <button type="submit" class="btn btn-primary mt-3 mb-0">تعديل</button>
-
-                    </div>
                 </div>
+            </div>
+
+            <div class="submit">
+                <button type="submit" id="checkpassword" class="btn btn-primary mt-3 mb-0">تعديل</button>
+
             </div>
         </form>
 
@@ -224,4 +225,5 @@
     <!-- main-content closed -->
 @endsection
 @section('js')
+
 @endsection

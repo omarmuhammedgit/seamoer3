@@ -59,6 +59,8 @@
                         <div class="col-lg-3">
                             <label style="width: 100px" >العلامة التجارية</label><br>
                                     <select class="form-control select2" id="trademark" name="trademark_id">
+                                        <option value="{{$product->tradeMark->id}}">{{$product->tradeMark->name_trade_mark}}</option>
+
                                         @php
                                             $collection=[];
                                         @endphp
@@ -73,6 +75,8 @@
                         <div class="col-lg-3">
                             <label for="">القسم</label><br>
                                     <select class="form-control select2" id="section_id" name="section_id">
+                                        <option value="{{$product->section->id}}">{{$product->section->name_section}}</option>
+
                                         @php
                                             $collection=[];
                                         @endphp
@@ -85,19 +89,16 @@
                         <div class="col-lg-3">
                             <label for="">القسم الفرعي</label><br>
                                     <select class="form-control select2"  name="sub_section">
-                                        @php
-                                            $collection=[];
-                                        @endphp
-                                         <option value="">بدون</option>
-                                        @foreach ($collection as $item)
-                                        <option value=""></option>
 
-                                        @endforeach
+                                        <option value="{{$product->section->sub_section}}">{{$product->section->sub_section}}</option>
+
                                     </select>
                         </div>
                         <div class="col-lg-3">
                             <label for="">الوجدة الرئيسية</label><br>
                                     <select class="form-control select2" id="trademark" name="unit_id">
+                                        <option value="{{$product->unit->id}}">{{$product->unit->name_unit}}</option>
+
                                         @php
                                             $collection=[];
                                         @endphp
@@ -110,19 +111,14 @@
                         <div class="col-lg-3">
                             <label for="">الوحدة الفرعية</label><br>
                                     <select  class="form-control"  name="sub_unit">
-                                        @php
-                                            $collection=[];
-                                        @endphp
-                                        <option value="">بدون</option>
-                                        @foreach ($collection as $item)
-                                        <option value=""></option>
 
-                                        @endforeach
+                                        <option value="{{$product->unit->sub_unit}}">{{$product->unit->sub_unit}}</option>
+
                                     </select>
                         </div>
                         <div class="col-lg-3">
-                            <label for="">تنبيه الكمية</label><br>
-                                    <input class="form-control" type="text" name="quantity_alert" placeholder="تنبيه الكمية" required value="{{$product->quantity_alert}}">
+                                <label for="">اجمالي الرصيد الافتتاحي</label><br>
+                                        <input class="form-control" type="number" name="total_opening_balance" placeholder="الرصيد افتتاحي" required value="{{$product->total_opening_balance}}">
                         </div>
                                 {{-- <td><label for="">اضافة صورة</label><br>
                                     <input class="form-control" type="file" name="image_product" value="{{$product->image_product}}">
@@ -135,12 +131,12 @@
                     </div>
                     <hr>
                     <div class="main-content-label mg-b-5">
-                        <h3>سعر الشراء</h3>
+                        <h4>سعر الشراء</h4>
                     </div>
                     <div class="form-group">
                         <input  type="radio" id="checkbox-1" name="price_product" onchange="price_product_purchas()">
                         <label class="exampleEmail1">
-                            <h4>تفعيل ضريبة الشراء (ملاخظة : عند تفعيل الخيار يتم احتساب السعر شامل الضربية )</h4>
+                            <h5>تفعيل ضريبة الشراء (ملاحظة : عند تفعيل الخيار يتم احتساب السعر شامل الضربية )</h5>
                         </label>
                     </div>
                     <div id="price_product_purchas" style="display: none">
@@ -160,12 +156,12 @@
                         </tr>
                     </table>
                     <div class="main-content-label mg-b-5">
-                        <h3>سعر البيع</h3>
+                        <h4>سعر البيع</h4>
                     </div>
                     <div class="form-group">
                         <input  type="radio" id="checkbox-1" name="price_product" onchange="price_product_sale()">
                         <label class="exampleEmail1">
-                            <h4>تفعيل ضريبة الشراء (ملاخظة : عند تفعيل الخيار يتم احتساب السعر شامل الضربية )</h4>
+                            <h5>تفعيل ضريبة الشراء (ملاحظة : عند تفعيل الخيار يتم احتساب السعر شامل الضربية )</h5>
                         </label>
                     </div>
                     <div id="price_product_sale" style="display: none" >
@@ -186,15 +182,6 @@
                         </tr>
                     </table>
                     </div>
-                    <div class="main-content-label mg-b-5">
-                        <br><br>
-                        <h3>محزون الافتتاحي</h3>
-                    </div>
-                    <table>
-                        <tr>
-                            <td><label for="">اجمالي الرصيد الافتتاحي</label><br>
-                                <input class="form-control" type="number" name="total_opening_balance" placeholder="الرصيد افتتاحي" required value="{{$product->total_opening_balance}}">
-                            </td></tr></table>
 
 
                 </div>
@@ -215,17 +202,63 @@
     <!-- main-content closed -->
 @endsection
 @section('js')
+<script src="{{URL::asset('assets/plugins/product/product/js/product.js')}}"></script>
+
 <script>
-    function price_product_sale(){
-            document.getElementById("price_product_purchas").style.display='none';
-            document.getElementById("price_product_sale").style.display='block';
 
-    }
-    function price_product_purchas(){
+$(document).ready(function () {
+    $('select[name="section_id"]').on("change", function () {
+        var SectionId = $(this).val();
+        if (SectionId) {
+            $.ajax({
+                url: "{{ URL::to('sectionSub') }}/" + SectionId,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $('select[name="sub_section"]').empty();
+                    $.each(data, function (key, value) {
+                        $('select[name="sub_section"]').append(
+                            '<option value="' +
+                                value +
+                                '">' +
+                                value +
+                                "</option>"
+                        );
+                    });
+                },
+            });
+        } else {
+            console.log("AJAX load did not work");
+        }
+    });
+});
 
-            document.getElementById("price_product_sale").style.display='none';
-            document.getElementById("price_product_purchas").style.display='block';
+$(document).ready(function () {
+    $('select[name="unit_id"]').on("change", function () {
+        var unitId = $(this).val();
+        if (unitId) {
+            $.ajax({
+                url: "{{ URL::to('unitSub') }}/" + unitId,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $('select[name="sub_unit"]').empty();
+                    $.each(data, function (key, value) {
+                        $('select[name="sub_unit"]').append(
+                            '<option value="' +
+                                value +
+                                '">' +
+                                value +
+                                "</option>"
+                        );
+                    });
+                },
+            });
+        } else {
+            console.log("AJAX load did not work");
+        }
+    });
+});
 
-    }
 </script>
 @endsection

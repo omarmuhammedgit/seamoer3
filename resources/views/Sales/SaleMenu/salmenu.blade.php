@@ -7,13 +7,7 @@
     <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-    <style>
-        td input{
-            /* background-color: blue; */
-            /* text-align: center; */
 
-        }
-    </style>
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
@@ -83,46 +77,60 @@
                             <tbody>
                                 @foreach ($sizes as $size)
                                     <tr>
-                                        <td>{{ $size->customer->invoice_number }}</td>
+                                        <td>{{ $size->invoice_number }}</td>
                                         <td>{{ $size->customer->name }}</td>
-                                        <td>{{ $size->customer->number_dresses }}</td>
+                                        <td>{{ $size->number_dresses }}</td>
                                         <td>{{ $size->receivedamount }}</td>
                                         <td>{{ $size->remainingamount }}</td>
-                                        <td>{{ $size->design->name_design }}</td>
+                                        <td>{{ $size->design }}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <button aria-expanded="false" aria-haspopup="true"
                                                     class="btn ripple btn-primary" data-toggle="dropdown"
                                                     type="button">خيارات<i class="fas fa-caret-down ml-1"></i></button>
-                                                <div class="dropdown-menu tx-13">
-                                                    <button class="btn btn-primary btn-block"><a class="dropdown-item"
-                                                            href="print-invoice/{{ $size->id }}">طباعة</a></button>
-                                                    <button class="btn btn-info btn-block">
-                                                        <a class="dropdown-item "
+                                                <div class="dropdown-menu tx-1">
+                                                    {{-- <button class="btn btn-primary btn-block" style="width: 100px;height: 50px"> --}}
+                                                        <a class="dropdown-item btn tx-info" data-effect="effect-scale"  data-toggle="modal"
+                                                        data-remainingamount="{{ $size->remainingamount }}"
+                                                        data-receivedamount="{{ $size->receivedamount }}"
+                                                        data-afterdiscount="{{ $size->afterdiscount }}"
+                                                        data-id="{{ $size->id }}"
+                                                            href="#modaldemo3">اضافة قسط</a>
+                                                        {{-- </button> --}}
+                                                            {{-- <button class="btn btn-primary btn-block" style="width: 100px;height: 50px"> --}}
+                                                                <a class="dropdown-item btn tx-primary"
+                                                                    href="print-invoice/{{ $size->id }}">طباعة</a>
+                                                                {{-- </button> --}}
+                                                    {{-- <button class="btn btn-info btn-block" style="width: 100px;height: 50px"> --}}
+                                                        <a class="dropdown-item btn tx-info"
                                                             data-effect="effect-scale"
                                                             data-name="{{ $size->customer->name }}"
                                                             data-remainingamount="{{ $size->remainingamount }}"
                                                             data-receivedamount="{{ $size->receivedamount }}"
-                                                            data-number_dresses="{{ $size->customer->number_dresses }}"
-                                                            data-name_design="{{ $size->design->name_design }}"
-                                                            data-type_fabrice="{{ $size->fabric->type_fabrice }}"
-                                                            data-color_fabrice="{{ $size->fabric->color_fabrice }}"
-                                                            data-name_trade_mark="{{ $size->tradeMark->name_trade_mark }}"
+                                                            data-number_dresses="{{ $size->number_dresses }}"
+                                                            data-name_design="{{ $size->design }}"
+                                                            data-type_fabrice="{{ $size->fabric }}"
+                                                            data-color_fabrice="{{ $size->color_fabrice }}"
+                                                            data-name_trade_mark="{{ $size->trade_mark }}"
                                                             data-retribution="{{ $size->retribution->name }}"
                                                             data-seamoer="{{ $size->seamoer->name }}"
-                                                            data-name_section="{{ $size->section->name_section }}"
-                                                            data-value_tax="{{ $size->value_tax }}" data-toggle="modal"
+                                                            data-name_section="{{ $size->section }}"
+                                                            data-value_tax="{{ $size->receved_data }}" data-toggle="modal"
                                                             href="#checkup" title="فحص">
-                                                            فحص</a></button>
+                                                            فحص</a>
+                                                        {{-- </button> --}}
                                                     {{-- <button class="btn btn-dark btn-block" > <a class="dropdown-item" href="#">مرتجع الفاتورة</a></button> --}}
-                                                    <button class="btn btn-warning btn-block"> <a class="dropdown-item"
-                                                            href="edit-Sale-menu/{{ $size->id }}">تعديل</a></button>
-                                                    <button class="btn btn-danger btn-block">
-                                                        <a class="dropdown-item"
+                                                    {{-- <button class="btn btn-warning btn-block" style="width: 100px;height: 50px"> --}}
+                                                        <a class="dropdown-item btn tx-warning"
+                                                            href="edit-Sale-menu/{{ $size->id }}">تعديل</a>
+                                                        {{-- </button> --}}
+                                                    {{-- <button class="btn btn-danger btn-block" style="width: 100px;height: 50px"> --}}
+                                                        <a class="dropdown-item btn tx-danger"
                                                             data-effect="effect-scale" data-id="{{ $size->id }}"
                                                             data-customer_id="{{ $size->customer->id }}"
                                                             data-toggle="modal" href="#modaldemo9" title="حذف">
-                                                            حذف</a></button>
+                                                            حذف</a>
+                                                        {{-- </button> --}}
                                                 </div>
                                             </div>
 
@@ -186,12 +194,12 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        المبلغ المستلم <br><input type="text" id="remainingamount" value="">
+                                        المبلغ المستلم <br><input type="text" id="receivedamount" value="">
 
                                     </td>
                                     <td>
 
-                                        المبلغ المتبقي <br><input type="text" id="receivedamount" value="">
+                                        المبلغ المتبقي <br><input type="text" id="remainingamount" value="">
 
 
                                     </td>
@@ -235,7 +243,7 @@
 
                                     </td>
                                     <td>
-                                        قيمة الضريبة <br><input type="text" id="value_tax" value="">
+                                        تاريخ الاستلام<br><input type="text" id="value_tax" value="">
 
                                     </td>
 
@@ -251,6 +259,47 @@
             </div>
         </div>
 
+        <div class="modal" id="modaldemo3">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content modal-content-demo">
+                    <div class="modal-header">
+                        <h6 class="modal-title">اضافة  قسط</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{route('Sale-menu-updateCal')}}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <input type="hidden" name="id" id="id">
+
+                            <label for="">المبلغ شامل الضريبة</label><br>
+                                        <input class="form-control" type="text" name="afterdiscount" id="afterdiscount" readonly>
+                            </div>
+                            <div class="form-group">
+
+                                <label for="">المبلغ المستلم</label><br>
+                                            <input class="form-control" type="text" name="remainingamount" id="addremainingamount" readonly>
+                                </div>
+                                <div class="form-group">
+
+                                    <label for="">المبلغ المتبقي</label><br>
+                                                <input class="form-control" type="text" name="receivedamount" id="addreceivedamount" readonly>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="">المبلغ المضاف</label><br>
+                                                    <input class="form-control" type="text" id="amount" placeholder="ادخال المبلغ  الذي تريد اضافته" onchange="myAddInstalment()">
+                                        </div>
+                         <div class="modal-footer">
+                        <button class="btn ripple btn-primary" type="submit">تحديث</button>
+                        <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">الالغاء</button>
+                    </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /row -->
     </div>
@@ -278,44 +327,6 @@
     <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
-    <script>
-        $('#modaldemo9').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var id = button.data('id')
-            var customer_id = button.data('customer_id')
-            var modal = $(this)
-            modal.find('.modal-body #id').val(id);
-            modal.find('.modal-body #customer_id').val(customer_id);
-        })
-    </script>
-    <script>
-        $('#checkup').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var name = button.data('name')
-            var remainingamount = button.data('remainingamount')
-            var receivedamount = button.data('receivedamount')
-            var number_dresses = button.data('number_dresses')
-            var name_design = button.data('name_design')
-            var type_fabrice = button.data('type_fabrice')
-            var color_fabrice = button.data('color_fabrice')
-            var name_trade_mark = button.data('name_trade_mark')
-            var retribution = button.data('retribution')
-            var seamoer = button.data('seamoer')
-            var name_section = button.data('name_section')
-            var value_tax = button.data('value_tax')
-            var modal = $(this)
-            modal.find('.modal-body #name').val(name);
-            modal.find('.modal-body #remainingamount').val(remainingamount);
-            modal.find('.modal-body #receivedamount').val(receivedamount);
-            modal.find('.modal-body #number_dresses').val(number_dresses);
-            modal.find('.modal-body #name_design').val(name_design);
-            modal.find('.modal-body #type_fabrice').val(type_fabrice);
-            modal.find('.modal-body #color_fabrice').val(color_fabrice);
-            modal.find('.modal-body #name_trade_mark').val(name_trade_mark);
-            modal.find('.modal-body #retribution').val(retribution);
-            modal.find('.modal-body #seamoer').val(seamoer);
-            modal.find('.modal-body #name_section').val(name_section);
-            modal.find('.modal-body #value_tax').val(value_tax);
-        })
-    </script>
+    <script src="{{ URL::asset('assets/plugins/sales/saleMenu/js/saleMenu.js') }}"></script>
+
 @endsection

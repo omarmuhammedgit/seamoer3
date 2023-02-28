@@ -94,10 +94,10 @@
                                         <td> {{ $info_retribution->customer->number_dresses }}</td>
                                         <td>{{ $info_retribution->receivedamount }}</td>
                                         <td>{{ $info_retribution->remainingamount }}</td>
-                                        <td>{{ $info_retribution->design->name_design }}</td>
-                                        <td>{{ $info_retribution->fabric->type_fabrice }}</td>
-                                        <td>{{ $info_retribution->fabric->color_fabrice }}</td>
-                                        <td>{{ $info_retribution->tradeMark->name_trade_mark}}</td>
+                                        <td>{{ $info_retribution->design }}</td>
+                                        <td>{{ $info_retribution->fabric }}</td>
+                                        <td>{{ $info_retribution->color_fabrice }}</td>
+                                        <td>{{ $info_retribution->tradeMark}}</td>
 
                                     </tr>
                                 @endforeach
@@ -114,33 +114,9 @@
 
     <!-- /row -->
     </div>
-    <input type="hidden" id="token_search" value="{{ csrf_token() }}">
     <!-- Container closed -->
     </div>
-    <!-- delete -->
-   <div class="modal" id="modaldemo9">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content modal-content-demo">
-            <div class="modal-header">
-                <h6 class="modal-title">حذف الموظف</h6><button aria-label="Close" class="close" data-dismiss="modal"
-                                                               type="button"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <form action="{{route('Retribution-delete')}}" method="post">
-                {{-- {{method_field('delete')}} --}}
-                {{csrf_field()}}
-                <div class="modal-body">
-                    <p>هل انت متاكد من عملية الحذف ؟</p><br>
-                    <input type="hidden" name="id" id="id" value="">
-                    {{-- <input class="form-control" name="section_name" id="section_name" type="text" readonly> --}}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                    <button type="submit" class="btn btn-danger">تاكيد</button>
-                </div>
-        </div>
-        </form>
-    </div>
-</div>
+
     <!-- main-content closed -->
 @endsection
 @section('js')
@@ -164,14 +140,4 @@
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
 
-    <script>
-        $('#modaldemo9').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var id = button.data('id')
-            var section_name = button.data('section_name')
-            var modal = $(this)
-            modal.find('.modal-body #id').val(id);
-            modal.find('.modal-body #section_name').val(section_name);
-        })
-    </script>
     @endsection

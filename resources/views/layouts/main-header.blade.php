@@ -258,8 +258,9 @@
 											</div>{{Auth::user()->name}}
 										</div>
 									</div>
+                                    <a class="dropdown-item" href="{{ url('/' . $page='auth.edit') }}"><i class="bx bx-cog"></i> تعديل الملف الشخصي</a>
 									{{-- <a class="dropdown-item" href=""><i class="bx bx-user-circle"></i>Profile</a>
-									<a class="dropdown-item" href=""><i class="bx bx-cog"></i> Edit Profile</a>
+
 									<a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
 									<a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
 									<a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account Settings</a> --}}
@@ -273,11 +274,11 @@
 
                                </div>
 							</div>
-							<div class="dropdown main-header-message right-toggle">
+							{{-- <div class="dropdown main-header-message right-toggle">
 								<a class="nav-link pr-0" data-toggle="sidebar-left" data-target=".sidebar-left">
 									<svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
 								</a>
-							</div>
+							</div> --}}
 						</div>
 					</div>
 				</div>

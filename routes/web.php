@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DesignController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\FabricsController;
@@ -11,9 +12,11 @@ use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SeamoerController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SellingPointController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\TradeMarkController;
 use App\Http\Controllers\UnitController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,18 +31,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login ');
+    return view('auth.login');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('Setting',[SettingController::class,'index'])->name('setting');
+Route::post('Setting-create',[SettingController::class,'create'])->name('setting.create');
+
 //Route Employees
 Route::resource('Employees',EmployeController::class);
 Route::post('/Employees/ajax_search',[EmployeController::class,'ajax_search'])->name('ajax_search');
 Route::get('/edit-employee/{id}',[EmployeController::class,'editEmployess']);
 Route::post('Employees-update',[EmployeController::class,'updateEmployees'])->name('Employees-update');
 Route::post('Employees-delete',[EmployeController::class,'deleteEmployees'])->name('Employees-delete');
+Route::post('editProfile',[EmployeController::class,'editprofile'])->name('editProfile');
 //Route Seamoer
 Route::resource('Seamoer-create',SeamoerController::class);
 Route::get('edit-Seamoer/{id}',[SeamoerController::class,'editSeamoer']);
@@ -57,6 +64,10 @@ Route::resource('Supplier',SupplierController::class);
 Route::get('edit-Supplier/{id}',[SupplierController::class,'editSupplier']);
 Route::post('Supplier-update',[SupplierController::class,'updateSupplier'])->name('Supplier-update');
 Route::post('Supplier-delete',[SupplierController::class,'deleteSupplier'])->name('Supplier-delete');
+//route custmoer
+Route::resource('Customer',CustomerController::class);
+Route::get('Customercode/{id}',[CustomerController::class,'getCustomercode']);
+
 //Route design
 Route::resource('Products-design',DesignController::class);
 Route::post('design-update',[DesignController::class,'updatedesign'])->name('design-update');
@@ -88,6 +99,7 @@ Route::get('unitSub/{id}',[ProductController::class,'getUnitSub']);
 Route::resource('Sale-point',SellingPointController::class);
 Route::resource('Sale-menu',SaleController::class);
 Route::get('edit-Sale-menu/{id}',[SaleController::class,'editSale']);
+Route::post('Sale-menu-updateCal',[SaleController::class,'updateCal'])->name('Sale-menu-updateCal');
 Route::post('Sale-menu-update',[SaleController::class,'updateSale'])->name('Sale-menu-update');
 Route::post('Sale-menu-delete',[SaleController::class,'deleteSale'])->name('Sale-menu-delete');
 

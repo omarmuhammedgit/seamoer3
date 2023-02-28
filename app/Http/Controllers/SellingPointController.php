@@ -22,7 +22,7 @@ class SellingPointController extends Controller
      */
     public function index()
     {
-        $customer=Customer::latest('id')->first();
+        $customers=Customer::all();
         $designs=design::all();
         $sections=Section::all();
         $fabrices=Fabrics::all();
@@ -30,7 +30,7 @@ class SellingPointController extends Controller
         $retributions=Retribution::all();
         $seamoers=Seamoer::all();
         return view('Sales.Selling-point.selling-point',
-        compact('customer','designs','sections','fabrices','trademarks','retributions','seamoers'));
+        compact('customers','designs','sections','fabrices','trademarks','retributions','seamoers'));
     }
 
     /**
@@ -40,7 +40,7 @@ class SellingPointController extends Controller
      */
     public function create()
     {
-        $customer=Customer::latest('id')->first();
+        $customer_size=Size::latest('id')->first();
         $designs=design::all();
         $sections=Section::all();
         $fabrices=Fabrics::all();
@@ -48,7 +48,7 @@ class SellingPointController extends Controller
         $retributions=Retribution::all();
         $seamoers=Seamoer::all();
         return view('Sales.Selling-point.add-requiest'
-        ,compact('customer','designs','sections','fabrices','trademarks','retributions','seamoers'));
+        ,compact('customer_size','designs','sections','fabrices','trademarks','retributions','seamoers'));
     }
 
     /**
@@ -61,29 +61,34 @@ class SellingPointController extends Controller
     {
 
         $validatedData = $request->validate([
-            'name_customer' => 'required|max:255',
-            'invoice_number'=>'required|unique:customers|max:20',
-            'phone'=>'required|max:10',
-            // 'email' => 'email:rfc,dns',
+            'customer' => 'required|max:255',
+            'invoice_number'=>'required|max:20',
             'number_dresses'=>'required',
             'detail_duration'=>'required',
             'code'=>'required',
             'price_include_tax'=>'required',
-            'discount'=>'required',
-            'receivedamount'=>'required'
+            'receivedamount'=>'required',
+            'retribution'=>'required',
+            'seamoer'=>'required',
         ],[
-           'name_customer.required'=>'يرجى ادخال اسم العميل',
+           'customer.required'=>'يرجى ادخال اسم العميل',
            'invoice_number.required'=>'يرجى ادخال رقم الفاتورة',
-           'invoice_number.unique'=>'رقم الفاتورة موجود مسبقأ',
            'phone.required'=>'يرجى ادخال رقم الهاتف',
-        //    'email.email'=>'يجب ان يكون الايميل صالحا',
            'phone.max'=>'يجب ان يكون رقم الهاتف 10 ارقام',
            'number_dresses.required'=>'يرجى ادخال  عدد  الثياب',
            'detail_duration.required'=>'يرجى ادخال  مدة التفصيل',
            'code.required'=>'يرجى ادخال  كود العميل',
            'price_include_tax.required'=>'يرجى ادخال  المبيلغ شامل الضريبة',
            'discount.required'=>'يرجى ادخال  قمية الخصم',
-           'receivedamount.required'=>'يرجى ادخال  المبلغ المستلم'
+           'receivedamount.required'=>'يرجى ادخال  المبلغ المستلم',
+           'name_design.required'=>'يرجى ادخال اسم التصميم',
+           'name_section.required'=>'يرجى ادخال اسم القسم',
+           'type_fabrice.required'=>'يرجى ادخال نوع القماش',
+           'name_trade_mark.required'=>'يرجى ادخال اسم العلامة التجارية',
+           'retribution.required'=>'يرجى ادخال اسم القصاص',
+           'seamoer.required'=>'يرجى ادخال اسم الخياط',
+           'seamtress.required'=>'يرجى اختيار نوع الخياطة',
+           'discount.required'=>'يرجى ادخال قيمة الخصم حتى و لو  صفر'
 
 
 
@@ -91,26 +96,16 @@ class SellingPointController extends Controller
         $detail_duration=$request->detail_duration;
         $time=time()+($detail_duration *24 *60 *60);
         $receved_data=date("Y/m/d",$time);
-        // dd($detail_duration);
-
-        Customer::create([
-            'name'=>$request->name_customer,
-            'phone'=>$request->phone,
-            'code'=>$request->code,
-            'number_dresses'=>$request->number_dresses,
-            'detail_duration'=>$request->detail_duration,
-            'date'=>$request->date,
-            'time'=>$request->time,
-            'invoice_number'=>$request->invoice_number,
-            'receved_data'=>$receved_data,
-            // 'number_requiest'=>$request->number_requiest
-
-        ]);
-        $customer_id=Customer::latest()->first()->id;
 
 
 
         Size::create([
+
+            'customer_id'=>$request->customer,
+            'number_dresses'=>$request->number_dresses,
+            'detail_duration'=>$request->detail_duration,
+            'date'=>$request->date,
+            'invoice_number'=>$request->invoice_number,
             'height'=>$request->height,
             'shoulder'=>$request->shoulder,
             'shoulder_leight'=>$request->shoulder_leight,
@@ -131,14 +126,13 @@ class SellingPointController extends Controller
             'image_pocket'=>$request->image_pocket,
             'image_algizour'=>$request->image_algizour,
             'seamtress'=>$request->seamtress,
-            'customer_id'=>$customer_id,
             'seamoer_id'=>$request->seamoer,
             'retribution_id'=>$request->retribution,
-            'design_id'=>$request->name_design,
-            'fabric_id'=>$request->type_fabrice,
-            'section_id'=>$request->name_section,
+            'design'=>$request->name_design,
+            'fabric'=>$request->type_fabrice,
+            'section'=>$request->name_section,
             // 'invoice_id'=>$request->invoice,
-            'trade_mark_id'=>$request->name_trade_mark,
+            'trade_mark'=>$request->name_trade_mark,
             'size_neck'=>$request->size_neck,
             'size_cbk'=>$request->size_cbk,
             'size_brest_pocket'=>$request->size_brest_pocket,
@@ -152,7 +146,8 @@ class SellingPointController extends Controller
             'afterdiscount'=>$request->afterdiscount,
             'receivedamount'=>$request->receivedamount,
             'remainingamount'=>$request->remainingamount,
-            'payment'=>$request->payment
+            'payment'=>$request->payment,
+            'receved_data'=>$receved_data,
         ]);
         session()->flash('Add','تمت اضافة البيانات بنجاح');
 

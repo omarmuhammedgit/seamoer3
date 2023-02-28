@@ -38,16 +38,24 @@ class CreateSizesTable extends Migration
             $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
             $table->foreignId('seamoer_id')->constrained()->cascadeOnDelete();
             $table->foreignId('retribution_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('design_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('fabric_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('section_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('trade_mark_id')->constrained()->cascadeOnDelete();
+            $table->string('design')->nullable();
+            $table->string('fabric')->nullable();
+            $table->string('color_fabrice')->nullable();
+            $table->string('section')->nullable();
+            $table->string('trade_mark')->nullable();
             $table->string('size_neck')->nullable();
             $table->string('size_cbk')->nullable();
             $table->string('size_brest_pocket')->nullable();
             $table->string('size_pocket')->nullable();
             $table->string('size_algizour')->nullable();
-            
+
+            // $table->string('code',20)->unique();
+            $table->string('number_dresses');
+            $table->string('detail_duration');
+            $table->date('date');
+            // $table->time('time');
+            $table->bigInteger('invoice_number');
+            // $table->date('receved_data')->nullable();
             $table->string('seamtress')->nullable();
             $table->decimal('price_include_tax');
             $table->decimal('value_tax');
@@ -58,6 +66,7 @@ class CreateSizesTable extends Migration
             $table->decimal('remainingamount')->nullable();
             $table->string('payment')->nullable();
             $table->string('notes')->nullable();
+            $table->date('receved_data')->nullable();
             $table->timestamps();
         });
     }
