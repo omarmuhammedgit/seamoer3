@@ -7,6 +7,7 @@
 <link href="{{URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+<script src="{{URL::asset('assets/plugins/setting/css/setting.css')}}"></script>
 @endsection
 @section('page-header')
 				<!-- breadcrumb -->
@@ -88,10 +89,10 @@
 												<th class="wd-20p border-bottom-0">رقم الهاتف</th>
                                                 <th class="wd-20p border-bottom-0">البريد الالكتروني</th>
 												<th class="wd-15p border-bottom-0">اسم المدينة</th>
-												<th class="wd-15p border-bottom-0">اسم البلد</th>
-												<th class="wd-20p border-bottom-0">الرمز البريدي</th>
+												<th class="wd-15p border-bottom-0">اسم الحي</th>
+												<th class="wd-20p border-bottom-0">اسم الشارع</th>
 												<th class="wd-20p border-bottom-0">اضيفت بواسطة</th>
-
+                                                <th class="wd-20p border-bottom-0">شعار الشركة</th>
                                                 <th class="wd-20p border-bottom-0">خيارات</th>
 											</tr>
 										</thead>
@@ -109,6 +110,11 @@
 												<td>{{$setting->country}}</td>
 												<td>{{$setting->postal_code}}</td>
                                                 <td>{{$setting->created_by}}</td>
+                                                <td>
+
+                                                        <img class="custom_img" src="{{ URL::asset('assets/uploads').'/'.$setting->image }}" alt="شعار الشركة">
+
+                                                </td>
 												<td>
 
                                                     <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
@@ -120,6 +126,7 @@
                                                        data-country="{{ $setting->country }}"
                                                        data-created_by="{{ $setting->created_by }}"
                                                        data-postal_code="{{ $setting->postal_code }}"
+                                                       data-image="{{ $setting->image }}"
                                                         data-toggle="modal" href="#exampleModal2"
                                                        title="تعديل"><i class="las la-pen"></i></a>
 
@@ -145,7 +152,7 @@
                                     <h6 class="modal-title">اضافة الاعدادات</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{route('setting.create')}}" method="POST">
+                                    <form action="{{route('setting.create')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                                     <label for="">اسم شركة*</label><br>
@@ -170,12 +177,12 @@
                                                     <input class="form-control" type="text" name="city" placeholder="اسم المدينة" >
                                         </div>
                                         <div class="form-group">
-                                                    <label for="">اسم البلد</label><br>
+                                                    <label for="">اسم الحي</label><br>
                                                     <input class="form-control" type="text" name="country" placeholder="اسم البلد" >
                                         </div>
                                         <div class="form-group">
 
-                                                    <label for="">الرمز البريدي</label><br>
+                                                    <label for="">اسم الشارع</label><br>
                                                     <input class="form-control" type="text" name="postal_code" placeholder="الرمز البريدي" >
                                         </div>
 
@@ -207,7 +214,7 @@
                            </div>
                            <div class="modal-body">
 
-                               <form action="{{route('Setting.update')}}" method="post" autocomplete="off">
+                               <form action="{{route('Setting.update')}}" method="post" autocomplete="off" enctype="multipart/form-data">
                                    {{-- {{method_field('patch')}} --}}
                                    {{csrf_field()}}
                                    <div class="form-group">
@@ -225,7 +232,7 @@
                                     <input class="form-control" type="text" name="phone" id="phone" placeholder="رقم الهاتف" required>
                         </div>
                         <div class="form-group">
-                                    <label for="">البريد الالكتروني*</label><br>
+                                    <label for="">البريد الالكتروني</label><br>
                                     <input class="form-control" type="email" name="email" id="email" placeholder=" البريد الالكتروني" required>
                         </div>
                         <div class="form-group">
@@ -234,20 +241,24 @@
                                     <input class="form-control" type="text" name="city" id="city" placeholder="اسم المدينة" >
                         </div>
                         <div class="form-group">
-                                    <label for="">اسم البلد</label><br>
+                                    <label for="">اسم الحي</label><br>
                                     <input class="form-control" type="text" name="country" id="country" placeholder="اسم البلد" >
                         </div>
                         <div class="form-group">
 
-                                    <label for="">الرمز البريدي</label><br>
+                                    <label for="">اسم الشارع</label><br>
                                     <input class="form-control" type="text" name="postal_code" id="postal_code" placeholder="الرمز البريدي" >
                         </div>
-                        <div class="form-group">
+                             {{-- <div class="form-group">
 
-                            <label for="">اضيفت بواسطة</label><br>
-                            <input class="form-control" type="text" name="created_by" id="created_by" placeholder="الرمز البريدي" >
-                </div>
-                           </div>
+                                <label for=""> شعار الشركة</label><br>
+                                <img class="custom_img" src="{{ URL::asset('assets/uploads').'/'.$setting->image }}" alt="شعار الشركة">
+                                <button type="button" class="btn btn-sm btn-danger" id="update_image">تغير الصورة</button>
+                                <button type="button" class="btn btn-sm btn-danger" id="cancel_update_image" style="display: none"> الغاء</button>
+                                <input class="form-control" type="text" name="created_by" id="created_by" placeholder="الرمز البريدي" >
+                                 </div>
+                                 <div id="oldImage"></div>
+                           </div> --}}
                            <div class="modal-footer">
                                <button type="submit" class="btn btn-primary">تاكيد</button>
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>

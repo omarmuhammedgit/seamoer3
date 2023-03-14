@@ -16,11 +16,17 @@ $('#modaldemo3').on('show.bs.modal', function(event) {
 function myAddInstalment() {
     var afterdiscount = parseFloat(document.getElementById("afterdiscount").value);
     var addremainingamount = parseFloat(document.getElementById("addremainingamount").value);
+    var addreceivedamount = parseFloat(document.getElementById("addreceivedamount").value);
     var amount = parseFloat(document.getElementById("amount").value);
     // var value_tax = price_tax / 1.15;
     // var result = value_tax * 15 / 100;
-   var addremainingamount= addremainingamount + amount;
-    var addreceivedamount= afterdiscount - addremainingamount;
+    if(amount > addremainingamount){
+        alert("المبلغ المدخل اكبر من المبلغ المتبقي");
+        document.getElementById("amount").value='';
+        return false;
+    }
+   var addreceivedamount= addreceivedamount + amount;
+    var addremainingamount = afterdiscount - addreceivedamount;
     var addremainingamount = parseFloat(addremainingamount).toFixed(2);
     var addreceivedamount = parseFloat(addreceivedamount).toFixed(2);
     document.getElementById('addremainingamount').value = addremainingamount;
@@ -37,6 +43,17 @@ $('#exampleModal2').on('show.bs.modal', function(event) {
     modal.find('.modal-body #id').val(id);
     modal.find('.modal-body #name_unit').val(name_unit);
     modal.find('.modal-body #sub_unit').val(sub_unit);
+})
+
+$('#modaldemo9').on('show.bs.modal', function(event) {
+    var button = $(event.relatedTarget)
+    var id = button.data('id')
+    // var name_unit = button.data('name_unit')
+    // var sub_unit = button.data('sub_unit')
+    var modal = $(this)
+    modal.find('.modal-body #id').val(id);
+    // modal.find('.modal-body #name_unit').val(name_unit);
+    // modal.find('.modal-body #sub_unit').val(sub_unit);
 })
 
 $('#checkup').on('show.bs.modal', function(event) {

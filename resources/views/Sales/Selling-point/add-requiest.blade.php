@@ -51,36 +51,37 @@
                             <input type="hidden" name="id">
 
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
-                                <input type="hidden" name="customer" value="{{$customer_size->customer->id}}">
+                                <input type="hidden" name="customer" value="{{$sizes->customer->id}}">
                                 <div class="input class="form-control"-group">
-                                    اسم العميل : <input class="form-control" type="text" value="{{$customer_size->customer->name}}" name="customername" readonly>
+                                    اسم العميل : <input class="form-control" type="text" value="{{$sizes->customer->name}}" name="customername" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                 <div class="input class="form-control"-group">
-                                    كود العميل<input class="form-control" type="number" name="code" value="{{$customer_size->code}}" readonly>
+                                    كود العميل<input class="form-control" type="number" name="code" value="{{$sizes->customer->code}}" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                 <div class="input class="form-control"-group">
-                                    عدد الثياب <input class="form-control" type="number" name="number_dresses" value="{{$customer_size->number_dresses}}" readonly>
+                                    عدد الثياب <input class="form-control" type="number" name="number_dresses" value="{{$sizes->number_dresses}}" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                 <div class="input class="form-control"-group">
-                                    مدة التفصيل <input class="form-control" type="number" name="detail_duration" value="{{$customer_size->detail_duration}}" readonly>
+                                    مدة التفصيل <input class="form-control" type="number" name="detail_duration" value="{{$sizes->detail_duration}}" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
 
                                 <div class="input class="form-control"-group">
 
-                                 التاريخ الطلب<input class="form-control" type="date" name="date" value="{{$customer_size->date}}" required>
+                                 التاريخ الطلب<input class="form-control" type="date" name="date" value="{{$sizes->date}}" required>
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                 <div class="input class="form-control"-group">
-                                    رقم الفاتورة<input class="form-control" type="number" name="invoice_number" value="{{ $customer_size->invoice_number }}" readonly>
+                                    <input type="hidden" name="invoice_number" value="{{$sizes->invoice->id}}">
+                                    رقم الفاتورة<input class="form-control" type="number"   value="{{ $sizes->invoice->invoice_number }}" readonly>
                                 </div>
                                 {{-- <div class="input class="form-control"-group">
                                     عدد الطلبات<input class="form-control" type="number" name="number_requiest" value="{{$customer->number_requiest}}">
@@ -427,7 +428,7 @@
                                     <br><br>
                                     <label for="">الملاحظات</label><br>
                                     {{-- <input type="text"> --}}
-                                    <textarea name="notes" id="" cols="35" rows="10" placeholder="ملاحظات"></textarea>
+                                    <textarea name="notes" id="" cols="30" rows="10" placeholder="ملاحظات"></textarea>
                                     {{-- </form> --}}
                                 </div>
 
@@ -480,7 +481,7 @@
                         </div>
                         <div class="form-group">
 
-                            <label for="">البريد الالكتروني*</label><br>
+                            <label for="">البريد الالكتروني</label><br>
                             <input class="form-control" type="text" name="email" placeholder="البريد الاكتروني">
                         </div>
 

@@ -28,3 +28,25 @@ $('#modaldemo9').on('show.bs.modal', function(event) {
     var modal = $(this)
     modal.find('.modal-body #id').val(id);
 })
+$(document).ready(function(){
+    $(document).on('click','#update_image',function(e){
+        e.preventDefault();
+        // if(!('#image').length){
+            $('#update_image').hide();
+            $('#cancel_update_image').show();
+            $('#oldImage').html('<br><input type="file" id="image" name="image">')
+
+        // }
+        return false;
+    });
+    $(document).on('click','#cancel_update_image',function(e){
+        e.preventDefault();
+        // if(!('#image').length){
+            $('#cancel_update_image').hide();
+            $('#update_image').show();
+            $('#oldImage').html('')
+
+        // }
+        return false;
+    });
+});

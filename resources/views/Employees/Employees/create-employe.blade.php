@@ -53,26 +53,26 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>اسم الاول</span></label>
-                                <input class="form-control" type="text" name="first_name" placeholder="اسم الاول" required>
+                                <input class="form-control" type="text" name="first_name" value="{{ old('first_name') }}" placeholder="اسم الاول"  >
                             </div>
                             <div class="col-lg-3">
                                 <label><span>العائلة</span></label>
-                                <input class="form-control" type="text" name="last_name" placeholder="العائلة" required>
+                                <input class="form-control" type="text" name="last_name"  value="{{ old('last_name') }}" placeholder="العائلة"  >
                             </div>
                             <div class="col-lg-3">
                                 <label><span>رقم الموظف</span></label>
-                                <input class="form-control" type="number" name="no_employee" placeholder="رقم الموظف" required>
+                                <input class="form-control" type="number" name="no_employee" value="{{ old('no_employee') }}" placeholder="رقم الموظف"  >
                             </div>
                             <div class="col-lg-3">
                                 @php
                                     $date=date('Y/m/d');
                                 @endphp
                                 <label><span>تاريخ التعين</span></label>
-                                <input class="form-control" type="date" name="date_hiring" placeholder="تاريخ التعين" value="">
+                                <input class="form-control" type="date" name="date_hiring" value="{{ old('date_hiring') }}" placeholder="تاريخ التعين" value="">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>المسمى الوظيفي</span></label>
-                                <input class="form-control" type="text" name="job_title" placeholder="المسمى الموظيفي" required>
+                                <input class="form-control" type="text" name="job_title" value="{{ old('job_title') }}" placeholder="المسمى الموظيفي"  >
                             </div>
 
 
@@ -91,15 +91,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>رقم الجوال</span></label>
-                                <input class="form-control" type="number" name="number_phone1" placeholder="رقم الجوال" required>
+                                <input class="form-control" type="number" value="{{ old('number_phone1') }}" name="number_phone1" placeholder="رقم الجوال"  >
                             </div>
                             <div class="col-lg-3">
                                 <label><span>رقم الجوال 2</span></label>
-                                <input class="form-control" type="number" name="number_phone2" placeholder="رقم الجوال 2">
+                                <input class="form-control" type="number"  value="{{ old('number_phone2') }}" name="number_phone2" placeholder="رقم الجوال 2">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>البريد الكتروني</span></label>
-                                <input class="form-control" type="email" name="email" placeholder="البريد الالكتروني" required>
+                                <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="البريد الالكتروني"  >
                             </div>
 
 
@@ -119,15 +119,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>المدينة</span></label>
-                                <input class="form-control" type="text" name="city" placeholder="المدينة" required>
+                                <input class="form-control" type="text" name="city" value="{{ old('city') }}" placeholder="المدينة"  >
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الحي</span></label>
-                                <input class="form-control" type="text" name="district" placeholder="الحي" required>
+                                <input class="form-control" type="text" name="district" value="{{ old('district') }}" placeholder="الحي"  >
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الشارع</span></label>
-                                <input class="form-control" type="text" name="street" placeholder="الشارع" required>
+                                <input class="form-control" type="text" name="street" value="{{ old('street') }}" placeholder="الشارع"  >
                             </div>
 
 
@@ -146,15 +146,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>رقم البنك</span></label>
-                                <input class="form-control" type="number" name="account_number" placeholder="رقم البنك">
+                                <input class="form-control" type="number" name="account_number" value="{{ old('account_number') }}" placeholder="رقم البنك">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>اسم البنك</span></label>
-                                <input class="form-control" type="text" name="name_bank" placeholder="اسم البنك">
+                                <input class="form-control" type="text" name="name_bank" value="{{ old('name_bank') }}" placeholder="اسم البنك">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الابيان</span></label>
-                                <input class="form-control" type="text" name="statement" placeholder="الابيان">
+                                <input class="form-control" type="text" name="statement" value="{{ old('statement') }}" placeholder="الابيان">
                             </div>
                             <br>
                             <hr>
@@ -168,7 +168,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">اسم المستخدم</label>
                                     <input class="form-control" type="text" class="form-control" id="exampleInputEmail1"
-                                        placeholder="ادحل اسم المستخدم" name="name_user">
+                                        placeholder="ادحل اسم المستخدم" name="name_user" value="{{ old('name_user') }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">كلمة السر</label>

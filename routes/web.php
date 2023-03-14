@@ -104,9 +104,10 @@ Route::get('edit-Sale-menu/{id}',[SaleController::class,'editSale']);
 Route::post('Sale-menu-updateCal',[SaleController::class,'updateCal'])->name('Sale-menu-updateCal');
 Route::post('Sale-menu-update',[SaleController::class,'updateSale'])->name('Sale-menu-update');
 Route::post('Sale-menu-delete',[SaleController::class,'deleteSale'])->name('Sale-menu-delete');
+Route::post('Sale-menu-create',[SaleController::class,'createSale'])->name('Sale-menu-create');
 
 Route::resource('Sale-reference',SaleController::class);
-Route::get('/print-invoice/{id}',[SaleController::class,'printInvoice']);
+Route::get('/print-invoice/{id}',[SaleController::class,'printInvoice'])->name('printInvoices');
 //Route purchases
 Route::resource('purchases-menu',PurchaseController::class);
 Route::get('edit-purchases/{id}',[PurchaseController::class,'editpurchases']);

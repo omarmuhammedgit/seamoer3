@@ -42,7 +42,7 @@
     <div class="row">
         <!--div-->
 
-        <form action="{{ route('Sale-point.store') }}" method="POST">
+        <form action="{{ route('Sale-point.store') }}" method="POST" id="formAction">
             @csrf
             <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
                 <div class="card">
@@ -58,7 +58,7 @@
                                         <select class="form-control" name="customer" id="">
                                             <option value="" label="بدون"></option>
                                             @foreach ($customers as $customer)
-                                                <option value="{{ $customer->id }}">{{ $customer->name }}
+                                                <option @if (old('customer')== $customer->id)selected="selected" @endif value="{{ $customer->id }}">{{ $customer->name }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -77,7 +77,8 @@
                                     $code = str_pad($code + 1, 5, 0, STR_PAD_LEFT);
                                 @endphp
                                 <div class="input class="form-control"-group">
-                                    كود العميل <select class="form-control" name="code" id="">
+                                    كود العميل <select class="form-control" name="code" id="" value={{ old('code') }}>
+
                                     </select>
 
                                 </div>
@@ -85,13 +86,13 @@
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                 <div>
                                     عدد الثياب <input class="form-control" type="number" name="number_dresses"
-                                        id="number_dresses" placeholder="عدد الثياب">
+                                        id="number_dresses" placeholder="عدد الثياب" value="{{ old('number_dresses') }}">
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                 <div>
                                     مدة التفصيل <input class="form-control" type="number" id="detail_duration"
-                                        name="detail_duration" placeholder="مدة التفصيل">
+                                        name="detail_duration" placeholder="مدة التفصيل" value="{{ old('detail_duration') }}">
                                 </div>
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
@@ -107,7 +108,7 @@
                             </div>
                             <div class="col-lg-2 mg-t-20 mg-lg-t-0">
                                 @php
-                                    $number_invoice = !empty(\App\Models\Customer::latest()->first()->invoice_number) ? ($number_invoice = \App\Models\Customer::latest()->first()->invoice_number) : 0000;
+                                    $number_invoice = !empty(\App\Models\Invoice::latest()->first()->invoice_number) ? ($number_invoice = \App\Models\Invoice::latest()->first()->invoice_number) : 0000;
                                     // $number_invoice=!empty($)?$number_invoice:0000;
                                     $number_invoice = str_pad($number_invoice + 1, 5, 0, STR_PAD_LEFT);
                                 @endphp
@@ -136,58 +137,58 @@
                             <tr id="sin">
                                 <td>
                                     <label for="">الطول امام</label><br>
-                                    <input class="form-control" type="number" name="height">
+                                    <input class="form-control" type="number" name="height" value="{{ old('height') }}">
 
                                 </td>
                                 <td>
                                     <label for="">الطول الخلف</label><br>
-                                    <input class="form-control" type="number" name="shoulder">
+                                    <input class="form-control" type="number" name="shoulder" value="{{ old('shoulder') }}">
                                 </td>
                                 <td>
                                     <label for="">الكتف</label><br>
-                                    <input class="form-control" type="number" name="shoulder_leight">
+                                    <input class="form-control" type="number" name="shoulder_leight" value="{{ old('shoulder_leight') }}">
                                 </td>
                                 <td>
                                     <label for="">الطول يد سادة</label><br>
-                                    <input class="form-control" type="number" name="brest" >
+                                    <input class="form-control" type="number" name="brest"  value="{{ old('brest') }}">
                                 </td>
                                 <td>
                                     <label for="">طول يد كبك</label><br>
-                                    <input class="form-control" type="number" name="expand_brest">
+                                    <input class="form-control" type="number" name="expand_brest" value="{{ old('expand_brest') }}">
                                 </td>
                                 <td>
                                     <label for="">وسع صدر</label><br>
-                                    <input class="form-control" type="number" name="neck" >
+                                    <input class="form-control" type="number" name="neck"  value="{{ old('neck') }}">
                                 </td>
                                 <td>
                                     <label for="">وسع الورك</label><br>
-                                    <input class="form-control" type="number" name="expand_hand">
+                                    <input class="form-control" type="number" name="expand_hand" value="{{ old('expand_hand') }}">
                                 </td>
                                 <td>
                                     <label for="">وسع اليد</label><br>
-                                    <input class="form-control" type="number" name="down_hand" >
+                                    <input class="form-control" type="number" name="down_hand"  value="{{ old('down_hand') }}">
                                 </td>
                                 <td>
                                     <label for="">وسط اليد </label><br>
-                                    <input class="form-control" type="number" name="cbk_leight">
+                                    <input class="form-control" type="number" name="cbk_leight" value="{{ old('cbk_leight') }}">
                                 </td>
                                 <td>
                                     <label for="">اسفل اليد</label><br>
-                                    <input class="form-control" type="number" name="cbk_width" >
+                                    <input class="form-control" type="number" name="cbk_width"  value="{{ old('cbk_width') }}">
                                 </td>
                             </tr>
                             <tr id="sin">
                                 <td>
                                     <label for="">كفة الكبك</label>
-                                    <input class="form-control" type="number" name="pocket_leight">
+                                    <input class="form-control" type="number" name="pocket_leight" value="{{ old('pocket_leight') }}">
                                 </td>
                                 <td>
                                     <label for="">وسع اسفل</label>
-                                    <input class="form-control" type="number" name="pocket_expand">
+                                    <input class="form-control" type="number" name="pocket_expand" value="{{ old('pocket_expand') }}">
                                 </td>
                                 <td>
                                     <label for="">كفة اسفل</label>
-                                    <input class="form-control" type="number" name="down_desist">
+                                    <input class="form-control" type="number" name="down_desist" value="{{ old('down_desist') }}">
                                 </td>
                             </tr>
                         </table><br>
@@ -202,8 +203,9 @@
 
                         <div id="idleft">
                             <div class="radio">
-                                <button class="btn btn-info">
-                                    <a style="color: white" href="{{ route('Sale-point.create') }}"> اضافة طلب</a>
+                                <input type="hidden" value="{{ route('Sale-menu-create')   }}" id="url">
+                                <button class="btn btn-info" id="id2"  type="submit">
+                                    <a style="color: white" id="urlherf"> اضافة طلب</a>
                                 </button><br>
                                 {{-- <button><a href="#"> اضافة مرافق</a></button> --}}
 
@@ -225,7 +227,7 @@
                                                 <select class="form-control" name="name_design" id="">
                                                     <option value="" label="بدون"></option>
                                                     @foreach ($designs as $design)
-                                                        <option value="{{ $design->name_design }}">
+                                                        <option @if (old('name_design')== $design->name_design )selected="selected" @endif value="{{ $design->name_design }}">
                                                             {{ $design->name_design }}
                                                         </option>
                                                     @endforeach
@@ -307,24 +309,24 @@
                                     </table>
                                     <label for="">السعر شامل الضريبة</label>
                                     <input class="form-control" type="number" name="price_include_tax" id="price_tax"
-                                        onchange="myfunction()">
+                                        onchange="myfunction()"  value="{{ old('price_include_tax') }}">
                                     <label for="">السعر غير شامل الضريبة</label>
                                     <input class="form-control" type="number" name="price_doesnot_include_tax"
-                                        id="tax" readonly>
+                                        id="tax" readonly  value="{{ old('price_doesnot_include_tax') }}">
                                     <label for="">قيمة الضريبة</label>
-                                    <input class="form-control" type="number" name="value_tax" id="value_tax" readonly>
+                                    <input class="form-control" type="number" name="value_tax" id="value_tax" readonly  value="{{ old('value_tax') }}">
                                     <label for="">الخصم</label>
                                     <input class="form-control" type="number" name="discount" id="discount"
-                                        onchange="myFunDiscount()">
+                                        onchange="myFunDiscount()"  value="{{ old('discount') }}">
                                     <label for="">السعر بعد الخصم شامل الضريبة</label>
                                     <input class="form-control" type="number" name="afterdiscount" id="afterdiscount"
-                                        readonly>
+                                        readonly value="{{ old('afterdiscount') }}">
                                     <label for="">المبلغ المستلم</label>
                                     <input class="form-control" type="number" name="receivedamount" id="receivedamount"
-                                        onchange="myFunReceivedamount()">
+                                        onchange="myFunReceivedamount()" value="{{ old('receivedamount') }}">
                                     <label for="">المبلغ المتبقي</label>
                                     <input class="form-control" type="number" name="remainingamount"
-                                        id="remainingamount" readonly>
+                                        id="remainingamount" readonly value="{{ old('remainingamount') }}">
                                     <label for="">نوع الدفع</label>
                                     <select class="form-control" name="payment" id="">
                                         <option value="نقدا" label="نقدا"></option>
@@ -373,7 +375,7 @@
                                                     id="image_neck">
                                             </div>
                                             <input class="form-control" type="number" placeholder="مقاس"
-                                                name="size_neck">
+                                                name="size_neck"  value="{{ old('size_neck') }}">
 
                                         </div>
                                         <div class="showimg">
@@ -402,7 +404,7 @@
                                                     id="Imgcbk">
                                             </div>
                                             <input class="form-control" type="number" placeholder="مقاس"
-                                                name="size_cbk">
+                                                name="size_cbk" value="{{ old('size_cbk') }}">
 
                                         </div>
                                         <div class="showimg">
@@ -441,7 +443,7 @@
                                                     id="image_brest_pocket">
                                             </div>
                                             <input class="form-control" type="number" placeholder="مقاس"
-                                                name="size_brest_pocket">
+                                                name="size_brest_pocket" value="{{ old('size_brest_pocket') }}">
 
                                         </div>
                                         <div class="showimg">
@@ -466,7 +468,7 @@
                                                     id="image_pocket">
                                             </div>
                                             <input class="form-control" type="number" placeholder="مقاس"
-                                                name="size_pocket">
+                                                name="size_pocket" value="{{ old('size_pocket') }}">
 
                                         </div>
                                         <div class="showimg">
@@ -509,7 +511,7 @@
                                                     id="image_algizour">
                                             </div>
                                             <input class="form-control" type="number" placeholder="مقاس"
-                                                name="size_algizour">
+                                                name="size_algizour" value="{{ old('size_algizour') }}">
 
                                         </div>
                                     </section>
@@ -533,7 +535,7 @@
                                     <br><br>
                                     <label for="">الملاحظات</label><br>
                                     {{-- <input type="text"> --}}
-                                    <textarea name="notes" id="" cols="35" rows="10" placeholder="ملاحظات"></textarea>
+                                    <textarea name="notes" id="" cols="30" rows="10" placeholder="ملاحظات"></textarea>
                                     {{-- </form> --}}
                                 </div>
 
@@ -586,7 +588,7 @@
                         </div>
                         <div class="form-group">
 
-                            <label for="">البريد الالكتروني*</label><br>
+                            <label for="" >البريد الالكتروني</label><br>
                             <input class="form-control" type="text" name="email" placeholder="البريد الاكتروني">
                         </div>
 

@@ -58,26 +58,26 @@
                             <input type="hidden" name="id" value="{{$employe->id}}">
                             <div class="col-lg-3">
                                 <label><span>اسم الاول</span></label>
-                                <input class="form-control" type="text" name="first_name" value="{{$employe->first_name}}">
+                                <input class="form-control" type="text" name="first_name" value="{{old('first_name',$employe->first_name)}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>العائلة</span></label>
-                                <input class="form-control" type="text" name="last_name" placeholder="العائلة" value="{{$employe->last_name}}">
+                                <input class="form-control" type="text" name="last_name" placeholder="العائلة" value="{{old('last_name',$employe->last_name)}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>رقم الموظف</span></label>
-                                <input class="form-control" type="number" name="no_employee" placeholder="رقم الموظف" value="{{$employe->no_employee}}">
+                                <input class="form-control" type="number" name="no_employee" placeholder="رقم الموظف" value="{{old('no_employee',$employe->no_employee)}}">
                             </div>
                             <div class="col-lg-3">
                                 @php
                                     $date=date('Y/m/d');
                                 @endphp
                                 <label><span>تاريخ التعين</span></label>
-                                <input class="form-control" type="date" name="date_hiring" placeholder="تاريخ التعين"  value="{{$employe->date_hiring}}">
+                                <input class="form-control" type="date" name="date_hiring" placeholder="تاريخ التعين"  value="{{old('date_hiring',$employe->date_hiring)}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>المسمى الوظيفي</span></label>
-                                <input class="form-control" type="text" name="job_title" placeholder="المسمى الموظيفي" value="{{$employe->job_title}}">
+                                <input class="form-control" type="text" name="job_title" placeholder="المسمى الموظيفي" value="{{old('date_hiring',$employe->job_title)}}">
                             </div>
 
 
@@ -96,15 +96,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>رقم الجوال</span></label>
-                                <input class="form-control" type="tel" name="number_phone1" placeholder="رقم الجوال" value="{{$employe->number_phone1}}">
+                                <input class="form-control" type="tel" name="number_phone1" placeholder="رقم الجوال" value="{{old('number_phone1',$employe->number_phone1)}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>رقم الجوال 2</span></label>
-                                <input class="form-control" type="tel" name="number_phone2" placeholder="رقم الجوال 2" value="{{$employe->number_phone2}}">
+                                <input class="form-control" type="tel" name="number_phone2" placeholder="رقم الجوال 2" value="{{old('number_phone2',$employe->number_phone2)}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>البريد الكتروني</span></label>
-                                <input class="form-control" type="email" name="email" placeholder="البريد الالكتروني" value="{{$employe->email}}">
+                                <input class="form-control" type="email" name="email" placeholder="البريد الالكتروني" value="{{old('email',$employe->email)}}">
                             </div>
 
 
@@ -124,15 +124,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>المدينة</span></label>
-                                <input class="form-control" type="text" name="city" placeholder="المدينة" value="{{$employe->city}}">
+                                <input class="form-control" type="text" name="city" placeholder="المدينة" value="{{old('city',$employe->city)}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الحي</span></label>
-                                <input class="form-control" type="text" name="district" placeholder="الحي" value="{{$employe->district}}">
+                                <input class="form-control" type="text" name="district" placeholder="الحي" value="{{old('district',$employe->district)}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الشارع</span></label>
-                                <input class="form-control" type="text" name="street" placeholder="الشارع" value="{{$employe->street}}">
+                                <input class="form-control" type="text" name="street" placeholder="الشارع" value="{{old('street',$employe->street)}}">
                             </div>
 
 
@@ -151,15 +151,15 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <label><span>رقم البنك</span></label>
-                                <input class="form-control" type="number" name="account_number" placeholder="رقم البنك" value="{{$employe->account_number}}">
+                                <input class="form-control" type="number" name="account_number" placeholder="رقم البنك" value="{{old('account_number',$employe->account_number)}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>اسم البنك</span></label>
-                                <input class="form-control" type="text" name="name_bank" placeholder="اسم البنك" value="{{$employe->name_bank}}">
+                                <input class="form-control" type="text" name="name_bank" placeholder="اسم البنك" value="{{old('name_bank',$employe->name_bank)}}">
                             </div>
                             <div class="col-lg-3">
                                 <label><span>الابيان</span></label>
-                                <input class="form-control" type="text" name="statement" placeholder="الابيان" value="{{$employe->statement}}">
+                                <input class="form-control" type="text" name="statement" placeholder="الابيان" value="{{old('statement',$employe->statement)}}">
                             </div>
                             <br>
                             <hr>
@@ -173,7 +173,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">اسم المستخدم</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
-                                        placeholder="ادحل اسم المستخدم" name="name_user" value="{{$employe->name_user}}">
+                                        placeholder="ادحل اسم المستخدم" name="name_user" value="{{old('name_user',$employe->name_user)}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">كلمة السر</label>

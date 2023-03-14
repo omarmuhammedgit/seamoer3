@@ -4,8 +4,10 @@ function printDiv() {
     document.body.innerHTML=printContents;
     window.print();
     document.body.innerHTML = oiginalContents;
-    location.reload();
-    // invoiceseamoer();
+    // location.reload();
+
+
+    invoiceseamoer();
 }
 function invoiceseamoer() {
     // document.getElementById("price_product_purchas").style.display = 'block';
@@ -17,6 +19,7 @@ function invoiceseamoer() {
     document.body.innerHTML=printContents;
     window.print();
     document.body.innerHTML = oiginalContents;
-    location.reload();
+    // location.reload();
+
 
 }

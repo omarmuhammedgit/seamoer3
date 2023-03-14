@@ -75,68 +75,84 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $numberInvoice=0;
+                                @endphp
                                 @foreach ($sizes as $size)
-                                    <tr>
-                                        <td>{{ $size->invoice_number }}</td>
-                                        <td>{{ $size->customer->name }}</td>
-                                        <td>{{ $size->number_dresses }}</td>
-                                        <td>{{ $size->receivedamount }}</td>
-                                        <td>{{ $size->remainingamount }}</td>
-                                        <td>{{ $size->design }}</td>
-                                        <td>
-                                            <div class="dropdown">
-                                                <button aria-expanded="false" aria-haspopup="true"
-                                                    class="btn ripple btn-primary" data-toggle="dropdown"
-                                                    type="button">خيارات<i class="fas fa-caret-down ml-1"></i></button>
-                                                <div class="dropdown-menu tx-1">
-                                                    {{-- <button class="btn btn-primary btn-block" style="width: 100px;height: 50px"> --}}
-                                                        <a class="dropdown-item btn tx-info" data-effect="effect-scale"  data-toggle="modal"
+                                @if ($numberInvoice == $size->invoice->invoice_number)
+
+                                @else
+                                @php
+                                $numberInvoice=$size->invoice->invoice_number;
+                                $numberInvoiceid=$size->invoice->id;
+                                $receivedamount=\app\Models\Size::where('invoice_id',$numberInvoiceid)->sum('receivedamount');
+                                $remainingamount=\app\Models\Size::where('invoice_id',$numberInvoiceid)->sum('remainingamount');
+                                $afterdiscount=\app\Models\Size::where('invoice_id',$numberInvoiceid)->sum('afterdiscount');
+
+                            @endphp
+                                <tr>
+                                    <td>{{ $size->invoice->invoice_number }}</td>
+                                    <td>{{ $size->customer->name }}</td>
+                                    <td>{{ $size->number_dresses }}</td>
+                                    <td>{{ $receivedamount}}</td>
+                                    <td>{{ $remainingamount}}</td>
+                                    <td>{{ $size->design }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button aria-expanded="false" aria-haspopup="true"
+                                                class="btn ripple btn-primary" data-toggle="dropdown"
+                                                type="button">خيارات<i class="fas fa-caret-down ml-1"></i></button>
+                                            <div class="dropdown-menu tx-1">
+                                                {{-- <button class="btn btn-primary btn-block" style="width: 100px;height: 50px"> --}}
+                                                    <a class="dropdown-item btn tx-info" data-effect="effect-scale"  data-toggle="modal"
+                                                    data-remainingamount="{{ $remainingamount }}"
+                                                    data-receivedamount="{{ $receivedamount }}"
+                                                    data-afterdiscount="{{ $afterdiscount }}"
+                                                    data-id="{{ $size->id }}"
+                                                        href="#modaldemo3">اضافة قسط</a>
+                                                    {{-- </button> --}}
+                                                        {{-- <button class="btn btn-primary btn-block" style="width: 100px;height: 50px"> --}}
+                                                            <a class="dropdown-item btn tx-primary"
+                                                                href="print-invoice/{{ $size->id }}">طباعة</a>
+                                                            {{-- </button> --}}
+                                                {{-- <button class="btn btn-info btn-block" style="width: 100px;height: 50px"> --}}
+                                                    <a class="dropdown-item btn tx-info"
+                                                        data-effect="effect-scale"
+                                                        data-name="{{ $size->customer->name }}"
                                                         data-remainingamount="{{ $size->remainingamount }}"
                                                         data-receivedamount="{{ $size->receivedamount }}"
-                                                        data-afterdiscount="{{ $size->afterdiscount }}"
-                                                        data-id="{{ $size->id }}"
-                                                            href="#modaldemo3">اضافة قسط</a>
-                                                        {{-- </button> --}}
-                                                            {{-- <button class="btn btn-primary btn-block" style="width: 100px;height: 50px"> --}}
-                                                                <a class="dropdown-item btn tx-primary"
-                                                                    href="print-invoice/{{ $size->id }}">طباعة</a>
-                                                                {{-- </button> --}}
-                                                    {{-- <button class="btn btn-info btn-block" style="width: 100px;height: 50px"> --}}
-                                                        <a class="dropdown-item btn tx-info"
-                                                            data-effect="effect-scale"
-                                                            data-name="{{ $size->customer->name }}"
-                                                            data-remainingamount="{{ $size->remainingamount }}"
-                                                            data-receivedamount="{{ $size->receivedamount }}"
-                                                            data-number_dresses="{{ $size->number_dresses }}"
-                                                            data-name_design="{{ $size->design }}"
-                                                            data-type_fabrice="{{ $size->fabric }}"
-                                                            data-color_fabrice="{{ $size->color_fabrice }}"
-                                                            data-name_trade_mark="{{ $size->trade_mark }}"
-                                                            data-retribution="{{ $size->retribution->name }}"
-                                                            data-seamoer="{{ $size->seamoer->name }}"
-                                                            data-name_section="{{ $size->section }}"
-                                                            data-value_tax="{{ $size->receved_data }}" data-toggle="modal"
-                                                            href="#checkup" title="فحص">
-                                                            فحص</a>
-                                                        {{-- </button> --}}
-                                                    {{-- <button class="btn btn-dark btn-block" > <a class="dropdown-item" href="#">مرتجع الفاتورة</a></button> --}}
-                                                    {{-- <button class="btn btn-warning btn-block" style="width: 100px;height: 50px"> --}}
-                                                        <a class="dropdown-item btn tx-warning"
-                                                            href="edit-Sale-menu/{{ $size->id }}">تعديل</a>
-                                                        {{-- </button> --}}
-                                                    {{-- <button class="btn btn-danger btn-block" style="width: 100px;height: 50px"> --}}
-                                                        <a class="dropdown-item btn tx-danger"
-                                                            data-effect="effect-scale" data-id="{{ $size->id }}"
-                                                            data-customer_id="{{ $size->customer->id }}"
-                                                            data-toggle="modal" href="#modaldemo9" title="حذف">
-                                                            حذف</a>
-                                                        {{-- </button> --}}
-                                                </div>
+                                                        data-number_dresses="{{ $size->number_dresses }}"
+                                                        data-name_design="{{ $size->design }}"
+                                                        data-type_fabrice="{{ $size->fabric }}"
+                                                        data-color_fabrice="{{ $size->color_fabrice }}"
+                                                        data-name_trade_mark="{{ $size->trade_mark }}"
+                                                        data-retribution="{{ $size->retribution_id}}"
+                                                        data-seamoer="{{ $size->seamoer_id }}"
+                                                        data-name_section="{{ $size->section }}"
+                                                        data-value_tax="{{ $size->receved_data }}" data-toggle="modal"
+                                                        href="#checkup" title="فحص">
+                                                        فحص</a>
+                                                    {{-- </button> --}}
+                                                {{-- <button class="btn btn-dark btn-block" > <a class="dropdown-item" href="#">مرتجع الفاتورة</a></button> --}}
+                                                {{-- <button class="btn btn-warning btn-block" style="width: 100px;height: 50px"> --}}
+                                                    <a class="dropdown-item btn tx-warning"
+                                                        href="edit-Sale-menu/{{ $size->id }}">تعديل</a>
+                                                    {{-- </button> --}}
+                                                {{-- <button class="btn btn-danger btn-block" style="width: 100px;height: 50px"> --}}
+                                                    <a class="dropdown-item btn tx-danger"
+                                                        data-effect="effect-scale" data-id="{{ $size->invoice->id }}"
+                                                        data-customer_id="{{ $size->customer->id }}"
+                                                        data-toggle="modal" href="#modaldemo9" title="حذف">
+                                                        حذف</a>
+                                                    {{-- </button> --}}
                                             </div>
+                                        </div>
 
 
-                                        </td>
-                                    </tr>
+                                    </td>
+                                </tr>
+                                @endif
+
                                 @endforeach
 
                             </tbody>
@@ -160,7 +176,7 @@
                         <div class="modal-body">
                             <p>هل انت متاكد من عملية الحذف ؟</p><br>
                             <input type="hidden" name="id" id="id" value="">
-                            <input name="customer_id" id="customer_id" type="hidden">
+                            {{-- <input name="customer_id" id="customer_id" type="hidden"> --}}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
@@ -277,12 +293,12 @@
                             <div class="form-group">
 
                                 <label for="">المبلغ المستلم</label><br>
-                                            <input class="form-control" type="text" name="remainingamount" id="addremainingamount" readonly>
+                                            <input class="form-control" type="text" name="receivedamount" id="addreceivedamount" readonly>
                                 </div>
                                 <div class="form-group">
 
                                     <label for="">المبلغ المتبقي</label><br>
-                                                <input class="form-control" type="text" name="receivedamount" id="addreceivedamount" readonly>
+                                                <input class="form-control" type="text" name="remainingamount" id="addremainingamount" readonly>
                                     </div>
                                     <div class="form-group">
 

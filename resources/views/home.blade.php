@@ -28,7 +28,7 @@
 
 
                                 </label>
-						
+
 						</div>
 						<div>
 
@@ -45,19 +45,19 @@
 						<div class="card overflow-hidden sales-card bg-primary-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
+                                    @php
+                                            $time=time()-(7 * 24 * 60 * 60);
+                                            $date=date('Y/m/d',$time);
+                                        @endphp
 									<h2 class="mb-3 tx-12 text-white">اجمالي المبيعات</h2>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h5 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Size::sum('price_doesnot_include_tax')}} ريال</h5>
-											<p class="mb-0 tx-12 text-white op-7" style="font-size: 15px">المبيعات خلال هذا الشهر
+											<h5 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Size::where('date','>=',$date)->sum('afterdiscount')}} ريال</h5>
+											<p class="mb-0 tx-12 text-white op-7" style="font-size: 15px">المبيعات خلال هذا الاسبوع
                                             </p>
 										</div>
-										{{-- <span class="float-right my-auto mr-auto">
-											<i class="fas fa-arrow-circle-up text-white"></i>
-											<span class="text-white op-7"> +427</span>
-										</span> --}}
 									</div>
 								</div>
 							</div>
@@ -72,9 +72,10 @@
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
+
 										<div class="">
-											<h5 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Size::sum('value_tax')}} ريال</h5>
-											<p class="mb-0 tx-12 text-white op-7" style="font-size: 15px">ضريبة المبيعات خلال هذا الشهر</p>
+											<h5 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Size::where('date','>=',$date)->sum('value_tax')}} ريال</h5>
+											<p class="mb-0 tx-12 text-white op-7" style="font-size: 15px">ضريبة المبيعات خلال هذا الاسبوع</p>
 										</div>
 										{{-- <span class="float-right my-auto mr-auto">
 											<i class="fas fa-arrow-circle-down text-white"></i>
@@ -90,18 +91,20 @@
 						<div class="card overflow-hidden sales-card bg-success-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">اجمالي المنتجات</h6>
+									<h6 class="mb-3 tx-12 text-white">اجمالي المبيعات</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
+
+                                    @php
+                                    $time=time()-(30 * 24 * 60 * 60);
+                                    $date=date('Y/m/d',$time);
+                                    // dd($date);
+                                @endphp
 										<div class="">
-											<h5 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Product::sum('price_sale_include_tax')}} ريال</h5>
-											<p class="mb-0 tx-12 text-white op-7" style="font-size: 15px">المنتجات خلال هذا الشهر</p>
+											<h5 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Size::where('date','>=',$date)->sum('afterdiscount')}} ريال</h5>
+											<p class="mb-0 tx-12 text-white op-7" style="font-size: 15px">المبيعات خلال هذا الشهر</p>
 										</div>
-										{{-- <span class="float-right my-auto mr-auto">
-											<i class="fas fa-arrow-circle-up text-white"></i>
-											<span class="text-white op-7"> 52.09%</span>
-										</span> --}}
 									</div>
 								</div>
 							</div>
@@ -112,18 +115,14 @@
 						<div class="card overflow-hidden sales-card bg-warning-gradient">
 							<div class="pl-3 pt-3 pr-3 pb-2 pt-0">
 								<div class="">
-									<h6 class="mb-3 tx-12 text-white">اجمالي ضريبة المنتجات</h6>
+									<h6 class="mb-3 tx-12 text-white">اجمالي ضريبة المبيعات</h6>
 								</div>
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Product::sum('rale')}} ريال</h4>
-											<p class="mb-0 tx-12 text-white op-7" style="font-size: 15px">ضريبة المنتجات خلال هذا الشهر</p>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{\App\Models\Size::where('date','>=',$date)->sum('value_tax')}} ريال</h4>
+											<p class="mb-0 tx-12 text-white op-7" style="font-size: 15px">ضريبة المبيعات خلال هذا الشهر</p>
 										</div>
-										{{-- <span class="float-right my-auto mr-auto">
-											<i class="fas fa-arrow-circle-down text-white"></i>
-											<span class="text-white op-7"> -152.3</span>
-										</span> --}}
 									</div>
 								</div>
 							</div>
@@ -136,30 +135,19 @@
 				<!-- row opened -->
 				<div class="row row-sm">
 					<div class="col-md-12 col-lg-12 col-xl-5">
-						{{-- <div class="card">
-                            <div style="width:95%;">
-                                {!! $chartjs->render() !!}
-                            </div>
-						</div> --}}
+
 
 						<div class="card ">
 							<div class="card-body">
 								<div class="row">
-									<div class="col-lg-3">
-										<div class="d-flex align-items-center pb-2">
-											<p class="mb-0">عدد الموردين</p>
-										</div>
-										<h4 class="font-weight-bold mb-2">{{\App\Models\Supplier::count()}}</h4>
-
-									</div>
-                                    <div class="col-lg-3" style="margin-right: 10%">
+                                    <div class="col-lg-5" style="margin-right: 10%">
 										<div class="d-flex align-items-center pb-2">
 											<p class="mb-0">عدد الموظفين</p>
 										</div>
 										<h4 class="font-weight-bold mb-2">{{\App\Models\Employe::count()}}</h4>
 
 									</div>
-									<div class="col-lg-3" style="margin-right: 13%">
+									<div class="col-lg-4" style="margin-right: 13%">
 										<div class="d-flex align-items-center pb-2">
 											<p class="mb-0">عدد العملاء</p>
 										</div>
@@ -188,15 +176,31 @@
 											</tr>
 										</thead>
 										<tbody>
-                                            @foreach ($sizes as $size)
 
+                                            @php
+                                            $numberInvoice=0;
+                                        @endphp
+                                            @foreach ($sizes as $size)
+                                            @if ($numberInvoice==$size->invoice->invoice_number)
+
+                                            @else
+                                            @php
+                                            $numberInvoice=$size->invoice->invoice_number;
+                                            $numberInvoiceid=$size->invoice->id;
+                                            $receivedamount=\app\Models\Size::where('invoice_id',$numberInvoiceid)->sum('receivedamount');
+// dd($receivedamount);
+                                            $afterdiscount=\app\Models\Size::where('invoice_id',$numberInvoiceid)->sum('afterdiscount');
+                                        @endphp
 											<tr>
-												<td>{{$size->customer->name}}</td>
+												<td>
+                                                    {{$size->customer->name}}
+                                                </td>
 												<td>{{$size->number_dresses}}</td>
 												<td>{{$size->receved_data}}</td>
-												<td>{{$size->receivedamount}}</td>
-												<td>{{$size->price_include_tax}}</td>
+												<td>{{$receivedamount}}</td>
+							 					<td>{{$afterdiscount}}</td>
 											</tr>
+                                            @endif
                                             @endforeach
 
 										</tbody>

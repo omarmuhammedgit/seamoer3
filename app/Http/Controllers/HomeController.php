@@ -56,13 +56,16 @@ $chartjs = app()->chartjs
 ])
 ->options([]);
 $sizes=Size::all();
-$time=time()+(4*24*60*60);
-$date=date("Y/m/d",$time);
-// $sizes=Customer::where('receved_data',$date)->get();
+$time=time()+(7*24*60*60);
+$recevedDate=date("Y/m/d",$time);
+$date=date('Y/m/d');
+// dd($date);
+$sizes=Size::where('receved_data','<=',$recevedDate)->get();
 // dd($sizes->name);
 // $sizes=Size::where('customer_id',$sizes)->get();
 // dd($sizes);
-// $sizes=DB::select('SELECT * FROM customers WHERE receved_data ='.$date);
+// $sizes=DB::select('SELECT * FROM sizes WHERE date  >=  CURRENT_DATE - INTERVAL 7 DAY');
+// $sizes=DB::select('SELECT * FROM sizes WHERE date  >=  CURRENT_DATE - INTERVAL 7 DAY');
 // dd($sizes);
 return view('home', compact('chartjs','sizes'));
         // return view('home');

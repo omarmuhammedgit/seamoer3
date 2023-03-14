@@ -2,9 +2,7 @@
 @section('css')
     <link href="{{ URL::asset('assets/plugins/Invoices/invoices.css') }}" rel="stylesheet">
     <style>
-        #id input{
-            width: 120px;
-        }
+
     </style>
 @endsection
 @section('page-header')
@@ -29,8 +27,10 @@
             <div class="card">
 
                 <div class="card-body">
+                    @if (! @empty($setting))
 
                     <div class="main-content-label mg-b-5">
+
                         @php
                             $issueDate=date('h:i:s  Y/m/d');
                         @endphp
@@ -47,6 +47,10 @@
                             </div><!-- billed-from -->
                         </div><!-- invoice-header -->
                     </div>
+
+
+                    @endif
+
                     <div class="row row-sm">
                         <table>
                             <tr>
@@ -109,7 +113,7 @@
 
                                 <label for="">رقم الفاتورة</label><br>
                                 <input class="form-control" type="text" name="invoice_number"
-                                    value="{{ $info_size_customer->invoice_number }}">
+                                    value="{{ $info_size_customer->invoice->invoice_number }}">
                             </div>
                                 </td>
                             </tr></table>
@@ -136,71 +140,66 @@
                         <table>
                             <tr id="sin">
                                 <td>
-                                    <label for="">الطول</label><br>
+                                    <label for="">طول امام</label><br>
                                     <input class="form-control" type="text" name="height"
                                         value="{{ $info_size_customer->height }}">
                                 </td>
                                 <td>
-                                    <label for="">الكتف</label><br>
+                                    <label for="">طول الخلف</label><br>
                                     <input class="form-control" type="text" name="shoulder"
                                         value="{{ $info_size_customer->shoulder }}">
                                 </td>
                                 <td>
-                                    <label for="">طول الكتف</label><br>
+                                    <label for=""> الكتف</label><br>
                                     <input class="form-control" type="text" name="shoulder_leight"
                                         value="{{ $info_size_customer->shoulder_leight }}">
                                 </td>
                                 <td>
-                                    <label for="">الصدر</label><br>
+                                    <label for="">طول يد السادة</label><br>
                                     <input class="form-control" type="text" name="brest"
                                         value="{{ $info_size_customer->brest }}">
                                 </td>
                                 <td>
-                                    <label for="">وسع الصدر </label><br>
+                                    <label for=""> طول يد الكبك </label><br>
                                     <input class="form-control" type="text" name="expand_brest"
                                         value="{{ $info_size_customer->expand_brest }}">
                                 </td>
                                 <td>
-                                    <label for="">الرقبة</label><br>
+                                    <label for="">وسع الصدر</label><br>
                                     <input class="form-control" type="text" name="neck"
                                         value="{{ $info_size_customer->neck }}">
                                 </td>
                                 <td>
-                                    <label for="">وسع اليد</label><br>
+                                    <label for="">وسع الورك</label><br>
                                     <input class="form-control" type="text" name="expand_hand"
                                         value="{{ $info_size_customer->expand_hand }}">
                                 </td>
                                 <td>
-                                    <label for="">اسفل اليد</label><br>
+                                    <label for="">وسع اليد</label><br>
                                     <input class="form-control" type="text" name="down_hand"
                                         value="{{ $info_size_customer->down_hand }}">
                                 </td>
                                 <td>
-                                    <label for="">طول الكبك</label><br>
+                                    <label for="">وسط اليد</label><br>
                                     <input class="form-control" type="text" name="cbk_leight"
                                         value="{{ $info_size_customer->cbk_leight }}">
                                 </td>
                                 <td>
-                                    <label for="">عرض الكبك</label><br>
+                                    <label for="">اسفل اليد</label><br>
                                     <input class="form-control" type="text" name="cbk_width"
                                         value="{{ $info_size_customer->cbk_width }}">
                                 </td>
                             </tr>
                             <tr id="sin">
                                 <td>
-                                    <label for="">طول الجيب</label>
+                                    <label for="">كف الكبك </label>
                                     <input class="form-control" type="text" name="pocket_leight"
                                         value="{{ $info_size_customer->pocket_leight }}">
                                 </td>
                                 <td>
-                                    <label for="">وسع الجيب</label>
+                                    <label for="">وسع اسفل</label>
                                     <input class="form-control" type="text" name="pocket_expand"
                                         value="{{ $info_size_customer->pocket_expand }}">
-                                </td>
-                                <td>
-                                    <label for="">وسع اسفل</label>
-                                    <input class="form-control" type="text" name="down_expand"
-                                        value="{{ $info_size_customer->down_expand }}">
                                 </td>
                                 <td>
                                     <label for="">كفة اسفل</label>
@@ -233,7 +232,7 @@
                                         <td>
                                             <label for="">اسم الخياط</label>
                                             <input class="form-control" type="text"
-                                                value="{{ $info_size_customer->seamoer->name }}">
+                                                value="{{ $info_size_customer->seamoer_id }}">
                                         </td>
                                         <td>
                                             <label for="">الخصم</label>
@@ -253,7 +252,7 @@
                                         <td>
                                     </tr>
                                 </table>
-                                <div class="radio">
+                                <div class="counttable" style="float: right">
                                     <h4> ملخص الطلب صور {{ $i }}</h4>
                                     <figure>
                                         <img src="{{ $info_size_customer->image_neck }}" alt="" width="100px"
@@ -269,6 +268,11 @@
                                     </figure>
                                 </div>
                                 </figure>
+
+                <div class="counttable" style="float: left">
+                    <h4> ملاحظات</h4><br>
+                    <textarea name="" id="" cols="30" rows="5">{{ $info_size_customer->notes }}</textarea>
+                </div>
                             </div>
                         </div>
                     @endforeach
@@ -327,46 +331,55 @@
                             </tr>
                         </table>
                     </div>
+
                 </div>
+
                 <div class="counttable" style="float: left">
-                    <h4> ملاحظات</h4><br>
-
-
-                    <textarea name="" id="" cols="40" rows="10">{{ $info_size_customer->notes }}</textarea>
-                </div>
-                </div>
-
-
-                <div class="qr">
                     {{-- {{ QrCode::generate('hi omar') }} --}}
 
-                    {{ zatca()
-                        ->sellerName($setting->name )
-                        ->vatRegistrationNumber($setting->commercial_record)
-                        ->timestamp($issueDate)
-                        ->totalWithVat($price_include_tax)
-                        ->vatTotal($value_tax)
-                        ->toQrCode(
-                          qrCodeOptions()
-                            ->format("svg")
-                            ->color(255,0,0,1)
-                            ->size(300)
-                        ); }}
+                    <img src="{{ $displayQRCodeAsBase64 }}" alt="QR Code" />
                 </div>
+                </div>
+
+
+
 
             </div>
         </div>
         <div class="col-md-12 col-xl-12 col-xs-12 col-sm-12">
-
+<input type="hidden" value="{{ route('Sale-menu.index') }}" id="route">
 
             <button class="btn ripple btn-primary" type="button" style="margin-right: 95%; margin-bottom:10%"
-                onclick="printDiv();">طباعة</button>
+                onclick="printDiv();" id="url"> <a href="{{ route('Sale-menu.index') }}" style="color: white"> طباعة</a></button>
         </div>
         <div id="invoiceseamoer" style="display: none">
             <div class="card-body">
 
                 <div class="main-content-label mg-b-5">
-                    فاتورة مبيعات العميل
+                    @if (! @empty($setting))
+
+                    <div class="main-content-label mg-b-5">
+
+                        @php
+                            $issueDate=date('h:i:s  Y/m/d');
+                        @endphp
+
+                        <div class="invoice-header">
+                            <h6 class="invoice-title">تاريخ اصدار الفاتورة {{ $issueDate }}</h6>
+                            <div class="billed-from">
+                                <h6>{{ $setting->name }}</h6>
+                                <p> رقم  السجل التجاري :{{ $setting->commercial_record }} <br><br>
+                                    العنوان: {{ $setting->country }} , {{ $setting->city }} ,
+                                    {{ $setting->postal_code }}<br><br>
+                                    رقم الهاتف :{{ $setting->phone }}<br><br>
+                                    البريد الالكتروني:{{ $setting->email }}</p>
+                            </div><!-- billed-from -->
+                        </div><!-- invoice-header -->
+                    </div>
+
+
+                    @endif
+                    فاتورة مبيعات الخياط
                 </div>
                 <table>
                     <tr id="sin">
@@ -407,7 +420,7 @@
                         <td>
                             <label for="">رقم الفاتورة</label><br>
                             <input class="form-control" type="text" name="down_hand"
-                                value="{{ $info_size_customer->invoice_number }}">
+                                value="{{ $info_size_customer->invoice->invoice_number }}">
                         </td>
 
                     </tr>
@@ -432,71 +445,66 @@
                     <table>
                         <tr id="sin">
                             <td>
-                                <label for="">الطول</label><br>
+                                <label for="">طول امام</label><br>
                                 <input class="form-control" type="text" name="height"
                                     value="{{ $info_size_customer->height }}">
                             </td>
                             <td>
-                                <label for="">الكتف</label><br>
+                                <label for="">طول الخلف</label><br>
                                 <input class="form-control" type="text" name="shoulder"
                                     value="{{ $info_size_customer->shoulder }}">
                             </td>
                             <td>
-                                <label for="">طول الكتف</label><br>
+                                <label for=""> الكتف</label><br>
                                 <input class="form-control" type="text" name="shoulder_leight"
                                     value="{{ $info_size_customer->shoulder_leight }}">
                             </td>
                             <td>
-                                <label for="">الصدر</label><br>
+                                <label for="">طول يد السادة</label><br>
                                 <input class="form-control" type="text" name="brest"
                                     value="{{ $info_size_customer->brest }}">
                             </td>
                             <td>
-                                <label for="">وسع الصدر </label><br>
+                                <label for=""> طول يد الكبك </label><br>
                                 <input class="form-control" type="text" name="expand_brest"
                                     value="{{ $info_size_customer->expand_brest }}">
                             </td>
                             <td>
-                                <label for="">الرقبة</label><br>
+                                <label for="">وسع الصدر</label><br>
                                 <input class="form-control" type="text" name="neck"
                                     value="{{ $info_size_customer->neck }}">
                             </td>
                             <td>
-                                <label for="">وسع اليد</label><br>
+                                <label for="">وسع الورك</label><br>
                                 <input class="form-control" type="text" name="expand_hand"
                                     value="{{ $info_size_customer->expand_hand }}">
                             </td>
                             <td>
-                                <label for="">اسفل اليد</label><br>
+                                <label for="">وسع اليد</label><br>
                                 <input class="form-control" type="text" name="down_hand"
                                     value="{{ $info_size_customer->down_hand }}">
                             </td>
                             <td>
-                                <label for="">طول الكبك</label><br>
+                                <label for="">وسط اليد</label><br>
                                 <input class="form-control" type="text" name="cbk_leight"
                                     value="{{ $info_size_customer->cbk_leight }}">
                             </td>
                             <td>
-                                <label for="">عرض الكبك</label><br>
+                                <label for="">اسفل اليد</label><br>
                                 <input class="form-control" type="text" name="cbk_width"
                                     value="{{ $info_size_customer->cbk_width }}">
                             </td>
                         </tr>
                         <tr id="sin">
                             <td>
-                                <label for="">طول الجيب</label>
+                                <label for="">كف الكبك </label>
                                 <input class="form-control" type="text" name="pocket_leight"
                                     value="{{ $info_size_customer->pocket_leight }}">
                             </td>
                             <td>
-                                <label for="">وسع الجيب</label>
+                                <label for="">وسع اسفل</label>
                                 <input class="form-control" type="text" name="pocket_expand"
                                     value="{{ $info_size_customer->pocket_expand }}">
-                            </td>
-                            <td>
-                                <label for="">وسع اسفل</label>
-                                <input class="form-control" type="text" name="down_expand"
-                                    value="{{ $info_size_customer->down_expand }}">
                             </td>
                             <td>
                                 <label for="">كفة اسفل</label>
@@ -549,7 +557,7 @@
                                     <td>
                                 </tr>
                             </table>
-                            <div class="radio">
+                            <div class="counttable" style="float: right">
                                 <h4> ملخص الطلب صور {{ $i }}</h4>
                                 <figure>
                                     <img src="{{ $info_size_customer->image_neck }}" alt="" width="100px"
@@ -560,16 +568,16 @@
                                         width="100px" height="100px">
                                     <img src="{{ $info_size_customer->image_pocket }}" alt="" width="100px"
                                         height="100px">
-                                    <img src="{{ $info_size_customer->image_algizour }}" alt="" width="100px"
-                                        height="100px">
+                                    <img src="{{ $info_size_customer->image_algizour }}" alt=""
+                                        width="100px" height="100px">
                                 </figure>
                             </div>
-
-
-
-
-
                             </figure>
+
+            <div class="counttable" style="float: left">
+                <h4> ملاحظات</h4><br>
+                <textarea name="" id="" cols="30" rows="10">{{ $info_size_customer->notes }}</textarea>
+            </div>
                         </div>
                     </div>
                 @endforeach
